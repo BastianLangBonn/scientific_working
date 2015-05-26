@@ -1,0 +1,462 @@
+% This file was created with JabRef 2.10b2.
+% Encoding: UTF-8
+
+
+@Article{baldassarre2007self,
+  Title                    = {Self-organized coordinated motion in groups of physically connected robots},
+  Author                   = {Baldassarre, Gianluca and Trianni, Vito and Bonani, Michael and Mondada, Francesco and Dorigo, Marco and Nolfi, Stefano},
+  Journal                  = {Systems, Man, and Cybernetics, Part B: Cybernetics, IEEE Transactions on},
+  Year                     = {2007},
+  Number                   = {1},
+  Pages                    = {224--239},
+  Volume                   = {37},
+
+  Abstract                 = {An important goal of collective robotics is the design of control systems that allow groups of robots to accomplish common tasks by coordinating without a centralized control. In this paper, we study how a group of physically assembled robots can display coherent behavior on the basis of a simple neural controller that has access only to local sensory information. This controller is synthesized through artificial evolution in a simulated environment in order to let the robots display coordinated-motion behaviors. The evolved controller proves to be robust enough to allow a smooth transfer from simulated to real robots. Additionally, it generalizes to new experimental conditions, such as different sizes/shapes of the group and/or different connection mechanisms. In all these conditions the performance of the neural controller in real robots is comparable to the one obtained in simulation},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/baldassarre2007self.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{bongard2006resilient,
+  Title                    = {Resilient machines through continuous self-modeling},
+  Author                   = {Bongard, Josh and Zykov, Victor and Lipson, Hod},
+  Journal                  = {Science},
+  Year                     = {2006},
+  Number                   = {5802},
+  Pages                    = {1118--1121},
+  Volume                   = {314},
+
+  Abstract                 = {Animals sustain the ability to operate after injury by creating qualitatively different compensatory behaviors. Although such robustness would be desirable in engineered systems, most machines fail in the face of unexpected damage. We describe a robot that can recover from such change autonomously, through continuous self-modeling. A four-legged machine uses actuation-sensation relationships to indirectly infer its own structure, and it then uses this self-model to generate forward locomotion. When a leg part is removed, it adapts the self-models, leading to the generation of alternative gaits. This concept may help develop more robust machines and shed light on self-modeling in animals.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/bongard2006resilient.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {American Association for the Advancement of Science},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{cliff1993explorations,
+  Title                    = {Explorations in evolutionary robotics},
+  Author                   = {Cliff, Dave and Husbands, Phil and Harvey, Inman},
+  Journal                  = {Adaptive behavior},
+  Year                     = {1993},
+  Number                   = {1},
+  Pages                    = {73--110},
+  Volume                   = {2},
+
+  Abstract                 = {We discuss the methodological foundations for our work on the development ofcognitive architectures, or control systems, for situated autonomous agents.Our focus is the problems of developing sensorimotor control systems formobile robots, but we also discuss the applicability of our approach to thestudy of biological systems. We argue that, for agents required to exhibitsophisticated interactions with their environments, complex sensorimotorprocessing is necessary, and the design, by hand, of control systems capable ofsuch processing is likely to become prohibitively difficult as complexityincreases. We propose an automatic design process involving artificialevolution, wherein the basic building blocks used for evolving cognitivearchitectures are noise-tolerant dynamical neural networks. These networksmay be recurrent and should operate in real time. The evolution should beincremental, using an extended and modified version of a genetic algorithm.Practical constraints suggest that initial architecture evaluations should bedone largely in simulation. To support our claims and proposals, we summarizeresults from some preliminary simulation experiments in which visually guidedrobots are evolved to operate in simple environments. Significantly, our resultsdemonstrate that robust visually guided control systems evolve from evaluationfunctions that do not explicitly require monitoring visual input. We outline thedifficulties involved in continuing with simulations and conclude by describingspecialized visuorobotic equipment, designed to eliminate the need forsimulated sensors and ac},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/cliff1993explorations.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {Sage Publications},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{clune2011performance,
+  Title                    = {On the performance of indirect encoding across the continuum of regularity},
+  Author                   = {Clune, Jeff and Stanley, Kenneth O and Pennock, Robert T and Ofria, Charles},
+  Journal                  = {Evolutionary Computation, IEEE Transactions on},
+  Year                     = {2011},
+  Number                   = {3},
+  Pages                    = {346--367},
+  Volume                   = {15},
+
+  Abstract                 = {This paper investigates how an evolutionary algorithm with an indirect encoding exploits the property of phenotypic regularity, an important design principle found in natural organisms and engineered designs. We present the first comprehensive study showing that such phenotypic regularity enables an indirect encoding to outperform direct encoding controls as problem regularity increases. Such an ability to produce regular solutions that can exploit the regularity of problems is an important prerequisite if evolutionary algorithms are to scale to high-dimensional real-world problems, which typically contain many regularities, both known and unrecognized. The indirect encoding in this case study is HyperNEAT, which evolves artificial neural networks (ANNs) in a manner inspired by concepts from biological development. We demonstrate that, in contrast to two direct encoding controls, HyperNEAT produces both regular behaviors and regular ANNs, which enables HyperNEAT to significantly outperform the direct encodings as regularity increases in three problem domains. We also show that the types of regularities HyperNEAT produces can be biased, allowing domain knowledge and preferences to be injected into the search. Finally, we examine the downside of a bias toward regularity. Even when a solution is mainly regular, some irregularity may be needed to perfect its functionality. This insight is illustrated by a new algorithm called HybrID that hybridizes indirect and direct encodings, which matched HyperNEAT's performance on regular problems yet outperformed it on problems with some irregularity. HybrID's ability to improve upon the performance of HyperNEAT raises the question of whether indirect encodings may ultimately excel not as stand-alone algorithms, but by being hybridized with a further process of refinement, wherein the indirect encoding produces patterns that exploit problem regularity and the refining process modifies that pattern to capture irregularities. This- - paper thus paints a more complete picture of indirect encodings than prior studies because it analyzes the impact of the continuum between irregularity and regularity on the performance of such encodings, and ultimately suggests a path forward that combines indirect encodings with a separate process of refinement.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/clune2011performance.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{coello2006evolutionary,
+  Title                    = {Evolutionary multi-objective optimization: a historical view of the field},
+  Author                   = {Coello Coello, Carlos A},
+  Journal                  = {Computational Intelligence Magazine, IEEE},
+  Year                     = {2006},
+  Number                   = {1},
+  Pages                    = {28--36},
+  Volume                   = {1},
+
+  Abstract                 = {This article provides a general overview of thefield now known as “evolutionary multi-objective opti-mization,” which refers to the use of evolutionary algo-rithms to solve problems with two or more (oftenconflicting) objective functions. Using as a frameworkthe history of this discipline, we discuss some of the mostrepresentative algorithms that have been developed sofar, as well as some of their applications. Also, we discusssome of the methodological issues related to the use ofmulti-objective evolutionary algorithms, as well as someof the current and future research trends in the area},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/coello2006evolutionary.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.26}
+}
+
+@InCollection{floreano2008evolutionary,
+  Title                    = {Evolutionary robotics},
+  Author                   = {Floreano, Dario and Husbands, Phil and Nolfi, Stefano},
+  Booktitle                = {Springer handbook of robotics},
+  Publisher                = {Springer},
+  Year                     = {2008},
+  Pages                    = {1423--1451},
+
+  Abstract                 = {Evolutionary robotics is a new technique for the automatic creation of autonomous robots. Inspired by the Darwinian principle of selective reproduction of the fittest, it views robots as autonomous artificial organisms that develop their own skills in close interaction with the environment and without human intervention. Drawing heavily on biology and ethology, it uses the tools of neural networks, genetic algorithms, dynamic systems, and biomorphic engineering. The resulting robots share with simple biological systems the characteristics of robustness, simplicity, small size, flexibility, and modularity.In evolutionary robotics, an initial population of artificial chromosomes, each encoding the control system of a robot, is randomly created and put into the environment. Each robot is then free to act (move, look around, manipulate) according to its genetically specified controller while its performance on various tasks is automatically evaluated. The fittest robots then "reproduce" by swapping parts of their genetic material with small random mutations. The process is repeated until the "birth" of a robot that satisfies the performance criteria.This book describes the basic concepts and methodologies of evolutionary robotics and the results achieved so far. An important feature is the clear presentation of a set of empirical experiments of increasing complexity. Software with a graphic interface, freely available on a Web page, will allow the reader to replicate and vary (in simulation and on real robots) most of the experiments.},
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{Floreano2000,
+  Title                    = {Evolutionary robots with on-line self-organization and behavioral fitness},
+  Author                   = {Floreano, Dario and Urzelai, Joseba},
+  Journal                  = {Neural Networks},
+  Year                     = {2000},
+  Number                   = {4},
+  Pages                    = {431--443},
+  Volume                   = {13},
+
+  Abstract                 = {We address two issues in Evolutionary Robotics, namely the genetic encoding and the performance criterion, also known as the fitnessfunction. For the first aspect, we suggest toencode mechanisms for parameter self-organization, instead of the parameters themselves as inconventional approaches. We argue that the suggested encoding generates systems that can solve more complex tasks and are more robust tounpredictable sources of change. We support our arguments with a set of experiments on evolutionary neural controllers for physical robotsand  compare  them  to  conventional  encoding.  In addition,  we show that  when  also the  genetic  encoding  is left  free  to  evolve,  artificialevolution will select to exploit mechanisms of self-organization. For the second aspect, we shall discuss the role of the performance criterion,also known as fitness function, and suggestFitness Spaceas a framework to conceive fitness functions in Evolutionary Robotics. FitnessSpace can be used as a guide to design fitness functions as well as to compare different experiments in Evolutionary Robotics.q2000Elsevier Science Ltd. All rights reserved.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/Floreano2000.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {Elsevier},
+  Timestamp                = {2015.05.26}
+}
+
+@Book{harvey1992issues,
+  Title                    = {Issues in evolutionary robotics},
+  Author                   = {Harvey, Inman and Husbands, Philip and Cliff, Dave and others},
+  Publisher                = {School of Cognitive and Computing Sciences, University of Sussex},
+  Year                     = {1992},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{harvey1997evolutionary,
+  Title                    = {Evolutionary robotics: the Sussex approach},
+  Author                   = {Harvey, Inman and Husbands, Phil and Cliff, Dave and Thompson, Adrian and Jakobi, Nick},
+  Journal                  = {Robotics and autonomous systems},
+  Year                     = {1997},
+  Number                   = {2},
+  Pages                    = {205--224},
+  Volume                   = {20},
+
+  Abstract                 = {We give an overview of evolutionary robotics research at Sussex over the last 5 years. We explain and justify our distinctive approaches to(artifcial) evolution, and to the nature of robot control systems that are evolved. Results are presented from research with evolved controllers for autonomous mobile robots simulated robots, coevolved animats, realrobots with software controllers, and a real robot with a controller directly evolved in hardware.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/harvey1997evolutionary.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {Elsevier},
+  Timestamp                = {2015.05.26}
+}
+
+@PhdThesis{jakobi1998minimal,
+  Title                    = {Minimal simulations for evolutionary robotics},
+  Author                   = {Jakobi, Nick},
+  School                   = {University of Sussex},
+  Year                     = {1998},
+
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/jakobi1998minimal.pdf:PDF},
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{jakobi1997evolutionary,
+  Title                    = {Evolutionary robotics and the radical envelope-of-noise hypothesis},
+  Author                   = {Jakobi, Nick},
+  Journal                  = {Adaptive behavior},
+  Year                     = {1997},
+  Number                   = {2},
+  Pages                    = {325--368},
+  Volume                   = {6},
+
+  Abstract                 = {For several years now, various researchers have endeavored to apply artificialevolution to the automatic design of control systems for real robots. One of themajor challenges they face concerns the question of how to assess the fitnessof evolving controllers when each evolutionary run typically involves hundredsof thousands of such assessments. This article outlines new ways of thinkingabout and building simulations upon which such assessments can beperformed. It puts forward sufficient conditions for the successful transfer ofevolved controllers from simulation to reality and develops a potentialmethodology for building simulations in which evolving controllers are forcedto satisfy these conditions if they are to be reliably fit. It is hypothesized that aslong as simulations are built according to this methodology, it does not matterhow inaccurate or incomplete they are: Controllers that have evolved to bereliably fit in simulation still will transfer into reality. Two sets of experimentsare reported, both of which involve minimal look-up table-based simulationsbuilt according to these guidelines. In the first set, controllers were evolvedthat allowed a Khepera robot to perform a simple memory task in the realworld. In the second set, controllers were evolved for the Sussex Universitygantry robot that were able to distinguish visually a triangle from a square,under extremely noisy real-world conditions, and to steer the robot toward thetriangle. In both cases, controllers that were reliably fit in simulation displayedextremely robust behavior when downloaded into reality.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/jakobi1997evolutionary.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {Sage Publications},
+  Timestamp                = {2015.05.26}
+}
+
+@InCollection{jakobi1995noise,
+  Title                    = {Noise and the reality gap: The use of simulation in evolutionary robotics},
+  Author                   = {Jakobi, Nick and Husbands, Phil and Harvey, Inman},
+  Booktitle                = {Advances in artificial life},
+  Publisher                = {Springer},
+  Year                     = {1995},
+  Pages                    = {704--720},
+
+  Abstract                 = {The pitfalls of naive robot simulations have been recognised for areas such as evolutionary robotics. It has been suggested that carefully validated simulations with a proper treatment of noise may overcome these problems. This paper reports the results of experiments intended to test some of these claims. A simulation was constructed of a two-wheeled Khepera robot with IR and ambient light sensors. This included detailed mathematical models of the robot-environment interaction dynamics with empirically determined parameters. Artificial evolution was used to develop recurrent dynamical network controllers for the simulated robot, for obstacle-avoidance and light-seeking tasks, using different levels of noise in the simulation. The evolved controllers were down-loaded onto the real robot and the correspondence between behaviour in simulation and in reality was tested. The level of correspondence varied according to how much noise was used in the simulation, with very good results achieved when realistic quantities were applied. It has been demonstrated that it is possible to develop successful robot controllers in simulation that generate almost identical behaviours in reality, at least for a particular class of robot-environment interaction dynamics.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/jakobi1995noise.pdf:PDF},
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{jin2011morphogenetic,
+  Title                    = {Morphogenetic robotics: An emerging new field in developmental robotics},
+  Author                   = {Jin, Yaochu and Meng, Yan},
+  Journal                  = {Systems, Man, and Cybernetics, Part C: Applications and Reviews, IEEE Transactions on},
+  Year                     = {2011},
+  Number                   = {2},
+  Pages                    = {145--160},
+  Volume                   = {41},
+
+  Abstract                 = {Developmental robotics is also known as epigenetic robotics. We propose in this paper that there is one substantial difference between developmental robotics and epigenetic robotics, since epigenetic robotics concentrates primarily on modeling the development of cognitive elements of living systems in robotic systems, such as language, emotion, and social skills, while developmental robotics should also cover the modeling of neural and morphological development in single- and multirobot systems. With the recent rapid advances in evolutionary developmental biology and systems biology, increasing genetic and cellular principles underlying biological morphogenesis have been revealed. These principles are helpful not only in understanding biological development, but also in designing self-organizing, self-reconfigurable, and self-repairable engineered systems. In this paper, we propose morphogenetic robotics, an emerging new field in developmental robotics, is an important part of developmental robotics in addition to epigenetic robotics. By morphogenetic robotics, we mean a class of methodologies in robotics for designing self-organizing, self-reconfigurable, and self-repairable single- or multirobot systems, using genetic and cellular mechanisms governing biological morphogenesis. We categorize these methodologies into three areas, namely, morphogenetic swarm robotic systems, morphogenetic modular robots, and morphogenetic body and brain design for robots. Examples are provided for each of the three areas to illustrate the main ideas underlying the morphogenetic approaches to robotics.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/jin2011morphogenetic.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{kashtan2005spontaneous,
+  Title                    = {Spontaneous evolution of modularity and network motifs},
+  Author                   = {Kashtan, Nadav and Alon, Uri},
+  Journal                  = {Proceedings of the National Academy of Sciences of the United States of America},
+  Year                     = {2005},
+  Number                   = {39},
+  Pages                    = {13773--13778},
+  Volume                   = {102},
+
+  Abstract                 = {Biological networks have an inherent simplicity: they are modular with a design that can be separated into units that perform almost independently. Furthermore, they show reuse of recurring patterns termed network motifs. Little is known about the evolutionary origin of these properties. Current models of biological evolution typically produce networks that are highly nonmodular and lack understandable motifs. Here, we suggest a possible explanation for the origin of modularity and network motifs in biology. We use standard evolutionary algorithms to evolve networks. A key feature in this study is evolution under an environment (evolutionary goal) that changes in a modular fashion. That is, we repeatedly switch between several goals, each made of a different combination of subgoals. We find that such “modularly varying goals” lead to the spontaneous evolution of modular network structure and network motifs. The resulting networks rapidly evolve to satisfy each of the different goals. Such switching between related goals may represent biological evolution in a changing environment that requires different combinations of a set of basic biological functions. The present study may shed light on the evolutionary forces that promote structural simplicity in biological networks and offers ways to improve the evolutionary design of engineered systems.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/kashtan2005spontaneous.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {National Acad Sciences},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{koos2013transferability,
+  Title                    = {The transferability approach: Crossing the reality gap in evolutionary robotics},
+  Author                   = {Koos, Sylvain and Mouret, J-B and Doncieux, St{\'e}phane},
+  Journal                  = {Evolutionary Computation, IEEE Transactions on},
+  Year                     = {2013},
+  Number                   = {1},
+  Pages                    = {122--145},
+  Volume                   = {17},
+
+  Abstract                 = {The reality gap, which often makes controllers evolved in simulation inefficient once transferred onto the physical robot, remains a critical issue in evolutionary robotics (ER). We hypothesize that this gap highlights a conflict between the efficiency of the solutions in simulation and their transferability from simulation to reality: the most efficient solutions in simulation often exploit badly modeled phenomena to achieve high fitness values with unrealistic behaviors. This hypothesis leads to the transferability approach, a multiobjective formulation of ER in which two main objectives are optimized via a Pareto-based multiobjective evolutionary algorithm: 1) the fitness; and 2) the transferability, estimated by a simulation-to-reality (STR) disparity measure. To evaluate this second objective, a surrogate model of the exact STR disparity is built during the optimization. This transferability approach has been compared to two reality-based optimization methods, a noise-based approach inspired from Jakobi's minimal simulation methodology and a local search approach. It has been validated on two robotic applications: 1) a navigation task with an e-puck robot; and 2) a walking task with a 8-DOF quadrupedal robot. For both experimental setups, our approach successfully finds efficient and well-transferable controllers only with about ten experiments on the physical robot.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/koos2013transferability.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.26}
+}
+
+@InProceedings{koos2010crossing,
+  Title                    = {Crossing the reality gap in evolutionary robotics by promoting transferable controllers},
+  Author                   = {Koos, Sylvain and Mouret, Jean-Baptiste and Doncieux, St{\'e}phane},
+  Booktitle                = {Proceedings of the 12th annual conference on Genetic and evolutionary computation},
+  Year                     = {2010},
+  Organization             = {ACM},
+  Pages                    = {119--126},
+
+  Abstract                 = {The reality gap, that often makes controllers evolved in sim-ulation inefficient once transferred onto the real system, re-mains a critical issue in Evolutionary Robotics (ER); it pre-vents ER application to real-world problems. We hypothe-size that this gap mainly stems from a conflict between theefficiency of the solutions in simulation and their transfer-ability from simulation to reality: best solutions in simula-tion often rely on bad simulated phenomena (e.g. the mostdynamic ones). This hypothesis leads to a multi-objectiveformulation of ER in which two main objectives are opti-mized via a Pareto-based Multi-Objective Evolutionary Al-gorithm: (1) the fitness and (2) the transferability. To eval-uate this second objective, a simulation-to-reality disparityvalue is approximated for each controller.  The proposedmethod is applied to the evolution of walking controllers fora real 8-DOF quadrupedal robot. It successfully finds effi-cient and well-transferable controllers with only a few ex-periments in reality.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/koos2010crossing.pdf:PDF},
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.26}
+}
+
+@InProceedings{lewis1992genetic,
+  Title                    = {Genetic programming approach to the construction of a neural network for control of a walking robot},
+  Author                   = {Lewis, M Anthony and Fagg, Andrew H and Solidum, Alan},
+  Booktitle                = {Robotics and Automation, 1992. Proceedings., 1992 IEEE International Conference on},
+  Year                     = {1992},
+  Organization             = {IEEE},
+  Pages                    = {2618--2623},
+
+  Abstract                 = {The authors describe the staged evolution of a complex motor pattern generator (MPG) for the control of a walking robot. The experiments were carried out on a six-legged, Brooks-style insect robot. The MPG was composed of a network of neurons with weights determined by genetic algorithm optimization. Staged evolution was used to improve the convergence rate of the algorithm. First, an oscillator for the individual leg movements was evolved. Then, a network of these oscillators was evolved to coordinate the movements of the different legs. By introducing a staged set of manageable challenges, the algorithm's performance was improved},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/lewis1992genetic.pdf:PDF},
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{lipson2007principles,
+  Title                    = {Principles of modularity, regularity, and hierarchy for scalable systems},
+  Author                   = {Lipson, Hod},
+  Journal                  = {Journal of Biological Physics and Chemistry},
+  Year                     = {2007},
+  Number                   = {4},
+  Pages                    = {125},
+  Volume                   = {7},
+
+  Abstract                 = {Scalability of open-ended evolutionary processes depends on their ability to exploit functionalmodularity, structural regularity and hierarchy. This paper offers a number of observationsabout properties, dependencies and tradeoffs among these principles and proposes a formalmodel where such elements can be examined},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/lipson2007principles.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {Citeseer},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{Mouret:2012:EBD:2155529.2155533,
+  Title                    = {Encouraging Behavioral Diversity in Evolutionary Robotics: An Empirical Study},
+  Author                   = {Mouret, J. -B. and Doncieux, S.},
+  Journal                  = {Evol. Comput.},
+  Year                     = {2012},
+
+  Month                    = mar,
+  Number                   = {1},
+  Pages                    = {91--133},
+  Volume                   = {20},
+
+  Abstract                 = {Evolutionary  robotics  (ER)  aims  at  automatically  designing  robots  or  controllers  ofrobots  without  having  to  describe  their  inner  workings.  To  reach  this  goal,  ER  re-searchers primarily employ phenotypes that can lead to an infinite number of robotbehaviors and fitness functions that only reward the achievement of the task—and nothow to achieve it. These choices make ER particularly prone to premature convergence.To tackle this problem, several papers recently proposed to explicitly encourage thediversity of the robot behaviors, rather than the diversity of the genotypes as in classicevolutionary optimization. Such an approach avoids the need to compute distancesbetween structures and the pitfalls of the noninjectivity of the phenotype/behaviorrelation; however, it also introduces new questions: how to compare behavior? shouldthis comparison be task specific? and what is the best way to encourage diversity inthis context? In this paper, we review the main published approaches to behavioraldiversity and benchmark them in a common framework. We compare each approachon three different tasks and two different genotypes. The results show that fostering be-havioral diversity substantially improves the evolutionary process in the investigatedexperiments,  regardless  of  genotype  or  task.  Among  the  benchmarked  approaches,multi-objective methods were the most efficient and the generic, Hamming-based, be-havioral distance was at least as efficient as task specific behavioral metrics},
+  Acmid                    = {2155533},
+  Address                  = {Cambridge, MA, USA},
+  Doi                      = {10.1162/EVCO_a_00048},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/Mouret\:2012\:EBD\:2155529.2155533.pdf:PDF},
+  ISSN                     = {1063-6560},
+  Issue_date               = {Spring 2012},
+  Keywords                 = {Evolutionary robotics, diversity, multi-objective evolutionary algorithm, neural networks},
+  Numpages                 = {43},
+  Owner                    = {bastian},
+  Publisher                = {MIT Press},
+  Timestamp                = {2015.05.26},
+  Url                      = {http://dx.doi.org/10.1162/EVCO_a_00048}
+}
+
+@Article{nelson2009fitness,
+  Title                    = {Fitness functions in evolutionary robotics: A survey and analysis},
+  Author                   = {Nelson, Andrew L and Barlow, Gregory J and Doitsidis, Lefteris},
+  Journal                  = {Robotics and Autonomous Systems},
+  Year                     = {2009},
+  Number                   = {4},
+  Pages                    = {345--370},
+  Volume                   = {57},
+
+  Abstract                 = {This paper surveys fitness functions used in the field of evolutionary robotics (ER). Evolutionary robotics is a field of research that applies artificial evolution to generate control systems for autonomous robots. During evolution, robots attempt to perform a given task in a given environment. The controllers in the better performing robots are selected, altered and propagated to perform the task again in an iterative process that mimics some aspects of natural evolution. A key component of this process–one might argue, the key component–is the measurement of fitness in the evolving controllers. ER is one of a host of machine learning methods that rely on interaction with, and feedback from, a complex dynamic environment to drive synthesis of controllers for autonomous agents. These methods have the potential to lead to the development of robots that can adapt to uncharacterized environments and which may be able to perform tasks that human designers do not completely understand. In order to achieve this, issues regarding fitness evaluation must be addressed. In this paper we survey current ER research and focus on work that involved real robots. The surveyed research is organized according to the degree of a priori knowledge used to formulate the various fitness functions employed during evolution. The underlying motivation for this is to identify methods that allow the development of the greatest degree of novel control, while requiring the minimum amount of a priori task knowledge from the designer.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/nelson2009fitness.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {Elsevier},
+  Timestamp                = {2015.05.26}
+}
+
+@Book{nolfi2000evolutionary,
+  Title                    = {Evolutionary robotics: The biology, intelligence, and technology of self-organizing machines},
+  Author                   = {Nolfi, Stefano and Floreano, Dario},
+  Publisher                = {MIT press},
+  Year                     = {2000},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.26}
+}
+
+@InProceedings{nolfi1994evolve,
+  Title                    = {How to evolve autonomous robots: Different approaches in evolutionary robotics},
+  Author                   = {Nolfi, Stefano and Floreano, Dario and Miglino, Orazio and Mondada, Francesco},
+  Booktitle                = {Artificial life IV: Proceedings of the 4th International Workshop on Artificial Life},
+  Year                     = {1994},
+  Number                   = {LIS-CONF-1994-002},
+  Organization             = {MA: MIT Press},
+  Pages                    = {190--197},
+
+  Abstract                 = {A methodology for evolving the control systems of autonomous robots has not yet been well established. In this paper we will show different examples of applications of evolutionary robotics to real robots by describing three different approaches to develop neural controllers for mobile robots. In all the experiments described real robots are involved and are indeed the ultimate means of evaluating the success and the results of the procedures employed. Each approach will be compared with the others and the relative advantages and drawbacks will be discussed. Last, but not least, we will try to tackle a few important issues related to the design of the hardware and of the evolutionary conditions in which the control system of the autonomous agent should evolve.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/nolfi1994evolve.ps:PostScript},
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{sareni1998fitness,
+  Title                    = {Fitness sharing and niching methods revisited},
+  Author                   = {Sareni, Bruno and Krahenbuhl, Laurent},
+  Journal                  = {Evolutionary Computation, IEEE Transactions on},
+  Year                     = {1998},
+  Number                   = {3},
+  Pages                    = {97--106},
+  Volume                   = {2},
+
+  Abstract                 = {Interest in multimodal optimization function is expanding rapidly since real-world optimization problems often require the location of multiple optima in the search space. In this context, fitness sharing has been used widely to maintain population diversity and permit the investigation of manly peaks in the feasible domain. This paper reviews various strategies of sharing and proposes new recombination schemes to improve its efficiency. Some empirical results are presented for high and a limited number of fitness function evaluations. Finally, the study compares the sharing method with other niching techniques},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/sareni1998fitness.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{sellers2007estimating,
+  Title                    = {Estimating dinosaur maximum running speeds using evolutionary robotics},
+  Author                   = {Sellers, William Irvin and Manning, Phillip Lars},
+  Journal                  = {Proceedings of the Royal Society of London B: Biological Sciences},
+  Year                     = {2007},
+  Number                   = {1626},
+  Pages                    = {2711--2716},
+  Volume                   = {274},
+
+  Abstract                 = {Maximum running speed is an important locomotor parameter for many animals—predators as well asprey—and is thus of interest to palaeobiologists wishing to reconstruct the behavioural ecology of extinctspecies. A variety of approaches have been tried in the past including anatomical comparisons, bone scalingand strength, safety factors and ground reaction force analyses. However, these approaches are all indirectand an alternative approach is to create a musculoskeletal model of the animal and see how fast it can run.The  major  advantage  of  this  approach  is  that  all  assumptions  about  the  animal’s  morphology  andphysiology  are  directly  addressed,  whereas  the  exact  same  assumptions  are  hidden  in  the  indirectapproaches.  In  this  paper,  we  present  simple  musculoskeletal  models  of  three  extant  and  five  extinctbipedal species. The models predict top speed in the extant species with reasonably good agreement withaccepted  values,  so  we  conclude  that  the  values  presented  for  the  five  extinct  species  are  reasonablepredictions given the modelling assumptions made. Improved musculoskeletal models and better estimatesof soft tissue parameters will produce more accurate values. Limited sensitivity analysis is performed on keymuscle parameters but there is considerable scope for extending this in the future.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/sellers2007estimating.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {The Royal Society},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{stanley2007compositional,
+  Title                    = {Compositional pattern producing networks: A novel abstraction of development},
+  Author                   = {Stanley, Kenneth O},
+  Journal                  = {Genetic programming and evolvable machines},
+  Year                     = {2007},
+  Number                   = {2},
+  Pages                    = {131--162},
+  Volume                   = {8},
+
+  Abstract                 = {Natural DNA can encode complexity on an enormous scale. Researchers are attempting to achieve the samerepresentational efficiency in computers by implementingdevelopmental encodings, i.e. encodings that mapthe genotype to the phenotype through a process of growth from a small starting point to a mature form. Amajor challenge in in this effort is to find the right level of abstraction of biological development to captureits essential properties without introducing unnecessary inefficiencies.   In this paper,  a novel abstractionof natural development, called Compositional Pattern Producing Networks (CPPNs), is proposed.  Unlikecurrently accepted abstractions such as iterative rewrite systems and cellular growth simulations, CPPNsmap  to  the  phenotype  without  local  interaction,  that  is,  each  individual  component  of  the  phenotype  isdetermined independently of every other component.   Results produced with CPPNs through interactiveevolution of two-dimensional images show that such an encoding can nevertheless produce structural motifsoften attributed to more conventional developmental abstractions, suggesting that local interaction may notbe essential to the desirable properties of natural encoding in the way that is usually assumed.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/stanley2007compositional.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {Springer},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{stanley2009hypercube,
+  Title                    = {A hypercube-based encoding for evolving large-scale neural networks},
+  Author                   = {Stanley, Kenneth O and D'Ambrosio, David B and Gauci, Jason},
+  Journal                  = {Artificial life},
+  Year                     = {2009},
+  Number                   = {2},
+  Pages                    = {185--212},
+  Volume                   = {15},
+
+  Abstract                 = {Research  in  neuroevolution,  i.e.  evolving  artificial  neural  networks  (ANNs)  through  evolutionary  algo-rithms, is inspired by the evolution of biological brains.  Because natural evolution discovered intelligentbrains with billions of neurons and trillions of connections, perhaps neuroevolution can do the same.  Yetwhile neuroevolution has produced successful results in a variety of domains, the scale of natural brainsremains far beyond reach.  This paper presents a method called Hypercube-based NeuroEvolution of Aug-menting Topologies (HyperNEAT) that aims to narrow this gap. HyperNEAT employs an indirect encodingcalled connective Compositional Pattern Producing Networks (connective CPPNs) that can produce con-nectivity patterns with symmetries and repeating motifs by interpreting spatial patterns generated within ahypercube as connectivity patterns in a lower-dimensional space.  The advantage of this approach is that itcan exploit the geometry of the task by mapping its regularities onto the topology of the network, therebyshifting problem difficulty away from dimensionality to underlying problem structure.  Furthermore, con-nective CPPNs can represent the same connectivity pattern at any resolution, allowing ANNs to scale to newnumbers of inputs and outputswithout further evolution.  HyperNEAT is demonstrated through visual dis-crimination and food gathering tasks, including successful visual discrimination networks containing overeight million connections. The main conclusion is that the ability to explore the space of regular connectivitypatterns opens up a new class of complex high-dimensional tasks to neuroevolution.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/stanley2009hypercube.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {MIT Press},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{stanley2003taxonomy,
+  Title                    = {A taxonomy for artificial embryogeny},
+  Author                   = {Stanley, Kenneth O and Miikkulainen, Risto},
+  Journal                  = {Artificial Life},
+  Year                     = {2003},
+  Number                   = {2},
+  Pages                    = {93--130},
+  Volume                   = {9},
+
+  Abstract                 = {A major challenge for evolutionary computation is to evolve phenotypes such as neural networks, sensorysystems, or motor controllers at the same level of complexity as found in biological organisms.  In order tomeet this challenge, many researchers are proposing indirect encodings, that is, evolutionary mechanismswhere the same genes are used multiple times in the process ofbuilding a phenotype. Such gene reuse allowscompact representations  of very complex phenotypes.  Development is a natural choice for implementingindirect encodings,  if only because nature itself uses thisvery process.  Motivated by the development ofembryos in nature,  we define Artificial Embryogeny (AE) as thesubdiscipline  of evolutionary  computa-tion (EC) in which phenotypes undergo a developmental phase.  An increasing number of AE systems arecurrently being developed, and a need has arisen for a principled approach to comparing and contrasting,and ultimately building, such systems.  Thus, in this paper,we develop a principled taxonomy for AE. Thistaxonomy provides a unified context for long-term  research in AE, so that implementation  decisions canbe compared and contrasted along known dimensions in the design space of embryogenic systems.  It alsoallows predicting how the settings of various AE parametersaffect the capacity to efficiently evolve complexphenotypes.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/stanley2003taxonomy.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {MIT Press},
+  Timestamp                = {2015.05.26}
+}
+
+@Book{trianni2008evolutionary,
+  Title                    = {Evolutionary swarm robotics: evolving self-organising behaviours in groups of autonomous robots},
+  Author                   = {Trianni, Vito},
+  Publisher                = {Springer Science \& Business Media},
+  Year                     = {2008},
+  Volume                   = {108},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{zykov2005robotics,
+  Title                    = {Robotics: Self-reproducing machines},
+  Author                   = {Zykov, Victor and Mytilinaios, Efstathios and Adams, Bryant and Lipson, Hod},
+  Journal                  = {Nature},
+  Year                     = {2005},
+  Number                   = {7039},
+  Pages                    = {163--164},
+  Volume                   = {435},
+
+  Abstract                 = {Self-reproduction is central to biological life for long-term sustainability and evolutionary adaptation. Although these traits would also be desirable in many engineered systems, the principles of self-reproduction have not been exploited in machine design1. Here we create simple machines that act as autonomous modular robots and are capable of physical self-reproduction using a set of cubes.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/zykov2005robotics.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {Nature Publishing Group},
+  Timestamp                = {2015.05.26}
+}
+
+@Article{zykov2007evolved,
+  Title                    = {Evolved and designed self-reproducing modular robotics},
+  Author                   = {Zykov, Viktor and Mytilinaios, Efstathios and Desnoyer, Mark and Lipson, Hod},
+  Journal                  = {Robotics, IEEE Transactions on},
+  Year                     = {2007},
+  Number                   = {2},
+  Pages                    = {308--319},
+  Volume                   = {23},
+
+  Abstract                 = {Long-term   physical   survivability   of   most   roboticsystems  today  is  achieved  through  durable  hardware.  In  con-trast, most biological systems are not made of robust materials;long-term  sustainability  and  evolutionary  adaptation  in  natureare  provided  through  processes  of  self-repair  and,  ultimately,self-reproduction. Here we demonstrate a large space of possiblerobots capable of autonomous self-reproduction. These robots arecomposed  of  actuated  modules  equipped with  electromagnets  toselectively  control  the  morphology  of  the  robotic  assembly.  Weshow a variety of 2-D and 3-D machines from 3 to 2nmodules, andtwo physical implementations that each achieves two generationsof  reproduction.  We  show  both  automatically  generated  andmanually designed morphologies.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/zykov2007evolved.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.26}
+}
+
