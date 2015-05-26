@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: evolutionary_robotics.aux
+The style file: plain.bst
+Database file #1: evolutionaryRoboticsLiterature.bib
+Warning--empty publisher in Floreano2008
+Warning--empty publisher in Floreano2001
+Warning--empty publisher in Floreano2000a
+Warning--can't use both volume and number fields in Harvey1992
+Warning--empty school in Jakobi1998
+Warning--empty publisher in Negrello2011
+Warning--empty publisher in Nelson2006
+Warning--there's a number but no volume in Sofge2003
+Warning--empty publisher in Trianni2008
+You've used 96 entries,
+            2118 wiz_defined-function locations,
+            1091 strings with 21479 characters,
+and the built_in function-call counts, 33574 in all, are:
+= -- 3263
+> -- 1553
+< -- 41
++ -- 610
+- -- 514
+* -- 2157
+:= -- 5341
+add.period$ -- 278
+call.type$ -- 96
+change.case$ -- 540
+chr.to.int$ -- 0
+cite$ -- 105
+duplicate$ -- 1381
+empty$ -- 2709
+format.name$ -- 514
+if$ -- 7201
+int.to.chr$ -- 0
+int.to.str$ -- 96
+missing$ -- 87
+newline$ -- 471
+num.names$ -- 192
+pop$ -- 676
+preamble$ -- 1
+purify$ -- 449
+quote$ -- 0
+skip$ -- 1104
+stack$ -- 0
+substring$ -- 1921
+swap$ -- 414
+text.length$ -- 41
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 376
+warning$ -- 9
+while$ -- 329
+width$ -- 98
+write$ -- 1007
+(There were 9 warnings)

@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: citation_index.aux
+The style file: plain.bst
+Database file #1: robotLearningLiterature.bib
+Warning--there's a number but no volume in Atkeson1997
+Warning--can't use both volume and number fields in Billard2004
+Warning--empty publisher in Connell1993
+Warning--can't use both volume and number fields in Dillmann2004
+Warning--there's a number but no volume in Hester2010
+Warning--empty school in Moore1990
+Warning--empty publisher in Parker2002
+Warning--can't use both volume and number fields in Salter2006
+Warning--there's a number but no volume in Schaal1997
+Warning--can't use both volume and number fields in Steil2004
+Warning--can't use both volume and number fields in Wermter2004
+You've used 100 entries,
+            2118 wiz_defined-function locations,
+            1088 strings with 21579 characters,
+and the built_in function-call counts, 37212 in all, are:
+= -- 3730
+> -- 1653
+< -- 48
++ -- 646
+- -- 546
+* -- 2510
+:= -- 5861
+add.period$ -- 296
+call.type$ -- 100
+change.case$ -- 572
+chr.to.int$ -- 0
+cite$ -- 111
+duplicate$ -- 1496
+empty$ -- 2922
+format.name$ -- 546
+if$ -- 7978
+int.to.chr$ -- 0
+int.to.str$ -- 100
+missing$ -- 93
+newline$ -- 497
+num.names$ -- 200
+pop$ -- 614
+preamble$ -- 1
+purify$ -- 473
+quote$ -- 0
+skip$ -- 1215
+stack$ -- 0
+substring$ -- 2497
+swap$ -- 480
+text.length$ -- 48
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 400
+warning$ -- 11
+while$ -- 384
+width$ -- 103
+write$ -- 1081
+(There were 11 warnings)

@@ -1,0 +1,599 @@
+\begin{thebibliography}{100}
+
+\bibitem{Abbeel2004}
+Pieter Abbeel and Andrew~Y Ng.
+\newblock {Apprenticeship learning via inverse reinforcement learning}.
+\newblock In {\em Proceedings of the 21st International Conference on Machine
+  Learning (ICML)}, pages 1--8, 2004.
+
+\bibitem{Aboaf1988}
+E.W. Aboaf, C.G. Atkeson, and D.J. Reinkensmeyer.
+\newblock {Task-level robot learning}.
+\newblock {\em Proceedings. 1988 IEEE International Conference on Robotics and
+  Automation}, 1988.
+
+\bibitem{Aleotti2006}
+J.~Aleotti and S.~Caselli.
+\newblock {Robust trajectory learning and approximation for robot programming
+  by demonstration}.
+\newblock {\em Robotics and Autonomous Systems}, 54(5):409--413, 2006.
+
+\bibitem{Argall2009a}
+Brenna~D. Argall, Brenna~D. Argall, Sonia Chernova, Sonia Chernova, Manuela
+  Veloso, Manuela Veloso, Brett Browning, and Brett Browning.
+\newblock {A survey of robot learning from demonstration}.
+\newblock {\em Robotics and Autonomous Systems}, 57(5):469--483, 2009.
+
+\bibitem{Argall2009}
+Brenna~D Argall, Sonia Chernova, Manuela Veloso, and B~Browning.
+\newblock {A survey of robot learning from demonstration}.
+\newblock {\em Robotics and Autonomous Systems}, 57(5):469--483, 2009.
+
+\bibitem{Argall2009b}
+Brenna~D. Argall, Sonia Chernova, Manuela Veloso, and Brett Browning.
+\newblock {A survey of robot learning from demonstration}.
+\newblock {\em Robotics and Autonomous Systems}, 57(5):469--483, 2009.
+
+\bibitem{Arsenic2004}
+A.M. Arsenic.
+\newblock {Developmental learning on a humanoid robot}.
+\newblock {\em 2004 IEEE International Joint Conference on Neural Networks
+  (IEEE Cat. No.04CH37541)}, 4, 2004.
+
+\bibitem{Atkeson1986}
+C.~Atkeson and J.~McIntyre.
+\newblock {Robot trajectory learning through practice}.
+\newblock {\em Proceedings. 1986 IEEE International Conference on Robotics and
+  Automation}, 3, 1986.
+
+\bibitem{Atkeson1995}
+C.~G. Atkeson and S.~Schaal.
+\newblock {Memory-based neural networks for robot learning}, 1995.
+
+\bibitem{Atkeson1997}
+Christopher~G Atkeson and Stefan Schaal.
+\newblock {Robot learning from demonstration}.
+\newblock {\em Learning}, (1994):12--20, 1997.
+
+\bibitem{Atkeson1997a}
+Christopher~G. Atkeson and Stefan Schaal.
+\newblock {Robot learning from demonstration}.
+\newblock {\em 14th International Conference on Machine Learning}, pages
+  12--20, 1997.
+
+\bibitem{Augustsson2002}
+Peter Augustsson, Krister Wolff, and Peter Nordin.
+\newblock {Creation of a learning, flying robot by means of evolution}.
+\newblock {\em Proceedings of the Genetic and Evolutionary Computation
+  Conference (GECCO-2002), volume}, pages 1279--1285, 2002.
+
+\bibitem{Barfoot2006}
+T.~D. Barfoot, E.~J~P Earon, and G.~M~T D'Eleuterio.
+\newblock {Experiments in learning distributed control for a hexapod robot}.
+\newblock {\em Robotics and Autonomous Systems}, 54(10):864--872, 2006.
+
+\bibitem{Billard2004}
+Aude Billard and Roland Siegwart.
+\newblock {Robot learning from demonstration}.
+\newblock In {\em Robotics and Autonomous Systems}, volume~47, pages 65--67,
+  2004.
+
+\bibitem{Bocsi2013}
+Botond Bocsi, Lehel Csato, and Jan Peters.
+\newblock {Alignment-based transfer learning for robot models}.
+\newblock In {\em Proceedings of the International Joint Conference on Neural
+  Networks}, 2013.
+
+\bibitem{Bowling2003}
+Michael Bowling and Manuela Veloso.
+\newblock {Simultaneous adversarial multi-robot learning}.
+\newblock In {\em IJCAI International Joint Conference on Artificial
+  Intelligence}, pages 699--704, 2003.
+
+\bibitem{Cakmak2010}
+Maya Cakmak, Nick Depalma, Rosa~I. Arriaga, and Andrea~L. Thomaz.
+\newblock {Exploiting social partners in robot learning}.
+\newblock {\em Autonomous Robots}, 29(3-4):309--329, 2010.
+
+\bibitem{Cakmak2009}
+Maya Cakmak, Nick DePalma, Andrea~L. Thomaz, and Rosa Arriaga.
+\newblock {Effects of social exploration mechanisms on robot learning}.
+\newblock In {\em Proceedings - IEEE International Workshop on Robot and Human
+  Interactive Communication}, pages 128--134, 2009.
+
+\bibitem{Cakmak2012}
+Maya Cakmak and Andrea~L Thomaz.
+\newblock {Designing robot learners that ask good questions}.
+\newblock In {\em Proceedings of the seventh annual ACM/IEEE international
+  conference on Human-Robot Interaction - HRI '12}, page~17, 2012.
+
+\bibitem{Calinon2007}
+Sylvain Calinon and Aude Billard.
+\newblock {Incremental learning of gestures by imitation in a humanoid robot}.
+\newblock In {\em International conference on Human-robot interaction}, page
+  255, 2007.
+
+\bibitem{Calinon2007a}
+Sylvain Calinon, Florent Guenter, and Aude Billard.
+\newblock {On learning, representing, and generalizing a task in a humanoid
+  robot}.
+\newblock {\em IEEE Transactions on Systems, Man, and Cybernetics, Part B:
+  Cybernetics}, 37(2):286--298, 2007.
+
+\bibitem{Calinon2010}
+Sylvain Calinon, Irene Sardellitti, and Darwin~G. Caldwell.
+\newblock {Learning-based control strategy for safe human-robot interaction
+  exploiting task and robot redundancies}.
+\newblock In {\em IEEE/RSJ 2010 International Conference on Intelligent Robots
+  and Systems, IROS 2010 - Conference Proceedings}, pages 249--254, 2010.
+
+\bibitem{Cantrell2011}
+Rehj Cantrell, Paul Schermerhorn, and Matthias Scheutz.
+\newblock {Learning actions from human-robot dialogues}.
+\newblock In {\em Proceedings - IEEE International Workshop on Robot and Human
+  Interactive Communication}, pages 125--130, 2011.
+
+\bibitem{Casarrubias-Vargas2010}
+H.~Casarrubias-Vargas, A.~Petrilli-Barcel\'{o}, and E.~Bayro-Corrochano.
+\newblock {EKF-SLAM and machine learning techniques for visual robot
+  navigation}.
+\newblock In {\em Proceedings - International Conference on Pattern
+  Recognition}, pages 396--399, 2010.
+
+\bibitem{Chatzis2012}
+Sotirios~P. Chatzis, Dimitrios Korkinof, and Yiannis Demiris.
+\newblock {A nonparametric Bayesian approach toward robot learning by
+  demonstration}.
+\newblock {\em Robotics and Autonomous Systems}, 60(6):789--802, 2012.
+
+\bibitem{Connell1993}
+Jonathan~H Connell and Sridhar Mahadevan.
+\newblock {Introduction to Robot Learning}.
+\newblock In {\em Robot Learning}, volume 233, pages 1--17. 1993.
+
+\bibitem{Crick2011}
+Christopher Crick, Sarah Osentoski, Graylin Jay, and Odest Chadwicke~O.C.
+  Jenkins.
+\newblock {Human and robot perception in large-scale learning from
+  demonstration}.
+\newblock In {\em Proceedings of the 6th international conference on
+  Human-robot interaction - HRI '11}, pages 339--346, 2011.
+
+\bibitem{DeGreeff2012}
+Joachim {De Greeff}, Fr\'{e}d\'{e}ric Delaunay, and Tony Belpaeme.
+\newblock {Active robot learning with human tutelage}.
+\newblock In {\em 2012 IEEE International Conference on Development and
+  Learning and Epigenetic Robotics, ICDL 2012}, 2012.
+
+\bibitem{Dillmann2004}
+R\"{u}diger Dillmann.
+\newblock {Teaching and learning of robot tasks via observation of human
+  performance}.
+\newblock In {\em Robotics and Autonomous Systems}, volume~47, pages 109--116,
+  2004.
+
+\bibitem{DSouza2001}
+A.~D'Souza, S.~Vijayakumar, and S.~Schaal.
+\newblock {Learning inverse kinematics}.
+\newblock {\em Proceedings 2001 IEEE/RSJ International Conference on
+  Intelligent Robots and Systems. Expanding the Societal Role of Robotics in
+  the the Next Millennium (Cat. No.01CH37180)}, 1, 2001.
+
+\bibitem{Engelson1992}
+S.P. Engelson and D.V. McDermott.
+\newblock {Error correction in mobile robot map learning}.
+\newblock {\em Proceedings 1992 IEEE International Conference on Robotics and
+  Automation}, 1992.
+
+\bibitem{Erden2008}
+Mustafa~Suphi Erden and Kemal Leblebicioǧlu.
+\newblock {Free gait generation with reinforcement learning for a six-legged
+  robot}.
+\newblock {\em Robotics and Autonomous Systems}, 56(3):199--212, 2008.
+
+\bibitem{Ertel2009}
+W.~Ertel, M.~Schneider, R.~Cubek, and M.~Tokicy.
+\newblock {The Teaching-Box: A universal robot learning framework}.
+\newblock {\em 2009 International Conference on Advanced Robotics}, 2009.
+
+\bibitem{Fernandez2005}
+Fernando Fern\'{a}ndez, Daniel Borrajo, and Lynne~E. Parker.
+\newblock {A reinforcement learning algorithm in cooperative multi-robot
+  domains}.
+\newblock {\em Journal of Intelligent and Robotic Systems: Theory and
+  Applications}, 43(2-4):161--174, 2005.
+
+\bibitem{Franz1998}
+M~O Franz, B~Sch\"{o}lkopf, H~A Mallot, and H~H B\"{u}lthoff.
+\newblock {Learning view graphs for robot navigation}.
+\newblock {\em Autonomous Robots}, 5(1):111--125, 1998.
+
+\bibitem{Gadanho2001}
+S.~C. Gadanho and J.~Hallam.
+\newblock {Robot Learning Driven by Emotions}, 2001.
+
+\bibitem{Gopalakrishnan2005}
+Arati Gopalakrishnan, Sheldon Greene, and Ali Sekmen.
+\newblock {Vision-based mobile robot learning and navigation}.
+\newblock In {\em Proceedings - IEEE International Workshop on Robot and Human
+  Interactive Communication}, volume 2005, pages 48--53, 2005.
+
+\bibitem{Grollman2007}
+Daniel~H. Grollman and Odest~Chadwicke Jenkins.
+\newblock {Learning robot soccer skills from demonstration}.
+\newblock In {\em 2007 IEEE 6th International Conference on Development and
+  Learning, ICDL}, pages 276--281, 2007.
+
+\bibitem{Grollman2008}
+Daniel~H Grollman and Odest~Chadwicke Jenkins.
+\newblock {Sparse incremental learning for interactive robot control policy
+  estimation}.
+\newblock In {\em 2008 IEEE International Conference on Robotics and
+  Automation}, pages 3315--3320, 2008.
+
+\bibitem{Gu2011}
+Ye~Gu, Anand Thobbi, and Weihua Sheng.
+\newblock {Human-robot collaborative manipulation through imitation and
+  reinforcement learning}.
+\newblock In {\em 2011 IEEE International Conference on Information and
+  Automation, ICIA 2011}, pages 151--156, 2011.
+
+\bibitem{Han2009}
+Jeonghye Han and Dongho Kim.
+\newblock {r-Learning services for elementary school students with a teaching
+  assistant robot}.
+\newblock {\em Proceedings of the 4th ACM/IEEE international conference on
+  Human robot interaction - HRI '09}, page 255, 2009.
+
+\bibitem{Hara2004}
+F.~Hara.
+\newblock {Artificial emotion of face robot through learning in communicative
+  interactions with human}.
+\newblock {\em RO-MAN 2004. 13th IEEE International Workshop on Robot and Human
+  Interactive Communication (IEEE Catalog No.04TH8759)}, 2004.
+
+\bibitem{Hersch2008}
+Micha Hersch, Florent Guenter, Sylvain Calinon, and Aude Billard.
+\newblock {Dynamical system modulation for robot learning via kinesthetic
+  demonstrations}.
+\newblock {\em IEEE Transactions on Robotics}, 24(6):1463--1467, 2008.
+
+\bibitem{Hester2010}
+Todd Hester, Michael Quinlan, and Peter Stone.
+\newblock {Generalized Model Learning for Reinforcement Learning on a Humanoid
+  Robot}.
+\newblock {\em East}, (May):2369--2374, 2010.
+
+\bibitem{Ikemoto2012}
+Shuhei Ikemoto, Heni~Ben Amor, Takashi Minato, Bernhard Jung, and Hiroshi
+  Ishiguro.
+\newblock {Physical human-robot interaction: Mutual learning and adaptation}.
+\newblock {\em IEEE Robotics and Automation Magazine}, 19(4):24--35, 2012.
+
+\bibitem{Kartoun2010}
+Uri Kartoun, Helman Stern, and Yael Edan.
+\newblock {A human-robot collaborative reinforcement learning algorithm}.
+\newblock {\em Journal of Intelligent and Robotic Systems: Theory and
+  Applications}, 60(2):217--239, 2010.
+
+\bibitem{Kasper2001}
+Michael Kasper, Gernot Fricke, Katja Steuernagel, and Ewald {Von Puttkamer}.
+\newblock {Behavior-based mobile robot architecture for Learning from
+  Demonstration}.
+\newblock {\em Robotics and Autonomous Systems}, 34(2-3):153--164, 2001.
+
+\bibitem{Kira2010}
+Zsolt Kira.
+\newblock {Inter-Robot Transfer Learning for Perceptual Classification}.
+\newblock In {\em Proceedings of the 9th International Conference on Autonomous
+  Agents and Multiagent Systems: volume 1 - Volume 1}, pages 13--20, 2010.
+
+\bibitem{Kirsch2009}
+Alexandra Kirsch.
+\newblock {Robot learning language - Integrating programming and learning for
+  cognitive systems}.
+\newblock {\em Robotics and Autonomous Systems}, 57(9):943--954, 2009.
+
+\bibitem{Kober2011}
+Jens Kober, Erhan Oztop, and Jan Peters.
+\newblock {Reinforcement learning to adjust robot movements to new situations}.
+\newblock In {\em IJCAI International Joint Conference on Artificial
+  Intelligence}, pages 2650--2655, 2011.
+
+\bibitem{Koenig2010}
+Nathan Koenig, Leila Takayama, and Maja Matari\'{c}.
+\newblock {Communication and knowledge sharing in human-robot interaction and
+  learning from demonstration.}
+\newblock {\em Neural networks : the official journal of the International
+  Neural Network Society}, 23(8-9):1104--12, 2010.
+
+\bibitem{Kormushev2010}
+Petar Kormushev, Sylvain Calinon, and Darwin~G. Caldwell.
+\newblock {Robot motor skill coordination with EM-based reinforcement
+  learning}.
+\newblock In {\em IEEE/RSJ 2010 International Conference on Intelligent Robots
+  and Systems, IROS 2010 - Conference Proceedings}, pages 3232--3237, 2010.
+
+\bibitem{Kroemer2010}
+O.~B. Kroemer, R.~Detry, J.~Piater, and J.~Peters.
+\newblock {Combining active learning and reactive control for robot grasping}.
+\newblock {\em Robotics and Autonomous Systems}, 58(9):1105--1116, 2010.
+
+\bibitem{Kuniyoshi1996}
+Yasuo Kuniyoshi, P~Bakker, P~Bakker, and Y~Kuniyoshi.
+\newblock {Robot see, robot do: An overview of robot imitation}.
+\newblock {\em Proceedings of the AISB96 Workshop on Learning in Robots and
+  Animals}, pages 3--11, 1996.
+
+\bibitem{Lee2011}
+Dongheui Lee, Christian Ott, Yoshihiko Nakamura, and Gerd Hirzinger.
+\newblock {Physical Human Robot Interaction in Imitation Learning}.
+\newblock {\em Robotics}, pages 3439--3440, 2011.
+
+\bibitem{Lockerd2004}
+A.~Lockerd and C.~Breazeal.
+\newblock {Tutelage and socially guided robot learning}.
+\newblock {\em 2004 IEEE/RSJ International Conference on Intelligent Robots and
+  Systems (IROS) (IEEE Cat. No.04CH37566)}, 4, 2004.
+
+\bibitem{Lutkebohle2009}
+I.~Lutkebohle, J.~Peltason, L.~Schillingmann, B.~Wrede, S.~Wachsmuth,
+  C.~Elbrechter, and R.~Haschke.
+\newblock {The curious robot - Structuring interactive robot learning}.
+\newblock {\em 2009 IEEE International Conference on Robotics and Automation},
+  2009.
+
+\bibitem{Matari1997}
+Maja~J Matari, Complex Systems, and M.J. Matari\'{c}.
+\newblock {Reinforcement learning in the multi-robot domain}.
+\newblock {\em Autonomous Robots}, 4:73--83, 1997.
+
+\bibitem{Mataric2001}
+Maja~J. Matari\'{c}.
+\newblock {Learning in behavior-based multi-robot systems: policies, models,
+  and other agents}, 2001.
+
+\bibitem{Mohammad2009}
+Yasser Mohammad, Toyoaki Nishida, and Shogo Okada.
+\newblock {Unsupervised simultaneous learning of gestures, actions and their
+  associations for human-robot interaction}.
+\newblock In {\em 2009 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems, IROS 2009}, pages 2537--2544, 2009.
+
+\bibitem{Moore1990}
+Andrew~W Moore.
+\newblock {\em {Efficient Memory-based Learning for Robot Control}}.
+\newblock PhD thesis, 1990.
+
+\bibitem{Morimoto2001}
+J.~Morimoto and K.~Doya.
+\newblock {Acquisition of stand-up behavior by a real robot using hierarchical
+  reinforcement learning}.
+\newblock {\em Robotics and Autonomous Systems}, 36(1):37--51, 2001.
+
+\bibitem{Mulling2013}
+Katharina M\"{u}lling, Jens Kober, Oliver Kroemer, and Jan Peters.
+\newblock {Learning to select and generalize striking movements in robot table
+  tennis}.
+\newblock {\em The International Journal of Robotics Research}, 32(3):263--279,
+  2013.
+
+\bibitem{Nagai2009}
+Yukie Nagai and Katharina~J. Rohlfing.
+\newblock {Computational analysis of motionese toward scaffolding robot action
+  learning}.
+\newblock {\em IEEE Transactions on Autonomous Mental Development},
+  1(1):44--54, 2009.
+
+\bibitem{Natale2007}
+Lorenzo Natale, Francesco Nori, Giulio Sandini, and Giorgio Metta.
+\newblock {Learning precise 3D reaching in a humanoid robot}.
+\newblock In {\em 2007 IEEE 6th International Conference on Development and
+  Learning, ICDL}, pages 324--329, 2007.
+
+\bibitem{Nguyen-Tuong2011}
+Dan Nguyen-Tuong and Jan Peters.
+\newblock {Model Learning for Robot Control: A Survey}.
+\newblock {\em Cognitive Processing}, 12:319--340, 2011.
+
+\bibitem{Nguyen-Tuong2011a}
+Duy Nguyen-Tuong and Jan Peters.
+\newblock {Model learning for robot control: A survey}, 2011.
+
+\bibitem{Nicolescu2006}
+M~N Nicolescu and M~J Mataric.
+\newblock {Task learning through imitation and human-robot interaction}.
+\newblock {\em Models and Mechanisms of Imitation and Social Learning in
+  Robots, Humans and Animals: Behavioural, Social and Communicative
+  Dimensions}, pages 407--424, 2006.
+
+\bibitem{Nicolescu2001a}
+M.N. Nicolescu and M.J. Mataric.
+\newblock {Experience-based representation construction: learning from human
+  and robot teachers}.
+\newblock {\em Proceedings 2001 IEEE/RSJ International Conference on
+  Intelligent Robots and Systems. Expanding the Societal Role of Robotics in
+  the the Next Millennium (Cat. No.01CH37180)}, 2, 2001.
+
+\bibitem{Nicolescu2001}
+M.N. Nicolescu and M.J. Mataric.
+\newblock {Learning and interacting in human-robot domains}.
+\newblock {\em IEEE Transactions on Systems, Man, and Cybernetics - Part A:
+  Systems and Humans}, 31(5), 2001.
+
+\bibitem{Nicolescu2003}
+Monica~N. Nicolescu and Maja~J. Mataric.
+\newblock {Natural methods for robot task learning}.
+\newblock In {\em Proceedings of the Second International Joint Conference on
+  Autonomous Agents and Multiagent systems - AAMAS '03}, page 241, 2003.
+
+\bibitem{Oztop2010}
+E.~Oztop.
+\newblock {Human sensorimotor learning for robot skill synthesis}.
+\newblock {\em RO-MAN, 2010 IEEE}, 2010.
+
+\bibitem{Park2001}
+Kui~Hong Park, Yong~Jae Kim, and Jong~Hwan Kim.
+\newblock {Modular Q-learning based multi-agent cooperation for robot soccer}.
+\newblock {\em Robotics and Autonomous Systems}, 35(2):109--122, 2001.
+
+\bibitem{Parker2002}
+Lynne~E Parker, Claude Touzet, and Fernando Fernandez.
+\newblock {Techniques for Learning in Multi-Robot Teams}.
+\newblock In {\em Robot Teams: From Diversity to Polymorphism. AK Peters},
+  pages 191--236. 2002.
+
+\bibitem{Pugh2006}
+Jim Pugh and Alcherio Martinoli.
+\newblock {Multi-robot learning with particle swarm optimization}.
+\newblock In {\em AAMAS '06 Proceedings of the fifth international joint
+  conference on Autonomous agents and multiagent systems}, pages 441--448,
+  2006.
+
+\bibitem{Pugh2009}
+Jim Pugh and Alcherio Martinoli.
+\newblock {Distributed scalable multi-robot learning using particle swarm
+  optimization}.
+\newblock {\em Swarm Intelligence}, 3(3):203--222, 2009.
+
+\bibitem{Reiter2012}
+Austin Reiter, Andrea Bajo, Konstantinos Iliopoulos, Nabil Simaan, and Peter~K.
+  Allen.
+\newblock {Learning-based configuration estimation of a multi-segment continuum
+  robot}.
+\newblock In {\em Proceedings of the IEEE RAS and EMBS International Conference
+  on Biomedical Robotics and Biomechatronics}, pages 829--834, 2012.
+
+\bibitem{Riedmiller2009}
+Martin Riedmiller, Thomas Gabel, Roland Hafner, and Sascha Lange.
+\newblock {Reinforcement learning for robot soccer}.
+\newblock {\em Autonomous Robots}, 27(1):55--73, 2009.
+
+\bibitem{Rouanet2010}
+P.~Rouanet, P.-Y. Oudeyer, and D.~Filliat.
+\newblock {A study of three interfaces allowing non-expert users to teach new
+  visual objects to a robot and their impact on learning efficiency}.
+\newblock {\em Human-Robot Interaction (HRI), 2010 5th ACM/IEEE International
+  Conference on}, 2010.
+
+\bibitem{Rozo2011}
+Leonel Rozo, Pablo Jim, and Institut~De Rob.
+\newblock {Robot Learning from Demonstration in the Force Domain}.
+\newblock {\em Communications}, pages 1--6, 2011.
+
+\bibitem{Salter2006}
+Tamie Salter, Kerstin Dautenhahn, and Ren\'{e} {Te Boekhorst}.
+\newblock {Learning about natural human-robot interaction styles}.
+\newblock In {\em Robotics and Autonomous Systems}, volume~54, pages 127--134,
+  2006.
+
+\bibitem{Saponaro2011}
+G~Saponaro and A~Bernardino.
+\newblock {Generation of meaningful robot expressions with active learning}.
+\newblock In {\em Human-Robot Interaction (HRI), 2011 6th ACM/IEEE
+  International Conference on}, pages 243--244, 2011.
+
+\bibitem{Schaal2000}
+S.~Schaal, C.G. Atkeson, and S.~Vijayakumar.
+\newblock {Real-time robot learning with locally weighted statistical
+  learning}.
+\newblock {\em Proceedings 2000 ICRA. Millennium Conference. IEEE International
+  Conference on Robotics and Automation. Symposia Proceedings (Cat.
+  No.00CH37065)}, 1, 2000.
+
+\bibitem{Schaal1997}
+Stefan Schaal.
+\newblock {Robot learning from demonstration}.
+\newblock {\em Advances in Neural Information Processing Systems},
+  (9):1040--1046, 1997.
+
+\bibitem{Schaal2002}
+Stefan Schaal.
+\newblock {Learning Robot Control}.
+\newblock {\em Learning}, 2:983--987, 2002.
+
+\bibitem{Schaal1994}
+Stefan Schaal and Christopher~G. Atkeson.
+\newblock {Robot juggling: implementation of memory-based learning}.
+\newblock {\em IEEE Control Systems Magazine}, 14(1):57--71, 1994.
+
+\bibitem{Schaal2010}
+Stefan Schaal and Christopher~G. Atkeson.
+\newblock {Learning control in robotics}.
+\newblock {\em IEEE Robotics and Automation Magazine}, 17(2):20--29, 2010.
+
+\bibitem{Schaal2002a}
+Stefan Schaal, Christopher~G. Atkeson, and Sethu Vijayakumar.
+\newblock {Scalable techniques from nonparametric statistics for real time
+  robot learning}.
+\newblock {\em Applied Intelligence}, 17(1):49--60, 2002.
+
+\bibitem{Sim2003}
+Siang Kok Sim Siang~Kok Sim, Kai Wei Ong Kai~Wei Ong, and G.~Seet.
+\newblock {A Foundation for Robot Learning}.
+\newblock {\em 2003 4th International Conference on Control and Automation
+  Proceedings}, 2003.
+
+\bibitem{Steil2004}
+J.~J. Steil, F.~R̈othling, R.~Haschke, and H.~Ritter.
+\newblock {Situated robot learning for multi-modal instruction and imitation of
+  grasping}.
+\newblock In {\em Robotics and Autonomous Systems}, volume~47, pages 129--141,
+  2004.
+
+\bibitem{Tani2002}
+Jun Tani and Jun Yamamoto.
+\newblock {On the dynamics of robot exploration learning}.
+\newblock {\em Cognitive Systems Research}, 3(3):459--470, 2002.
+
+\bibitem{Thomaz2010}
+Andrea~L Thomaz.
+\newblock {Interactive Robot Task Learning}.
+\newblock {\em Learning}, pages 3037--3040, 2010.
+
+\bibitem{Thomaz2007}
+Andrea~L. Thomaz and Cynthia Breazeal.
+\newblock {Robot learning via socially guided exploration}.
+\newblock In {\em 2007 IEEE 6th International Conference on Development and
+  Learning, ICDL}, pages 82--87, 2007.
+
+\bibitem{Thrun1998}
+Sebastian Thrun.
+\newblock {Learning metric-topological maps for indoor mobile robot
+  navigation}, 1998.
+
+\bibitem{Thrun1995}
+Sebastian Thrun and Tom~M. Mitchell.
+\newblock {Lifelong robot learning}, 1995.
+
+\bibitem{Uri2007}
+Kartoun Uri, Stern Helman, and Edan Yael.
+\newblock {Human-robot collaborative learning system for inspection}.
+\newblock In {\em Conference Proceedings - IEEE International Conference on
+  Systems, Man and Cybernetics}, volume~5, pages 4249--4255, 2007.
+
+\bibitem{Vlassis2009}
+Nikos Vlassis, Marc Toussaint, Georgios Kontes, and Savas Piperidis.
+\newblock {Learning Model-free robot control by a Monte Carlo em algorithm}.
+\newblock {\em Autonomous Robots}, 27(2):123--130, 2009.
+
+\bibitem{Wang2008}
+Ying Wang and Clarence~W. de~Silva.
+\newblock {A machine-learning approach to multi-robot coordination}.
+\newblock {\em Engineering Applications of Artificial Intelligence},
+  21(3):470--484, 2008.
+
+\bibitem{Wermter2004}
+S.~Wermter, C.~Weber, M.~Elshaw, C.~Panchev, H.~Erwin, and F.~Pulverm̈uller.
+\newblock {Towards multimodal neural robot learning}.
+\newblock In {\em Robotics and Autonomous Systems}, volume~47, pages 171--175,
+  2004.
+
+\bibitem{Yang2004}
+Erfu Yang and Dongbing Gu.
+\newblock {Multiagent reinforcement learning for multi-robot systems: A
+  survey}.
+\newblock {\em University of Essex Technical Report CSM-404, \ldots}, pages
+  1--23, 2004.
+
+\end{thebibliography}

@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: evolutionary_robotics.aux
+The style file: plain.bst
+Database file #1: evolutionary_robotics.bib
+Warning--can't use both volume and number fields in floreano1998competitive
+Warning--empty journal in katadameasurements
+Warning--empty year in katadameasurements
+Warning--empty journal in sprong2011common
+You've used 75 entries,
+            2118 wiz_defined-function locations,
+            914 strings with 18140 characters,
+and the built_in function-call counts, 29266 in all, are:
+= -- 3023
+> -- 1241
+< -- 33
++ -- 496
+- -- 412
+* -- 1988
+:= -- 4577
+add.period$ -- 252
+call.type$ -- 75
+change.case$ -- 428
+chr.to.int$ -- 0
+cite$ -- 79
+duplicate$ -- 1185
+empty$ -- 2342
+format.name$ -- 412
+if$ -- 6360
+int.to.chr$ -- 0
+int.to.str$ -- 75
+missing$ -- 76
+newline$ -- 376
+num.names$ -- 150
+pop$ -- 481
+preamble$ -- 1
+purify$ -- 355
+quote$ -- 0
+skip$ -- 870
+stack$ -- 0
+substring$ -- 2057
+swap$ -- 369
+text.length$ -- 33
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 294
+warning$ -- 4
+while$ -- 303
+width$ -- 77
+write$ -- 842
+(There were 4 warnings)

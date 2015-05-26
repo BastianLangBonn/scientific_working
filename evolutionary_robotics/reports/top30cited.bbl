@@ -1,0 +1,185 @@
+\begin{thebibliography}{10}
+
+\bibitem{baldassarre2007self}
+Gianluca Baldassarre, Vito Trianni, Michael Bonani, Francesco Mondada, Marco
+  Dorigo, and Stefano Nolfi.
+\newblock Self-organized coordinated motion in groups of physically connected
+  robots.
+\newblock {\em Systems, Man, and Cybernetics, Part B: Cybernetics, IEEE
+  Transactions on}, 37(1):224--239, 2007.
+
+\bibitem{banzhaf1997generating}
+Wolfgang Banzhaf, Peter Nordin, and Markus Olmer.
+\newblock Generating adaptive behavior using function regression within genetic
+  programming and a real robot.
+\newblock In {\em 2nd International Conference on Genetic Programming,
+  Stanford}, 1997.
+
+\bibitem{cliff1993explorations}
+Dave Cliff, Phil Husbands, and Inman Harvey.
+\newblock Explorations in evolutionary robotics.
+\newblock {\em Adaptive behavior}, 2(1):73--110, 1993.
+
+\bibitem{clune2011performance}
+Jeff Clune, Kenneth~O Stanley, Robert~T Pennock, and Charles Ofria.
+\newblock On the performance of indirect encoding across the continuum of
+  regularity.
+\newblock {\em Evolutionary Computation, IEEE Transactions on}, 15(3):346--367,
+  2011.
+
+\bibitem{coello2006evolutionary}
+Carlos~A Coello~Coello.
+\newblock Evolutionary multi-objective optimization: a historical view of the
+  field.
+\newblock {\em Computational Intelligence Magazine, IEEE}, 1(1):28--36, 2006.
+\newblock 645.
+
+\bibitem{ficici1999embodied}
+Sevan~G Ficici, Richard~A Watson, and Jordan~B Pollack.
+\newblock Embodied evolution: A response to challenges in evolutionary
+  robotics.
+\newblock In {\em Proceedings of the eighth European workshop on learning
+  robots}, pages 14--22. Citeseer, 1999.
+
+\bibitem{floreano2008evolutionary}
+Dario Floreano, Phil Husbands, and Stefano Nolfi.
+\newblock Evolutionary robotics.
+\newblock In {\em Springer handbook of robotics}, pages 1423--1451. Springer,
+  2008.
+
+\bibitem{floreano1998competitive}
+Dario Floreano, Stefano Nolfi, and Francesco Mondada.
+\newblock Competitive co-evolutionary robotics: From theory to practice.
+\newblock In {\em Proceedings of the fifth international conference on
+  simulation of adaptive behavior, From Animals to Animats 5}, volume~4, pages
+  515--524. MIT Press, 1998.
+
+\bibitem{floreano2000evolutionary}
+Dario Floreano and Joseba Urzelai.
+\newblock Evolutionary robotics: The next generation.
+\newblock Technical report, AAI Books, 2000.
+
+\bibitem{gruau1997cellular}
+Frederic Gruau and Kameel Quatramaran.
+\newblock Cellular encoding for interactive evolutionary robotics.
+\newblock In {\em Fourth European Conference on Artificial Life}, pages
+  368--377. MIT Press, 1997.
+
+\bibitem{harvey1997evolutionary}
+Inman Harvey, Phil Husbands, Dave Cliff, Adrian Thompson, and Nick Jakobi.
+\newblock Evolutionary robotics: the sussex approach.
+\newblock {\em Robotics and autonomous systems}, 20(2):205--224, 1997.
+
+\bibitem{harvey1992issues}
+Inman Harvey, Philip Husbands, Dave Cliff, et~al.
+\newblock {\em Issues in evolutionary robotics}.
+\newblock School of Cognitive and Computing Sciences, University of Sussex,
+  1992.
+
+\bibitem{jakobi1995noise}
+Nick Jakobi, Phil Husbands, and Inman Harvey.
+\newblock Noise and the reality gap: The use of simulation in evolutionary
+  robotics.
+\newblock In {\em Advances in artificial life}, pages 704--720. Springer, 1995.
+
+\bibitem{kashtan2005spontaneous}
+Nadav Kashtan and Uri Alon.
+\newblock Spontaneous evolution of modularity and network motifs.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 102(39):13773--13778, 2005.
+
+\bibitem{lewis1992genetic}
+M~Anthony Lewis, Andrew~H Fagg, and Alan Solidum.
+\newblock Genetic programming approach to the construction of a neural network
+  for control of a walking robot.
+\newblock In {\em Robotics and Automation, 1992. Proceedings., 1992 IEEE
+  International Conference on}, pages 2618--2623. IEEE, 1992.
+
+\bibitem{lipson2007principles}
+Hod Lipson.
+\newblock Principles of modularity, regularity, and hierarchy for scalable
+  systems.
+\newblock {\em Journal of Biological Physics and Chemistry}, 7(4):125, 2007.
+
+\bibitem{lund1998evolutionary}
+Henrik~Hautop Lund, Orazio Miglino, Luigi Pagliarini, Aude Billard, and Auke
+  Ijspeert.
+\newblock Evolutionary robotics-a children's game.
+\newblock In {\em Evolutionary Computation Proceedings, 1998. IEEE World
+  Congress on Computational Intelligence., The 1998 IEEE International
+  Conference on}, pages 154--158. IEEE, 1998.
+
+\bibitem{meyer1998evolutionary}
+Jean-Arcady Meyer, Phil Husbands, and Inman Harvey.
+\newblock Evolutionary robotics: A survey of applications and problems.
+\newblock In {\em Evolutionary Robotics}, pages 1--21. Springer, 1998.
+
+\bibitem{Mouret:2012:EBD:2155529.2155533}
+J.~B. Mouret and S.~Doncieux.
+\newblock Encouraging behavioral diversity in evolutionary robotics: An
+  empirical study.
+\newblock {\em Evol. Comput.}, 20(1):91--133, March 2012.
+
+\bibitem{nelson2009fitness}
+Andrew~L Nelson, Gregory~J Barlow, and Lefteris Doitsidis.
+\newblock Fitness functions in evolutionary robotics: A survey and analysis.
+\newblock {\em Robotics and Autonomous Systems}, 57(4):345--370, 2009.
+
+\bibitem{nolfi1998evolutionary}
+Stefano Nolfi.
+\newblock Evolutionary robotics: Exploiting the full power of
+  self-organization.
+\newblock {\em Connection Science}, 10(3-4):167--184, 1998.
+
+\bibitem{sareni1998fitness}
+Bruno Sareni and Laurent Krahenbuhl.
+\newblock Fitness sharing and niching methods revisited.
+\newblock {\em Evolutionary Computation, IEEE Transactions on}, 2(3):97--106,
+  1998.
+
+\bibitem{sellers2007estimating}
+William~Irvin Sellers and Phillip~Lars Manning.
+\newblock Estimating dinosaur maximum running speeds using evolutionary
+  robotics.
+\newblock {\em Proceedings of the Royal Society of London B: Biological
+  Sciences}, 274(1626):2711--2716, 2007.
+
+\bibitem{stanley2007compositional}
+Kenneth~O Stanley.
+\newblock Compositional pattern producing networks: A novel abstraction of
+  development.
+\newblock {\em Genetic programming and evolvable machines}, 8(2):131--162,
+  2007.
+
+\bibitem{stanley2009hypercube}
+Kenneth~O Stanley, David~B D'Ambrosio, and Jason Gauci.
+\newblock A hypercube-based encoding for evolving large-scale neural networks.
+\newblock {\em Artificial life}, 15(2):185--212, 2009.
+
+\bibitem{stanley2003taxonomy}
+Kenneth~O Stanley and Risto Miikkulainen.
+\newblock A taxonomy for artificial embryogeny.
+\newblock {\em Artificial Life}, 9(2):93--130, 2003.
+
+\bibitem{walker2003evolving}
+Joanne Walker, Simon Garrett, and Myra Wilson.
+\newblock Evolving controllers for real robots: A survey of the literature.
+\newblock {\em Adaptive Behavior}, 11(3):179--203, 2003.
+
+\bibitem{zagal2004back}
+Juan~Crist{\'o}bal Zagal, Javier Ruiz-del Solar, and Paul Vallejos.
+\newblock Back to reality: Crossing the reality gap in evolutionary robotics.
+\newblock In {\em IAV 2004 the 5th IFAC Symposium on Intelligent Autonomous
+  Vehicles, Lisbon, Portugal}, 2004.
+
+\bibitem{zykov2005robotics}
+Victor Zykov, Efstathios Mytilinaios, Bryant Adams, and Hod Lipson.
+\newblock Robotics: Self-reproducing machines.
+\newblock {\em Nature}, 435(7039):163--164, 2005.
+
+\bibitem{zykov2007evolved}
+Viktor Zykov, Efstathios Mytilinaios, Mark Desnoyer, and Hod Lipson.
+\newblock Evolved and designed self-reproducing modular robotics.
+\newblock {\em Robotics, IEEE Transactions on}, 23(2):308--319, 2007.
+
+\end{thebibliography}

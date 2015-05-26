@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: top30cited.aux
+The style file: plain.bst
+Database file #1: top30cited.bib
+Warning--can't use both volume and number fields in floreano1998competitive
+You've used 30 entries,
+            2118 wiz_defined-function locations,
+            689 strings with 9808 characters,
+and the built_in function-call counts, 11501 in all, are:
+= -- 1177
+> -- 516
+< -- 9
++ -- 204
+- -- 172
+* -- 843
+:= -- 1847
+add.period$ -- 99
+call.type$ -- 30
+change.case$ -- 175
+chr.to.int$ -- 0
+cite$ -- 31
+duplicate$ -- 430
+empty$ -- 902
+format.name$ -- 172
+if$ -- 2438
+int.to.chr$ -- 0
+int.to.str$ -- 30
+missing$ -- 30
+newline$ -- 154
+num.names$ -- 60
+pop$ -- 171
+preamble$ -- 1
+purify$ -- 145
+quote$ -- 0
+skip$ -- 300
+stack$ -- 0
+substring$ -- 837
+swap$ -- 109
+text.length$ -- 9
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 118
+warning$ -- 1
+while$ -- 119
+width$ -- 32
+write$ -- 340
+(There was 1 warning)

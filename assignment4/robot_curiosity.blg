@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: robot_curiosity.aux
+The style file: plain.bst
+Database file #1: robotCuriosityLiterature.bib
+Warning--empty institution in Macedo1990
+Warning--empty publisher in Spielberger1994
+You've used 26 entries,
+            2118 wiz_defined-function locations,
+            685 strings with 8860 characters,
+and the built_in function-call counts, 8926 in all, are:
+= -- 882
+> -- 407
+< -- 4
++ -- 160
+- -- 134
+* -- 642
+:= -- 1463
+add.period$ -- 76
+call.type$ -- 26
+change.case$ -- 146
+chr.to.int$ -- 0
+cite$ -- 28
+duplicate$ -- 321
+empty$ -- 721
+format.name$ -- 134
+if$ -- 1857
+int.to.chr$ -- 0
+int.to.str$ -- 26
+missing$ -- 22
+newline$ -- 130
+num.names$ -- 52
+pop$ -- 151
+preamble$ -- 1
+purify$ -- 119
+quote$ -- 0
+skip$ -- 234
+stack$ -- 0
+substring$ -- 622
+swap$ -- 62
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 104
+warning$ -- 2
+while$ -- 93
+width$ -- 28
+write$ -- 275
+(There were 2 warnings)

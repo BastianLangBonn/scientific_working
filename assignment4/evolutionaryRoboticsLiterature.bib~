@@ -1,0 +1,295 @@
+@inproceedings{Baele2009,
+abstract = {The SYMBRION project stands at the crossroads of artificial life and evolutionary robotics: a swarm of real robots undergoes online evolution by exchanging information in a decentralized Evolutionary Robotics Scheme: the diffusion of each individual's genotype depends both on its ability to survive in an unknown environment as well as its ability to maximize mating opportunities during its lifetime, which suggests an implicit fitness. This paper presents early research and prospective ideas in the context of large-scale swarm robotics projects, focusing on the open-ended evolutionary approach in the SYMBRION project. One key issue of this work is to perform on-board evolution in a spatially distributed population of robots. A real-world experiment is also described which yields important considerations regarding open-ended evolution with real autonomous robots.},
+author = {Baele, Guy and Bredeche, Nicolas and Haasdijk, Evert and Maere, Steven and Michiels, Nico and {Van De Peer}, Yves and Schmickl, Thomas and Schwarzer, Christopher and Thenius, Ronald},
+booktitle = {2009 IEEE Congress on Evolutionary Computation, CEC 2009},
+doi = {10.1109/CEC.2009.4983072},
+isbn = {9781424429592},
+pages = {1123--1130},
+title = {{Open-ended on-board evolutionary robotics for robot swarms}},
+year = {2009}
+}
+@article{Bongard2013,
+abstract = {Taking a biologically inspired approach to the design of autonomous, adaptive machines.},
+author = {Bongard, Josh C.},
+doi = {10.1145/2492007.2493883},
+issn = {00010782},
+journal = {Communications of the ACM},
+number = {8},
+pages = {74--83},
+title = {{Evolutionary Robotics}},
+url = {http://dl.acm.org/citation.cfm?doid=2492007.2493883},
+volume = {56},
+year = {2013}
+}
+@article{Doncieux2011,
+abstract = {Abstract. This paper considers the ﬁeld of Evolutionary Robotics (ER) from the perspective of its potential users: roboticists. The core hypothesis motivating this ﬁeld of research is discussed, as well as the potential use of ER in a robot design process. Four main aspects of ER are presented: (a) ER as an automatic parameter tuning procedure, which is the most mature application and is used to solve real robotics problem, (b) evolutionary-aided design, which may beneﬁt the designer as an efﬁcient tool to build robotic systems (c) ER for online adaptation, i.e. continuous adaptation to changing environment or robot features and (d) automatic synthesis, which corresponds to the automatic design of a mechatronic device and its control system. Critical issues are also presented as well as current trends and pespectives in ER. A section is devoted to a roboticists point of view and the last section discusses the current status of the ﬁeld and makes some suggestions to increase its maturity.},
+author = {Doncieux, S and Mouret, J B and Bredeche, Nicolas and Padois, Vincent},
+doi = {10.1007/978-3-642-18272-3\_1},
+isbn = {9783642182716},
+issn = {1860-949X},
+journal = {New Horizons in Evolutionary Robotics},
+pages = {3--25},
+title = {{Evolutionary Robotics: Exploring New Horizons}},
+url = {http://www.springerlink.com/index/4G532QU1071N677Q.pdf},
+year = {2011}
+}
+@article{Eaton2007,
+abstract = {Evolutionary robotics is a methodology for the creation of autonomous robots using evolutionary principles. Humanoid robotics is concerned specifically with autonomous robots that are human-like in that they mimic the body or aspects of the sensory, processing and/or motor functions of humans to a greater or lesser degree. We investigate how these twin strands of advanced research in the field of autonomous mobile robotics have progressed over the last decade or so, and their current recent convergence in the new field of evolutionary humanoid robotics. We describe our current work in the evolution of controllers for bipedal locomotion in a simulated humanoid robot using an accurate physics simulator, and briefly discuss the effects of changes in robot mobility and of environmental changes. We then describe our current work in the implementation of these simulated robots using the Bioloid robot platform. We conclude with a look at possible visions for the future.},
+author = {Eaton, M. and Eaton, M.},
+doi = {10.1007/978-3-540-77296-5\_5},
+isbn = {3-540-77295-2 978-3-540-77295-8},
+issn = {03029743},
+journal = {Lecture Notes in Computer Science},
+keywords = {1 introduction and motivation,a branch of evolutionary,application of the laws,artificial evolution,evolutionary humanoid robotics is,humanoid robotics,of genetics and the,principle of natural selection,robotics dealing with the,to the design},
+pages = {42},
+title = {{Evolutionary humanoid robotics: past, present and future}},
+url = {http://www.springerlink.com/index/52220742997k3037.pdf},
+volume = {4850},
+year = {2007}
+}
+@inproceedings{Ficici1999,
+abstract = {We introduce Embodied Evolution (EE), a new methodology for conducting evolutionary robotics (ER). Embodied evolution uses a population of physical robots that evolve by reproducing with one another in the task environment. EE addresses several issues identified by researchers in the evolutionary robotics community as problematic for the development of ER. We review results from our first experiments and discuss the advantages and limitations of the EE methodology.},
+author = {Ficici, Sevan G. and Watson, Richard A. and Pollack, Joradn B.},
+booktitle = {Proceedings of the Eighth European Workshop on Learning Robots},
+pages = {14--22},
+title = {{Embodied Evolution: A Response to Challenges in Evolutionary Robotics}},
+year = {1999}
+}
+@incollection{Floreano2008,
+abstract = {Evolutionary Robotics is a method for automatically generating artificial brains and morphologies of autonomous robots. This approach is useful both for investigating the design space of robotic applications and for testing scientific hypotheses of biological mechanisms and processes. In this chapter we provide an overview of methods and results of Evolutionary Robotics with robots of different shapes, dimensions, and operation features. We consider both simulated and physical robots with special consideration to the transfer between the two worlds.},
+author = {Floreano, Dario and Husbands, Phil and Nolfi, Stefano},
+booktitle = {Handbook of Robotics},
+doi = {10.1007/978-3-540-30301-5\_62},
+isbn = {978-3-540-23957-4},
+pages = {1423--1451},
+title = {{Evolutionary Robotics}},
+url = {http://www.springerlink.com/content/ql0510g5h6815g77$\backslash$nhttp://link.springer.com/10.1007/978-3-540-30301-5},
+year = {2008}
+}
+@article{Floreano2008a,
+abstract = {Evolutionary Robotics is a method for automatically generating artificial brains and morphologies of autonomous robots. This$\backslash$n  approach is useful both for investigating the design space of robotic applications and for testing scientific hypotheses of$\backslash$n  biological mechanisms and processes. In this chapter we provide an overview of methods and results of Evolutionary Robotics$\backslash$n  with robots of different shapes, dimensions, and operation features. We consider both simulated and physical robots with special$\backslash$n  consideration to the transfer between the two worlds.},
+author = {Floreano, Dario and Husbands, Phil and Nolfi, Stefano},
+doi = {10.1007/978-3-540-30301-5},
+isbn = {978-3-540-23957-4},
+journal = {Springer handbook of robotics},
+pages = {1423--1451},
+title = {{Evolutionary robotics}},
+year = {2008}
+}
+@article{Floreano1998,
+abstract = {Evolutionary robotics-as other adaptive methods, such as reinforcement learning and learning classifier systems-can take considerable time and resources which require a careful evaluation of the hardware tools and methodologies employed. We outline a set of hardware solutions and working methodologies that can be used for successfully implementing and extending the evolutionary approach to complex environments, robots, and real-world applications. The issues discussed include the integration of simulation and real robots, design issues of evolvable robots, hardware requirements for incremental evolution, and hardware and software tools for monitoring and analysis},
+author = {Floreano, Dario and Mondada, Francesco},
+journal = {Evolutionary Robotics},
+title = {{Hardware solutions for evolutionary robotics}},
+url = {http://link.springer.com/chapter/10.1007/3-540-64957-3\_69},
+year = {1998}
+}
+@article{Gomi1996,
+abstract = {The field of evolutionary robotics (ER) emerged as an important
+recent addition to intelligent robotic research in the early 1990s. It
+currently deals mostly with the evolution of control software for mobile
+robots with the goal of developing competent robots that perform tasks
+well adapted to the requirements in a given operational environment and
+is also being extended to hardware evolution. This paper is partly based
+on results of a survey conducted of key evolutionary robotic research
+activities worldwide. Included in the survey are research activities in
+such places as Sussex University, Stanford University, Case Western
+Reserve University, Massachusetts Institute of Technology (MIT), Ecole
+Polytechnique Federale De Lausanne (EPFL) and University of
+Trieste},
+author = {Gomi, T. and Griffith, A.},
+doi = {10.1109/ICEC.1996.542331},
+isbn = {0-7803-2902-3},
+journal = {Proceedings of IEEE International Conference on Evolutionary Computation},
+title = {{Evolutionary robotics-an overview}},
+year = {1996}
+}
+@inproceedings{Grefenstette1994,
+abstract = {Evolutionary algorithms incorporate principles from biological population$\backslash$ngenetics to perform search, optimization, and learning. This article$\backslash$ndiscusses issues arising in the application of evolutionary algorithms$\backslash$nto problems in robotics.},
+author = {Grefenstette, John J},
+booktitle = {Robotics and Manufacturing: Recent Trends in Research, Education and Applications, v5. Proc. Fifth Intl. Symposium on Robotics and Manufacturing, ISRAM 94},
+keywords = {LCS},
+pages = {65--72},
+title = {{Evolutionary Algorithms in Robotics}},
+url = {http://www.ib3.gmu.edu/gref/},
+year = {1994}
+}
+@inproceedings{Gruau1997,
+abstract = { for Frederic Gruau and Kameel Quatramaran University of Sussex, COGS, Falmer, Brighton, BN1 9QH UK and CWI, INS 4, PO Box 94079, NL-1090 GB Amsterdam gruau@ cwi. nl, http://www. cwi. nl/" gruau/gruau/gruau. html },
+author = {Gruau, F. and Quatramaran, K.},
+booktitle = {Proc. of European Conference on Artificial Life (ECAL'97)},
+isbn = {1089-4365$\backslash$n0-262-58157-4},
+keywords = {iea},
+pages = {368--377},
+title = {{Cellular Encoding for Interactive Evolutionary Robotics}},
+year = {1997}
+}
+@article{Harvey1996,
+abstract = {We give an overview of evolutionary robotics research at Sussex. We explain and justify our distinctive approaches to (artificial) evolution, and to the nature of robot control systems that are evolved. We illustrate by presenting results from research with evolved controllers for autonomous mobile robots; simulated robots, coevolved animats, real robots with software controllers or with a controller directly evolved in hardware},
+author = {Harvey, I and Husbands, P and Cliff, D and Thompson, A and Jakobi, N},
+journal = {Robotics and Manufacturing. Recent Trends in Research and Applications. Vol.6. Proceedings of the Sixth International Symposium on Robotics and Manufacturing (ISRAM'96)},
+title = {{Evolutionary robotics at Sussex}},
+url = {<Go to ISI>://INSPEC:6389389},
+year = {1996}
+}
+@article{Harvey1993,
+abstract = {, eg light or sound; an interoceptor senses or detects stimuli that arise inside the , eg blood  The  language   Memo 1227, MIT  Lab, 1990 },
+author = {Harvey, Inman and Husbands, Philip and Cliff, D. and Others},
+doi = {10.1016/S0921-8890(96)00067-X},
+isbn = {0-262-63149-0},
+issn = {09218890},
+journal = {From animals to animats},
+pages = {364--373},
+title = {{Issues in evolutionary robotics}},
+url = {http://www.informatics.sussex.ac.uk/users/inmanh/csrp219.pdf},
+volume = {2},
+year = {1993}
+}
+@misc{Jin2011,
+abstract = {Developmental robotics is also known as epigenetic robotics. We propose in this paper that there is one substantial difference between developmental robotics and epigenetic robotics, since epigenetic robotics concentrates primarily on modeling the development of cognitive elements of living systems in robotic systems, such as language, emotion, and social skills, while developmental robotics should also cover the modeling of neural and morphological development in single- and multirobot systems. With the recent rapid advances in evolutionary developmental biology and systems biology, increasing genetic and cellular principles underlying biological morphogenesis have been revealed. These principles are helpful not only in understanding biological development, but also in designing self-organizing, self-reconfigurable, and self-repairable engineered systems. In this paper, we propose morphogenetic robotics, an emerging new field in developmental robotics, is an important part of developmental robotics in addition to epigenetic robotics. By morphogenetic robotics, we mean a class of methodologies in robotics for designing self-organizing, self-reconfigurable, and self-repairable single- or multirobot systems, using genetic and cellular mechanisms governing biological morphogenesis. We categorize these methodologies into three areas, namely, morphogenetic swarm robotic systems, morphogenetic modular robots, and morphogenetic body and brain design for robots. Examples are provided for each of the three areas to illustrate the main ideas underlying the morphogenetic approaches to robotics.},
+author = {Jin, Yaochu and Meng, Yan},
+booktitle = {IEEE Transactions on Systems, Man and Cybernetics Part C: Applications and Reviews},
+doi = {10.1109/TSMCC.2010.2057424},
+isbn = {1094-6977},
+issn = {10946977},
+keywords = {Developmental robotics,epigenetic robotics,evolutionary developmental robotics,morphogenesis,morphogenetic robotics},
+number = {2},
+pages = {145--160},
+title = {{Morphogenetic robotics: An emerging new field in developmental robotics}},
+volume = {41},
+year = {2011}
+}
+@misc{Lipson2007,
+abstract = {The emergence of communication is considered one of the major transitions in evolution. Recent work using robot-based simulation shows that communication arises spontaneously. While deceptive communication arises in a purely competitive setting, cooperative communication arises only subject to group or kin selection. ?? 2007 Elsevier Ltd. All rights reserved.},
+author = {Lipson, Hod},
+booktitle = {Current Biology},
+doi = {10.1016/j.cub.2007.03.003},
+isbn = {0960-9822},
+issn = {09609822},
+number = {9},
+pmid = {17470348},
+title = {{Evolutionary Robotics: Emergence of Communication}},
+volume = {17},
+year = {2007}
+}
+@inproceedings{Lipson2006,
+abstract = {This talk will outline challenges and opportunities in translating evolutionary learning of autonomous robotics from simulation to reality. It covers evolution and adaptation of both morphology and control, hybrid co-evolution of reality and simulation, handling noise and uncertainty, and morphological adaptation in hardware.},
+author = {Lipson, Hod and Bongard, Josh and Zykov, Victor and Malone, Evan},
+booktitle = {Proceedings of the 9th International Conference on Intelligent Autonomous Systems (IAS-9)},
+isbn = {978-1-58603-595-2},
+pages = {11--18},
+title = {{Evolutionary Robotics for Legged Machines: From Simulation to Physical Reality}},
+url = {http://books.google.com/books?hl=en\&lr=\&id=D4QYV3D7JWoC\&oi=fnd\&pg=PA11\&dq=Once+more+unto+the+breach:+Co-evolving+a+robot+and+its+simulator\&ots=aZj9HvUgI3\&sig=4GIt9oh\_ugZS6WsWigmtp4rNm7g},
+year = {2006}
+}
+@inproceedings{Meyer1998,
+abstract = {This paper reviews evolutionary approaches to the automatic design of real robots exhibiting a given behavior in a given environment. Such a methodology has been successfully applied to various wheeled and legged robots, and to numerous behaviors including wall-following, obstacle-avoidance, light-seeking, arena cleaning and target seeking. Its potentialities and limitations are discussed in the text and directions for future work are outlined.},
+author = {Meyer, Jean-Arcady and Husbands, Phil and Harvey, Inman},
+booktitle = {Proceedings of the First European Workshop on Evolutionary Robotics},
+doi = {10.1007/3-540-64957-3\_61},
+isbn = {978-3-540-64957-1},
+pages = {1--22},
+title = {{Evolutionary Robotics: a Survey of Applications and Problems}},
+url = {http://link.springer.com/chapter/10.1007/3-540-64957-3\_61},
+year = {1998}
+}
+@inproceedings{Mouret2009,
+abstract = {The bootstrap problem is often recognized as one of the main challenges of evolutionary robotics: if all individuals from the first randomly generated population perform equally poorly, the evolutionary process won't generate any interesting solution. To overcome this lack of fitness gradient, we propose to efficiently explore behaviors until the evolutionary process finds an individual with a non-minimal fitness. To that aim, we introduce an original diversity-preservation mechanism, called behavioral diversity, that relies on a distance between behaviors (instead of genotypes or phenotypes) and multi-objective evolutionary optimization. This approach has been successfully tested and compared to a recently published incremental evolution method (multi-subgoal evolution) on the evolution of a neuro-controller for a light-seeking mobile robot. Results obtained with these two approaches are qualitatively similar although the introduced one is less directed than multi-subgoal evolution.},
+author = {Mouret, Jean Baptiste and Doncieux, St́\'{e}phane},
+booktitle = {2009 IEEE Congress on Evolutionary Computation, CEC 2009},
+doi = {10.1109/CEC.2009.4983077},
+isbn = {9781424429592},
+pages = {1161--1168},
+title = {{Overcoming the bootstrap problem in evolutionary robotics using behavioral diversity}},
+year = {2009}
+}
+@article{Nelson2009,
+abstract = {This paper surveys fitness functions used in the field of evolutionary robotics (ER). Evolutionary robotics is a field of research that applies artificial evolution to generate control systems for autonomous robots. During evolution, robots attempt to perform a given task in a given environment. The controllers in the better performing robots are selected, altered and propagated to perform the task again in an iterative process that mimics some aspects of natural evolution. A key component of this process-one might argue, the key component-is the measurement of fitness in the evolving controllers. ER is one of a host of machine learning methods that rely on interaction with, and feedback from, a complex dynamic environment to drive synthesis of controllers for autonomous agents. These methods have the potential to lead to the development of robots that can adapt to uncharacterized environments and which may be able to perform tasks that human designers do not completely understand. In order to achieve this, issues regarding fitness evaluation must be addressed. In this paper we survey current ER research and focus on work that involved real robots. The surveyed research is organized according to the degree of a priori knowledge used to formulate the various fitness functions employed during evolution. The underlying motivation for this is to identify methods that allow the development of the greatest degree of novel control, while requiring the minimum amount of a priori task knowledge from the designer. ?? 2008 Elsevier B.V. All rights reserved.},
+author = {Nelson, Andrew L. and Barlow, Gregory J. and Doitsidis, Lefteris},
+doi = {10.1016/j.robot.2008.09.009},
+isbn = {0921-8890},
+issn = {09218890},
+journal = {Robotics and Autonomous Systems},
+keywords = {Artificial life,Autonomous learning robots,Evolutionary robotics,Fitness functions,Genetic algorithms},
+number = {4},
+pages = {345--370},
+title = {{Fitness functions in evolutionary robotics: A survey and analysis}},
+volume = {57},
+year = {2009}
+}
+@inproceedings{Nolfi1994,
+abstract = {A methodology for evolving the control systems of autonomous robots has not yet been well established. In this paper we will show different examples of applications of evolutionary robotics to real robots by describing three different approaches to develop neural controllers for mobile robots. In all the experiments described real robots are involved and are indeed the ultimate means of evaluating the success and the results of the procedures employed. Each approach will be compared with the others and the relative advantages and drawbacks will be discussed. Last, but not least, we will try to tackle a few important issues related to the design of the hardware and of the evolutionary conditions in which the control system of the autonomous agent should evolve. 1.},
+author = {Nolfi, Stefano and Floreano, Dario and Miglino, Orazio and Mondada, Francesco},
+booktitle = {Proceedings on the Artificial Life IV Conference, July 6-8, Cambridge, MA, U.S.A},
+isbn = {0-262-52190-3},
+pages = {1--8},
+pmid = {1047},
+title = {{How to Evolve Autonomous Robots: Different Approaches in Evolutionary Robotics}},
+year = {1994}
+}
+@article{Pollack2000,
+abstract = {Evolutionary and coevolutionary techniques have$\backslash$nbecome a popular area of research for those$\backslash$ninterested in automated design. One of the cutting$\backslash$nedge issues in this field is the ability to apply$\backslash$nthese techniques to real physical systems with all$\backslash$nthe complexities and affordances that such systems$\backslash$npresent. Here we present a selection of our work$\backslash$neach of which advances the richness of the$\backslash$nevolutionary substrate in one or more dimensions. We$\backslash$noverview research in four areas: a) High part-count$\backslash$nstatic structures that are buildable, b) The use of$\backslash$ncommercial \{CAD/CAM\} systems as a simulated$\backslash$nsubstrate, c) Dynamic electromechanical systems with$\backslash$ncomplex morphology that can be built automatically,$\backslash$nand d) Evolutionary techniques distributed in a$\backslash$nphysical population of robots. },
+author = {Pollack, Jordan B and Lipson, Hod and Ficici, Sevan and Funes, Pablo and Hornby, Greg and Watson, Richard a},
+isbn = {3-540-67338-5},
+journal = {Evolvable Systems: From Biology to Hardware},
+number = {Moravec 1999},
+pages = {175--186},
+title = {{Evolutionary Techniques in Physical Robotics}},
+url = {http://link.springer.com/chapter/10.1007/3-540-46406-9\_18},
+volume = {1801},
+year = {2000}
+}
+@article{PRATIHAR2003,
+abstract = {In evolutionary robotics, a suitable robot control system is developed automatically through evolution due to the interactions between the robot and its environment. It is a complicated task, as the robot and the environment constitute a highly dynamical system. Several methods have been tried by various investigators to solve this problem. This paper provides a survey on some of these important studies carried out in the recent past.},
+author = {PRATIHAR, DILIP KUMAR},
+doi = {doi:10.1007/BF02703810},
+file = {:home/bastian/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/PRATIHAR - 2003 - Evolutionary robotics - A review.pdf:pdf},
+isbn = {0256-2499},
+issn = {0256-2499},
+journal = {Sadhana},
+keywords = {Evolutionary robotics,genetic algorithm,neural network.},
+number = {6},
+pages = {999--1009},
+title = {{Evolutionary robotics - A review}},
+volume = {28},
+year = {2003}
+}
+@misc{Pratihar2003,
+abstract = {In evolutionary robotics, a suitable robot control$\backslash$nsystem is developed automatically through evolution due$\backslash$nto the interactions between the robot and its$\backslash$nenvironment. It is a complicated task, as the robot and$\backslash$nthe environment constitute a highly dynamical system.$\backslash$nSeveral methods have been tried by various$\backslash$ninvestigators to solve this problem. This paper$\backslash$nprovides a survey on some of these important studies$\backslash$ncarried out in the recent past.},
+author = {Pratihar, Dilip Kumar},
+booktitle = {Sadhana},
+doi = {10.1007/BF02703810},
+file = {:home/bastian/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Pratihar - 2003 - Evolutionary robotics—A review.pdf:pdf},
+issn = {0256-2499},
+number = {6},
+pages = {999--1009},
+title = {{Evolutionary robotics—A review}},
+volume = {28},
+year = {2003}
+}
+@article{Xiao2001,
+abstract = {Evolutionary Robotics is a method for automatically generating artificial brains and morphologies of autonomous robots. This approach is useful both for investigating the design space of robotic applications and for testing scientific hypotheses of biological mechanisms and processes. In this chapter we provide an overview of methods and results of Evolutionary Robotics with robots of different shapes, dimensions, and operation features. We consider both simulated and physical robots with special consideration to the transfer between the two worlds.},
+author = {Xiao, Jing Xiao Jing},
+doi = {10.1109/TEVC.2001.942537},
+isbn = {0262640562},
+issn = {1089-778X},
+journal = {IEEE Transactions on Evolutionary Computation},
+number = {4},
+title = {{Evolutionary robotics: the biology, intelligence, and technology of self-organizing machines [Book Review]}},
+volume = {5},
+year = {2001}
+}
+@article{Zagal2007,
+abstract = {Evolutionary Robotics (ER) is a promising methodology, intended for the autonomous development of robots, in which their behaviors are obtained as a consequence of the structural coupling between robot and environment. It is essential that there be a great amount of interaction to generate complex behaviors. Thus, nowadays, it is common to use simulation to speed up the learning process; however simulations are achieved from arbitrary off-line designs, rather than from the result of embodied cognitive processes. According to the reality gap problem, controllers evolved in simulation usually do not allow the same behavior to arise once transferred to the real robot. Some preliminary approaches for combining simulation and reality exist in the ER literature; nonetheless, there is no satisfactory solution available. In this work we discuss recent advances in neuroscience as a motivation for the use of environmentally adapted simulations, which can be achieved through the co-evolution of robot behavior and simulator. We present an algorithm in which only the differences between the behavior fitness obtained in reality versus that obtained in simulations are used as feedback for adapting a simulation. The proposed algorithm is experimentally validated by showing the successful development and continuous transference to reality of two complex low-level behaviors with Sony AIBO1 robots: gait optimization and ball-kicking behavior.},
+author = {Zagal, J. C. and Ruiz-Del-Solar, Javier},
+doi = {10.1007/s10846-007-9149-6},
+isbn = {0921-0296},
+issn = {09210296},
+journal = {Journal of Intelligent and Robotic Systems: Theory and Applications},
+keywords = {AIBO robots,Evolutionary robotics,Mobile robotics,Organismically inspired robotics,RoboCup,Simulation of solid dynamics},
+number = {1},
+pages = {19--39},
+title = {{Combining simulation and reality in evolutionary robotics}},
+volume = {50},
+year = {2007}
+}

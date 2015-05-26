@@ -1,0 +1,229 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[8pt]{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{tabularx}  % for 'tabularx' environment and 'X' column type
+\usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X} 
+
+\setcounter{figure}{0}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Gross Motion Planning]{Gross Motion Planning - Structure and Approach} % The short title appears at the bottom of every slide, the full title is only on the title page
+\author{Bastian Lang} % Your name
+\institute[BRSU] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Master of Autonomous Systems \\ % Your institution for the title page
+}
+\date{April 6, 2015} 
+
+\begin{document}
+
+
+\listoffigures
+\begin{frame}
+\titlepage 
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Overview}
+General structure of the article
+\begin{itemize}
+\item Introduction
+\item Part I - Nature of Motion Planning
+\item Part II - Basic Issues and Steps in Motion Planning
+\item Part III - Survey of Recent work
+\item Part IV - Conclusions
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Part I - Nature of Motion Planning}
+\begin{itemize}
+\item Introduction
+\item Part I - Nature of Motion Planning
+\begin{itemize}
+\item Definition of terms
+\item Complexity of Motion Planning
+\item Classification of Motion Planning Problems
+\item Classification of Motion Planning Algorithms
+\end{itemize}
+\item Part II - Basic Issues and Steps in Motion Planning
+\item Part III - Survey of Recent work
+\item Part IV - Conclusions
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Purpose of Part I}
+\begin{itemize}
+\item Provide basic terminology
+\item Give motivation
+\item Describe common classification for problems and algorithms in MP
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Part II - Basic Issues and Steps in Motion Planning}
+\begin{itemize}
+\item Introduction
+\item Part I - Nature of Motion Planning
+\item Part II - Basic Issues and Steps in Motion Planning
+\begin{itemize}
+\item World Space vs Configuration Space
+\item Object Sensing and Representation
+\item Approaches to Motion Planning
+\item Search Methods
+\item Local Optimization of Motion
+\end{itemize}
+\item Part III - Survey of Recent work
+\item Part IV - Conclusions
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Purpose of Part II}
+\begin{itemize}
+\item Show how MP formulations usually do look like
+\item Give overview over existing approaches and methods in MP
+\item Provide tools for understanding recent works in MP\\
+(previous works and algorithms are often the basis of newer approaches)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Part III - Survey of Recent Work}
+\begin{itemize}
+\item Introduction
+\item Part I - Nature of Motion Planning
+\item Part II - Basic Issues and Steps in Motion Planning
+\item Part III - Survey of Recent work
+\begin{itemize}
+\item Stationary Environments
+\item Time Varying Environments
+\item Motion Planning with constraints
+\item Movable Object Problem
+\item Comparison Tables
+\end{itemize}
+\item Part IV - Conclusions
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Purpose and Structuring of Part III}
+Purpose
+\begin{itemize}
+\item present recent work 
+\item compare different contributions
+\end{itemize}
+Structuring
+\begin{itemize}
+\item Divided into Problem Classes
+\item Further divided into different approaches
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Purpose of Part IV}
+\begin{itemize}
+\item Summarizes contribution to current state
+\item Problems solved or closer to being solved
+\item Still open problems
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Conclusion}
+Very intuitive structuring...
+\begin{itemize}
+\item Part I allows to get the basics
+\item Part II provides and explains the structuring of Part III
+\item Part III shows the recent work and compares it
+\item Part IV provides an overview over the current state
+\end{itemize}
+\end{frame}
+
+\end{document} 

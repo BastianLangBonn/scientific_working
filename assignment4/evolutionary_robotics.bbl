@@ -1,0 +1,572 @@
+\begin{thebibliography}{10}
+
+\bibitem{Baele2009a}
+Guy Baele, Nicolas Bredeche, Evert Haasdijk, Steven Maere, Nico Michiels, Yves
+  {Van De Peer}, Thomas Schmickl, Christopher Schwarzer, and Ronald Thenius.
+\newblock {Open-ended on-board evolutionary robotics for robot swarms}.
+\newblock In {\em 2009 IEEE Congress on Evolutionary Computation, CEC 2009},
+  pages 1123--1130, 2009.
+
+\bibitem{Bianco2004}
+Raffaele Bianco and Stefano Nolfi.
+\newblock {Toward open-ended evolutionary robotics: evolving elementary robotic
+  units able to self-assemble and self-reproduce}, 2004.
+
+\bibitem{Bigge2010}
+Bill Bigge and Inman~R. Harvey.
+\newblock {Evolvable mechanics: Hardware tools for evolutionary robotics}.
+\newblock In {\em 2010 IEEE World Congress on Computational Intelligence, WCCI
+  2010 - 2010 IEEE Congress on Evolutionary Computation, CEC 2010}, 2010.
+
+\bibitem{Bongard2013}
+Josh~C. Bongard.
+\newblock {Evolutionary Robotics}.
+\newblock {\em Communications of the ACM}, 56(8):74--83, 2013.
+
+\bibitem{Bongard2013b}
+Josh~C. Bongard and Gregory~S. Hornby.
+\newblock {Combining fitness-based search and user modeling in evolutionary
+  robotics}.
+\newblock In {\em Proceeding of the Fifteenth Annual conference on Genetic and
+  Evolutionary Computation Conference - GECCO '13}, page 159, 2013.
+
+\bibitem{Bredeche2005}
+Nicolas Bredeche and Louis Hugues.
+\newblock {Evolutionary robotics: Incremental learning of sequential behavior}.
+\newblock In {\em Proceedings of 2005 4th IEEE International Conference on
+  Development and Learning}, volume 2005, page 128, 2005.
+
+\bibitem{Cliff1995}
+D~Cliff, I~Harvey, and P~Husbands.
+\newblock {Evolutionary robotics}.
+\newblock {\em IEE Colloquium on Design and Development of Autonomous Agents
+  (Digest No.1995/211)}, 1995.
+
+\bibitem{DeCroon2013}
+G.~C H~E de~Croon, L.~M. O'Connor, C.~Nicol, and D.~Izzo.
+\newblock {Evolutionary robotics approach to odor source localization}.
+\newblock {\em Neurocomputing}, 121:481--497, 2013.
+
+\bibitem{Delarboulas2010}
+Pierre Delarboulas, Marc Schoenauer, and Mich\`{e}le Sebag.
+\newblock {Open-Ended Evolutionary Robotics: an Information Theoretic
+  Approach}.
+\newblock {\em Evolution}, 6238(216342):334--343, 2010.
+
+\bibitem{Dias2010a}
+Mauricio~A. Dias, Daniel~O. Sales, and Fernando~S. Osorio.
+\newblock {A profile-based method for hardware/software co-design applied in
+  evolutionary robotics using reconfigurable computing}.
+\newblock In {\em Proceedings - 2010 IEEE Electronics, Robotics and Automotive
+  Mechanics Conference, CERMA 2010}, pages 463--468, 2010.
+
+\bibitem{Dias2010}
+Mauricio~A. Dias, Daniel~O. Sales, and Fernando~S. Osorio.
+\newblock {HW/SW co-design architecture for evolutionary robotics}.
+\newblock In {\em Proceedings - 2010 Latin American Robotics Symposium and
+  Intelligent Robotics Meeting, LARS 2010}, pages 43--48, 2010.
+
+\bibitem{Doncieux2011}
+S~Doncieux, J~B Mouret, Nicolas Bredeche, and Vincent Padois.
+\newblock {Evolutionary Robotics: Exploring New Horizons}.
+\newblock {\em New Horizons in Evolutionary Robotics}, pages 3--25, 2011.
+
+\bibitem{Doncieux2010}
+Stephane Doncieux and Jean~Baptiste Mouret.
+\newblock {Behavioral diversity measures for evolutionary robotics}.
+\newblock In {\em 2010 IEEE World Congress on Computational Intelligence, WCCI
+  2010 - 2010 IEEE Congress on Evolutionary Computation, CEC 2010}, 2010.
+
+\bibitem{Eaton2007}
+M.~Eaton and M.~Eaton.
+\newblock {Evolutionary humanoid robotics: past, present and future}.
+\newblock {\em Lecture Notes in Computer Science}, 4850:42, 2007.
+
+\bibitem{Eaton2008}
+Malachy Eaton.
+\newblock {Further explorations in evolutionary humanoid robotics}.
+\newblock {\em Artificial Life and Robotics}, 12(1-2):133--137, 2008.
+
+\bibitem{Eiben2011}
+A.~E. Eiben, Giorgos Karafotias, and Evert Haasdijk.
+\newblock {Self-adaptive mutation in on-line, on-board evolutionary robotics}.
+\newblock In {\em Proceedings - 2010 4th IEEE International Conference on
+  Self-Adaptive and Self-Organizing Systems Workshop, SASOW 2010}, pages
+  147--152, 2011.
+
+\bibitem{Ficici1999}
+Sevan~G. Ficici, Richard~A. Watson, and Joradn~B. Pollack.
+\newblock {Embodied Evolution: A Response to Challenges in Evolutionary
+  Robotics}.
+\newblock In {\em Proceedings of the Eighth European Workshop on Learning
+  Robots}, pages 14--22, 1999.
+
+\bibitem{Floreano2000}
+D.~Floreano and J.~Urzelai.
+\newblock {Evolutionary robots with on-line self-organization and behavioral
+  fitness}, 2000.
+
+\bibitem{Floreano1998a}
+Dario Floreano.
+\newblock {Evolutionary robotics in behavior engineering and artificial life}.
+\newblock {\em \ldots life: Applied AI systems. Evolutionary Robotics \ldots},
+  pages 1--27, 1998.
+
+\bibitem{Floreano2008}
+Dario Floreano, Phil Husbands, and Stefano Nolfi.
+\newblock {Evolutionary Robotics}.
+\newblock In {\em Handbook of Robotics}, pages 1423--1451. 2008.
+
+\bibitem{Floreano2001}
+Dario Floreano and Claudio Mattiussi.
+\newblock {\em {Evolutionary Robotics. From Intelligent Robotics to Artificial
+  Life}}, volume 2217.
+\newblock 2001.
+
+\bibitem{Floreano1998b}
+Dario Floreano and Francesco Mondada.
+\newblock {Hardware solutions for evolutionary robotics}.
+\newblock {\em Evolutionary Robotics}, 1998.
+
+\bibitem{Floreano1997}
+Dario Floreano and Stefano Nolfi.
+\newblock {God save the red queen! Competition in co-evolutionary robotics}.
+\newblock In {\em Genetic Programming 1997: Proceedings of the Second Annual
+  Conference}, pages 398--406, 1997.
+
+\bibitem{Floreano1998c}
+Dario Floreano, Stefano Nolfi, and Fransesco Mondada.
+\newblock {Competitive co-evolutionary robotics: From theory to practice}.
+\newblock In {\em Proceedings of the Fifth International Conference of the
+  Society for Adaptive Behavior (SAB'98)}, pages 515--524, 1998.
+
+\bibitem{Floreano2000a}
+Dario Floreano and Joseba Urzelai.
+\newblock {Evolutionary Robotics: The Next Generation}.
+\newblock In {\em Evolutionary Robotics III}. 2000.
+
+\bibitem{Givigi2005}
+Jr. Givigi, S.N. and H.M. Schwartz.
+\newblock {Evolutionary swarm intelligence applied to robotics}.
+\newblock {\em IEEE International Conference Mechatronics and Automation,
+  2005}, 2, 2005.
+
+\bibitem{Gomi1996}
+T.~Gomi and A.~Griffith.
+\newblock {Evolutionary robotics-an overview}.
+\newblock {\em Proceedings of IEEE International Conference on Evolutionary
+  Computation}, 1996.
+
+\bibitem{Grefenstette1994}
+John~J Grefenstette.
+\newblock {Evolutionary Algorithms in Robotics}.
+\newblock In {\em Robotics and Manufacturing: Recent Trends in Research,
+  Education and Applications, v5. Proc. Fifth Intl. Symposium on Robotics and
+  Manufacturing, ISRAM 94}, pages 65--72, 1994.
+
+\bibitem{Grefenstette1994a}
+John~J Grefenstette.
+\newblock {Evolutionary Algorithms in Robotics}.
+\newblock In {\em Robotics and Manufacturing: Recent Trends in Research,
+  Education and Applications, v5. Proc. Fifth Intl. Symposium on Robotics and
+  Manufacturing, ISRAM 94}, pages 65--72, 1994.
+
+\bibitem{Gruau1997a}
+F.~Gruau and K.~Quatramaran.
+\newblock {Cellular Encoding for Interactive Evolutionary Robotics}.
+\newblock In {\em Proc. of European Conference on Artificial Life (ECAL'97)},
+  pages 368--377, 1997.
+
+\bibitem{Haasdijk2011}
+Evert Haasdijk, Arif Atta-ul Qayyum, and Agoston~Endre Eiben.
+\newblock {Racing to improve on-line, on-board evolutionary robotics}.
+\newblock {\em Proceedings of the 13th annual conference on Genetic and
+  evolutionary computation - GECCO '11}, page 187, 2011.
+
+\bibitem{Hamann2010}
+Heiko Hamann, J\"{u}rgen Stradner, Thomas Schmickl, and Karl Crailsheim.
+\newblock {A hormone-based controller for evolutionary multi-modular robotics:
+  From single modules to gait learning}.
+\newblock In {\em 2010 IEEE World Congress on Computational Intelligence, WCCI
+  2010 - 2010 IEEE Congress on Evolutionary Computation, CEC 2010}, 2010.
+
+\bibitem{Hartland2006}
+C\'{e}dric Hartland and Nicolas Bred\`{e}che.
+\newblock {Evolutionary robotics, anticipation and the reality gap}.
+\newblock In {\em 2006 IEEE International Conference on Robotics and
+  Biomimetics, ROBIO 2006}, pages 1640--1645, 2006.
+
+\bibitem{Hartland2009}
+Cedric Hartland, Nicolas Bredeche, and Mich\`{e}le Sebag.
+\newblock {Memory-enhanced evolutionary robotics: The echo state network
+  approach}.
+\newblock In {\em 2009 IEEE Congress on Evolutionary Computation, CEC 2009},
+  pages 2788--2795, 2009.
+
+\bibitem{Harvey1996a}
+I~Harvey, P~Husbands, D~Cliff, A~Thompson, and N~Jakobi.
+\newblock {Evolutionary robotics at Sussex}.
+\newblock {\em Robotics and Manufacturing. Recent Trends in Research and
+  Applications. Vol.6. Proceedings of the Sixth International Symposium on
+  Robotics and Manufacturing (ISRAM'96)}, 1996.
+
+\bibitem{Harvey1992}
+Inman Harvey, Phil Husbands, and D~Cliff.
+\newblock {Evolutionary robotics}.
+\newblock In {\em Adaptative Behaviour}, volume~10, page 1611, 1992.
+
+\bibitem{Harvey1993}
+Inman Harvey, Philip Husbands, D.~Cliff, and Others.
+\newblock {Issues in evolutionary robotics}.
+\newblock {\em From animals to animats}, 2:364--373, 1993.
+
+\bibitem{Ishiguro2004}
+A~Ishiguro.
+\newblock {Overview of the evolutionary robotics approach}.
+\newblock {\em Journal of the Japan Society for Simulation Technology}, 23(3),
+  2004.
+
+\bibitem{Jakobi1997}
+N.~Jakobi.
+\newblock {Evolutionary Robotics and the Radical Envelope-of-Noise Hypothesis},
+  1997.
+
+\bibitem{Jakobi1998}
+Nick Jakobi.
+\newblock {\em {Minimal Simulations For Evolutionary Robotics}}.
+\newblock PhD thesis, 1998.
+
+\bibitem{Jakobi1995}
+Nick Jakobi, Phil Husbands, and Inman Harvey.
+\newblock {Noise and the reality gap: The use of simulation in evolutionary
+  robotics}.
+\newblock In {\em Lecture Notes in Artificial Intelligence: ADVANCES IN
+  ARTIFICIAL LIFE}, volume 929, pages 704--720, 1995.
+
+\bibitem{Jakobi1998a}
+Nick Jakobi and Matthew Quinn.
+\newblock {Some problems (and a few solutions) for open-ended evolutionary
+  robotics}.
+\newblock In {\em Evolutionary Robotics}, volume 1468, pages 108--122, 1998.
+
+\bibitem{Jin2011}
+Yaochu Jin and Yan Meng.
+\newblock {Morphogenetic robotics: An emerging new field in developmental
+  robotics}, 2011.
+
+\bibitem{Karafotias2011}
+Giorgos Karafotias, Evert Haasdijk, and Agoston~Endre Eiben.
+\newblock {An algorithm for distributed on-line, on-board evolutionary
+  robotics}.
+\newblock In {\em Proceedings of the 13th annual conference on Genetic and
+  evolutionary computation - GECCO '11}, page 171, 2011.
+
+\bibitem{Katagami2002}
+D.~Katagami and S.~Yamada.
+\newblock {Interactive evolutionary robotics from different viewpoints of
+  observation}.
+\newblock {\em IEEE/RSJ International Conference on Intelligent Robots and
+  Systems}, 2, 2002.
+
+\bibitem{Kernbach2009}
+S.~Kernbach, E.~Meister, O.~Scholz, R.~Humza, J.~Liedke, L.~Ricotti, J.~Jemai,
+  J.~Havlik, and W.~Liu.
+\newblock {Evolutionary robotics: The next-generation-platform for on-line and
+  on-board artificial evolution}.
+\newblock In {\em 2009 IEEE Congress on Evolutionary Computation, CEC 2009},
+  pages 1079--1086, 2009.
+
+\bibitem{Konig2009}
+Lukas K\"{o}nig and Hartmut Schmeck.
+\newblock {A completely evolvable genotype-phenotype mapping for evolutionary
+  robotics}.
+\newblock In {\em SASO 2009 - 3rd IEEE International Conference on
+  Self-Adaptive and Self-Organizing Systems}, pages 175--185, 2009.
+
+\bibitem{Konig2010}
+Lukas K\"{o}nig and Hartmut Schmeck.
+\newblock {Evolvability in evolutionary robotics: Evolving the
+  genotype-phenotype mapping}.
+\newblock In {\em Proceedings - 2010 4th IEEE International Conference on
+  Self-Adaptive and Self-Organizing Systems, SASO 2010}, pages 259--260, 2010.
+
+\bibitem{Koos2010}
+Sylvain Koos, Jean-Baptiste Mouret, and St\'{e}phane Doncieux.
+\newblock {Crossing the reality gap in evolutionary robotics by promoting
+  transferable controllers}.
+\newblock In {\em Proceedings of the 12th annual conference on Genetic and
+  evolutionary computation - GECCO '10}, page 119, 2010.
+
+\bibitem{Koos2013}
+Sylvain Koos, Jean~Baptiste Mouret, and St\'{e}phane Doncieux.
+\newblock {The transferability approach: Crossing the reality gap in
+  evolutionary robotics}.
+\newblock {\em IEEE Transactions on Evolutionary Computation}, 17(1):122--145,
+  2013.
+
+\bibitem{Lipson2007}
+Hod Lipson.
+\newblock {Evolutionary Robotics: Emergence of Communication}, 2007.
+
+\bibitem{Lipson2006}
+Hod Lipson, Josh Bongard, Victor Zykov, and Evan Malone.
+\newblock {Evolutionary Robotics for Legged Machines: From Simulation to
+  Physical Reality}.
+\newblock In {\em Proceedings of the 9th International Conference on
+  Intelligent Autonomous Systems (IAS-9)}, pages 11--18, 2006.
+
+\bibitem{Liu2002}
+Juan Liu, Zi-xing Cai, and Chun-ming Tu.
+\newblock {Survey on evolutionary robotics}.
+\newblock {\em Control Theory Applications}, 19(4), 2002.
+
+\bibitem{Lund2001}
+Henrik~Hautop Lund.
+\newblock {Adaptive robotics in entertainment}, 2001.
+
+\bibitem{Lund1998a}
+Henrik~Hautop Lund, Orazio Miglino, Luigi Pagliarini, Aude Billard, and Auke
+  Ijspeert.
+\newblock {Evolutionary Robotics - A Children ’ s Game .}
+\newblock In {\em Evolutionary Computation Proceedings, 1998. IEEE World
+  Congress on Computational Intelligence., The 1998 IEEE International
+  Conference on}, pages 154--158, 1998.
+
+\bibitem{Lund1998}
+H.H. Lund, O.~Miglino, L.~Pagliarini, A.~Billard, and A.~Ijspeert.
+\newblock {Evolutionary robotics-a children's game}.
+\newblock {\em 1998 IEEE International Conference on Evolutionary Computation
+  Proceedings. IEEE World Congress on Computational Intelligence (Cat.
+  No.98TH8360)}, 1998.
+
+\bibitem{Marocco2003}
+D~Marocco, A~Cangelosi, and S~Nolfi.
+\newblock {The role of social and cognitive factors in the emergence of
+  communication: experiments in evolutionary robotics}.
+\newblock {\em Philosophical Transactions of the Royal Society London - A},
+  361:2397--2421, 2003.
+
+\bibitem{Merkel2010}
+Sabrina Merkel, Lukas Konig, and Hartmut Schmeck.
+\newblock {Age based controller stabilization in evolutionary robotics}.
+\newblock In {\em Proceedings - 2010 2nd World Congress on Nature and
+  Biologically Inspired Computing, NaBIC 2010}, pages 84--91, 2010.
+
+\bibitem{Meyer1998}
+Jean-Arcady Meyer, Phil Husbands, and Inman Harvey.
+\newblock {Evolutionary Robotics: a Survey of Applications and Problems}.
+\newblock In {\em Proceedings of the First European Workshop on Evolutionary
+  Robotics}, pages 1--22, 1998.
+
+\bibitem{Miglino2008}
+Orazio Miglino, Onofrio Gigliotta, Michela Ponticorvo, and Stefano Nolfi.
+\newblock {Breedbot: an evolutionary robotics application in digital content},
+  2008.
+
+\bibitem{Moioli2010}
+Renan~C. Moioli, Patricia~A. Vargas, and Phil Husbands.
+\newblock {Exploring the Kuramoto model of coupled oscillators in minimally
+  cognitive evolutionary robotics tasks}.
+\newblock In {\em 2010 IEEE World Congress on Computational Intelligence, WCCI
+  2010 - 2010 IEEE Congress on Evolutionary Computation, CEC 2010}, 2010.
+
+\bibitem{Mouret2012}
+J.-B. Mouret and S.~Doncieux.
+\newblock {Encouraging Behavioral Diversity in Evolutionary Robotics: An
+  Empirical Study}, 2012.
+
+\bibitem{Negrello2011}
+Mario Negrello.
+\newblock {\em {Neurodynamics and Evolutionary Robotics}}.
+\newblock 2011.
+
+\bibitem{Nelson2006}
+A~L Nelson and E~Grant.
+\newblock {\em {Developmental analysis in evolutionary robotics}}.
+\newblock 2006.
+
+\bibitem{Nelson2004}
+A.~L. Nelson, E.~Grant, J.~M. Galeotti, and S.~Rhody.
+\newblock {Maze exploration behaviors using an integrated evolutionary robotics
+  environment}.
+\newblock {\em Robotics and Autonomous Systems}, 46(3):159--173, 2004.
+
+\bibitem{Nelson2009}
+Andrew~L. Nelson, Gregory~J. Barlow, and Lefteris Doitsidis.
+\newblock {Fitness functions in evolutionary robotics: A survey and analysis}.
+\newblock {\em Robotics and Autonomous Systems}, 57(4):345--370, 2009.
+
+\bibitem{Nelson2006a}
+Andrew~L. Nelson and Edward Grant.
+\newblock {Using direct competition to select for competent controllers in
+  evolutionary robotics}.
+\newblock {\em Robotics and Autonomous Systems}, 54(10):840--857, 2006.
+
+\bibitem{Nolfi1998}
+S.~Nolfi and D.~Floreano.
+\newblock {How Co-Evolution can Enhance the Adaptive Power of Artificial
+  Evolution: Implications for Evolutionary Robotics}.
+\newblock In {\em Proceedings of the First European Workshop on Evolutionary
+  Robotics (EvoRobot98)}, pages 22--38, 1998.
+
+\bibitem{Nolfi1994}
+Stefano Nolfi, Dario Floreano, Orazio Miglino, and Francesco Mondada.
+\newblock {How to Evolve Autonomous Robots: Different Approaches in
+  Evolutionary Robotics}.
+\newblock In {\em Proceedings on the Artificial Life IV Conference, July 6-8,
+  Cambridge, MA, U.S.A}, pages 1--8, 1994.
+
+\bibitem{Parisi2004}
+Domenico Parisi.
+\newblock {Internal robotics}, 2004.
+
+\bibitem{Parker2000}
+Gary~B. Parker.
+\newblock {Co-evolving model parameters for anytime learning in evolutionary
+  robotics}.
+\newblock {\em Robotics and Autonomous Systems}, 33(1):13--30, 2000.
+
+\bibitem{Pollack2000}
+Jordan~B Pollack, Hod Lipson, Sevan Ficici, Pablo Funes, Greg Hornby, and
+  Richard~a Watson.
+\newblock {Evolutionary Techniques in Physical Robotics}.
+\newblock {\em Evolvable Systems: From Biology to Hardware}, 1801(Moravec
+  1999):175--186, 2000.
+
+\bibitem{Pratihar2003}
+Dilip~Kumar Pratihar.
+\newblock {Evolutionary robotics—A review}, 2003.
+
+\bibitem{Ruini2009}
+Fabio Ruini and Angelo Cangelosi.
+\newblock {Extending the Evolutionary Robotics approach to flying machines: An
+  application to MAV teams}.
+\newblock {\em Neural Networks}, 22(5-6):812--821, 2009.
+
+\bibitem{Sellers2003}
+W~I Sellers, L~A Dennis, and R~H Crompton.
+\newblock {Predicting the metabolic energy costs of bipedalism using
+  evolutionary robotics.}
+\newblock {\em The Journal of experimental biology}, 206(Pt 7):1127--1136,
+  2003.
+
+\bibitem{Sellers2004}
+William~I Sellers, Louise~A Dennis, Wang {W -J}, and Robin~H Crompton.
+\newblock {Evaluating alternative gait strategies using evolutionary robotics.}
+\newblock {\em Journal of anatomy}, 204(5):343--351, 2004.
+
+\bibitem{Sellers2007}
+William~Irvin Sellers and Phillip~Lars Manning.
+\newblock {Estimating dinosaur maximum running speeds using evolutionary
+  robotics.}
+\newblock {\em Proceedings. Biological sciences / The Royal Society},
+  274(1626):2711--2716, 2007.
+
+\bibitem{Smith2001}
+T.~Smith, P.~Husbands, and M.~O'Shea.
+\newblock {Neutral networks in an evolutionary robotics search space}.
+\newblock {\em Proceedings of the 2001 Congress on Evolutionary Computation
+  (IEEE Cat. No.01TH8546)}, 1, 2001.
+
+\bibitem{Smith2001a}
+T.~Smith, P.~Husbands, and M.~O'Shea.
+\newblock {Not measuring evolvability: initial investigation of an evolutionary
+  robotics search space}.
+\newblock {\em Proceedings of the 2001 Congress on Evolutionary Computation
+  (IEEE Cat. No.01TH8546)}, 1, 2001.
+
+\bibitem{Sofge2003}
+D~A Sofge, M~A Potter, M~D Bugajska, and A~C Schultz.
+\newblock {Challenges and Opportunities of Evolutionary Robotics}.
+\newblock {\em Robotics}, (December), 2003.
+
+\bibitem{Sprong2011}
+C.~Sprong.
+\newblock {Common tasks in Evolutionary Robotics, an overview}.
+\newblock {\em Neural Networks}, 2011.
+
+\bibitem{Stanley2011}
+Kenneth~O. Stanley.
+\newblock {Why evolutionary robotics will matter}.
+\newblock In {\em Studies in Computational Intelligence}, volume 341, pages
+  37--41, 2011.
+
+\bibitem{Tan2004}
+K.~C. Tan, L.~F. Wang, T.~H. Lee, and P.~Vadakkepat.
+\newblock {Evolvable hardware in evolutionary robotics}.
+\newblock {\em Autonomous Robots}, 16(1):5--21, 2004.
+
+\bibitem{Thrun2002}
+Sebastian Thrun.
+\newblock {Probabilistic robotics}, 2002.
+
+\bibitem{Trianni2008}
+Vito Trianni.
+\newblock {\em {Evolutionary Swarm Robotics}}, volume 108.
+\newblock 2008.
+
+\bibitem{Trujillo2011}
+Leonardo Trujillo, Gustavo Olague, Evelyne Lutton, Francisco {Fern\'{a}ndez De
+  Vega}, Le\'{o}n Dozal, and Eddie Clemente.
+\newblock {Speciation in behavioral space for evolutionary robotics}.
+\newblock {\em Journal of Intelligent and Robotic Systems: Theory and
+  Applications}, 64(3-4):323--351, 2011.
+
+\bibitem{Urzelai2000}
+Joseba Urzelai.
+\newblock {Evolutionary robotics: coping with environmental change}.
+\newblock {\em of the Genetic and Evolutionary}, 2000.
+
+\bibitem{Wood2007}
+Rachel Wood and Ezequiel~Di Paolo.
+\newblock {New Models for Old Questions: Evolutionary Robotics and the ‘A Not
+  B’ Error}.
+\newblock {\em Lecture Notes in Artificial Intelligence}, 4648:1141--1150,
+  2007.
+
+\bibitem{Xiao2001}
+Jing Xiao~Jing Xiao.
+\newblock {Evolutionary robotics: the biology, intelligence, and technology of
+  self-organizing machines [Book Review]}.
+\newblock {\em IEEE Transactions on Evolutionary Computation}, 5(4), 2001.
+
+\bibitem{Yoshikawa2008}
+Masaya Yoshikawa and Hidekazu Terai.
+\newblock {Hardware accelerator for evolutionary robotics}.
+\newblock {\em WSEAS Transactions on Circuits and Systems}, 7(6):482--491,
+  2008.
+
+\bibitem{Zagal2007}
+J.~C. Zagal and Javier Ruiz-Del-Solar.
+\newblock {Combining simulation and reality in evolutionary robotics}.
+\newblock {\em Journal of Intelligent and Robotic Systems: Theory and
+  Applications}, 50(1):19--39, 2007.
+
+\bibitem{Zagal2009}
+JC~Zagal and H~Lipson.
+\newblock {Self-reflection in evolutionary robotics: resilient adaptation with
+  a minimum of physical exploration}.
+\newblock {\em Companion on Genetic and Evolutionary}, pages 2179--2184, 2009.
+
+\bibitem{Zagal2004}
+Juan~Crist\'{o}bal Zagal, Javier Ruiz-del Solar, and Paul Vallejos.
+\newblock {BACK TO REALITY: CROSSING THE REALITY GAP IN EVOLUTIONARY ROBOTICS
+  Juan Crist\'{o}bal Zagal, Javier Ruiz-del-Solar and Paul Vallejos}.
+\newblock In {\em Notes}, 2004.
+
+\bibitem{Ziemke2004}
+Tom Ziemke, Nicklas Bergfeldt, Gunnar Buason, Tarja Susi, and Henrik Svensson.
+\newblock {Evolving cognitive scaffolding and environment adaptation: a new
+  research direction for evolutionary robotics}, 2004.
+
+\bibitem{Zykov2005}
+Victor Zykov, Efstathios Mytilinaios, Bryant Adams, and Hod Lipson.
+\newblock {Robotics: self-reproducing machines.}
+\newblock {\em Nature}, 435(7039):163--164, 2005.
+
+\bibitem{Zykov2007}
+Victor Zykov, Efstathios Mytilinaios, Mark Desnoyer, and Hod Lipson.
+\newblock {Evolved and designed self-reproducing modular robotics}.
+\newblock {\em IEEE Transactions on Robotics}, 23(2):308--319, 2007.
+
+\end{thebibliography}

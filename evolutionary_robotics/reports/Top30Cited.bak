@@ -1,0 +1,404 @@
+% This file was created with JabRef 2.10b2.
+% Encoding: UTF-8
+
+
+@InProceedings{augustsson2002creation,
+  Title                    = {Creation Of A Learning, Flying Robot By Means Of Evolution.},
+  Author                   = {Augustsson, Peter and Wolff, Krister and Nordin, Peter},
+  Booktitle                = {GECCO},
+  Year                     = {2002},
+  Pages                    = {1279--1285},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{baldassarre2007self,
+  Title                    = {Self-organized coordinated motion in groups of physically connected robots},
+  Author                   = {Baldassarre, Gianluca and Trianni, Vito and Bonani, Michael and Mondada, Francesco and Dorigo, Marco and Nolfi, Stefano},
+  Journal                  = {Systems, Man, and Cybernetics, Part B: Cybernetics, IEEE Transactions on},
+  Year                     = {2007},
+  Number                   = {1},
+  Pages                    = {224--239},
+  Volume                   = {37},
+
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.13}
+}
+
+@InProceedings{banzhaf1997generating,
+  Title                    = {Generating adaptive behavior using function regression within genetic programming and a real robot},
+  Author                   = {Banzhaf, Wolfgang and Nordin, Peter and Olmer, Markus},
+  Booktitle                = {2nd International Conference on Genetic Programming, Stanford},
+  Year                     = {1997},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{cliff1993explorations,
+  Title                    = {Explorations in evolutionary robotics},
+  Author                   = {Cliff, Dave and Husbands, Phil and Harvey, Inman},
+  Journal                  = {Adaptive behavior},
+  Year                     = {1993},
+  Number                   = {1},
+  Pages                    = {73--110},
+  Volume                   = {2},
+
+  Owner                    = {bastian},
+  Publisher                = {Sage Publications},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{clune2011performance,
+  Title                    = {On the performance of indirect encoding across the continuum of regularity},
+  Author                   = {Clune, Jeff and Stanley, Kenneth O and Pennock, Robert T and Ofria, Charles},
+  Journal                  = {Evolutionary Computation, IEEE Transactions on},
+  Year                     = {2011},
+  Number                   = {3},
+  Pages                    = {346--367},
+  Volume                   = {15},
+
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{coello2006evolutionary,
+  Title                    = {Evolutionary multi-objective optimization: a historical view of the field},
+  Author                   = {Coello Coello, Carlos A},
+  Journal                  = {Computational Intelligence Magazine, IEEE},
+  Year                     = {2006},
+  Note                     = {645},
+  Number                   = {1},
+  Pages                    = {28--36},
+  Volume                   = {1},
+
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.13}
+}
+
+@InProceedings{ficici1999embodied,
+  Title                    = {Embodied evolution: A response to challenges in evolutionary robotics},
+  Author                   = {Ficici, Sevan G and Watson, Richard A and Pollack, Jordan B},
+  Booktitle                = {Proceedings of the eighth European workshop on learning robots},
+  Year                     = {1999},
+  Organization             = {Citeseer},
+  Pages                    = {14--22},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@InCollection{floreano2008evolutionary,
+  Title                    = {Evolutionary robotics},
+  Author                   = {Floreano, Dario and Husbands, Phil and Nolfi, Stefano},
+  Booktitle                = {Springer handbook of robotics},
+  Publisher                = {Springer},
+  Year                     = {2008},
+  Pages                    = {1423--1451},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@InProceedings{floreano1998competitive,
+  Title                    = {Competitive co-evolutionary robotics: From theory to practice},
+  Author                   = {Floreano, Dario and Nolfi, Stefano and Mondada, Francesco},
+  Booktitle                = {Proceedings of the fifth international conference on simulation of adaptive behavior, From Animals to Animats 5},
+  Year                     = {1998},
+  Number                   = {LIS-CONF-1998-002},
+  Organization             = {MIT Press},
+  Pages                    = {515--524},
+  Volume                   = {4},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@TechReport{floreano2000evolutionary,
+  Title                    = {Evolutionary robotics: The next generation},
+  Author                   = {Floreano, Dario and Urzelai, Joseba},
+  Institution              = {AAI Books},
+  Year                     = {2000},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@InProceedings{gruau1997cellular,
+  Title                    = {Cellular encoding for interactive evolutionary robotics},
+  Author                   = {Gruau, Frederic and Quatramaran, Kameel},
+  Booktitle                = {Fourth European Conference on Artificial Life},
+  Year                     = {1997},
+  Organization             = {MIT Press},
+  Pages                    = {368--377},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@Book{harvey1992issues,
+  Title                    = {Issues in evolutionary robotics},
+  Author                   = {Harvey, Inman and Husbands, Philip and Cliff, Dave and others},
+  Publisher                = {School of Cognitive and Computing Sciences, University of Sussex},
+  Year                     = {1992},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{harvey1997evolutionary,
+  Title                    = {Evolutionary robotics: the Sussex approach},
+  Author                   = {Harvey, Inman and Husbands, Phil and Cliff, Dave and Thompson, Adrian and Jakobi, Nick},
+  Journal                  = {Robotics and autonomous systems},
+  Year                     = {1997},
+  Number                   = {2},
+  Pages                    = {205--224},
+  Volume                   = {20},
+
+  Owner                    = {bastian},
+  Publisher                = {Elsevier},
+  Timestamp                = {2015.05.13}
+}
+
+@InCollection{jakobi1995noise,
+  Title                    = {Noise and the reality gap: The use of simulation in evolutionary robotics},
+  Author                   = {Jakobi, Nick and Husbands, Phil and Harvey, Inman},
+  Booktitle                = {Advances in artificial life},
+  Publisher                = {Springer},
+  Year                     = {1995},
+  Pages                    = {704--720},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{kashtan2005spontaneous,
+  Title                    = {Spontaneous evolution of modularity and network motifs},
+  Author                   = {Kashtan, Nadav and Alon, Uri},
+  Journal                  = {Proceedings of the National Academy of Sciences of the United States of America},
+  Year                     = {2005},
+  Number                   = {39},
+  Pages                    = {13773--13778},
+  Volume                   = {102},
+
+  Owner                    = {bastian},
+  Publisher                = {National Acad Sciences},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{lipson2007principles,
+  Title                    = {Principles of modularity, regularity, and hierarchy for scalable systems},
+  Author                   = {Lipson, Hod},
+  Journal                  = {Journal of Biological Physics and Chemistry},
+  Year                     = {2007},
+  Number                   = {4},
+  Pages                    = {125},
+  Volume                   = {7},
+
+  Owner                    = {bastian},
+  Publisher                = {Citeseer},
+  Timestamp                = {2015.05.13}
+}
+
+@InProceedings{lund1998evolutionary,
+  Title                    = {Evolutionary Robotics-A children's game},
+  Author                   = {Lund, Henrik Hautop and Miglino, Orazio and Pagliarini, Luigi and Billard, Aude and Ijspeert, Auke},
+  Booktitle                = {Evolutionary Computation Proceedings, 1998. IEEE World Congress on Computational Intelligence., The 1998 IEEE International Conference on},
+  Year                     = {1998},
+  Organization             = {IEEE},
+  Pages                    = {154--158},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@InProceedings{meyer1998evolutionary,
+  Title                    = {Evolutionary robotics: A survey of applications and problems},
+  Author                   = {Meyer, Jean-Arcady and Husbands, Phil and Harvey, Inman},
+  Booktitle                = {Evolutionary Robotics},
+  Year                     = {1998},
+  Organization             = {Springer},
+  Pages                    = {1--21},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{Mouret:2012:EBD:2155529.2155533,
+  Title                    = {Encouraging Behavioral Diversity in Evolutionary Robotics: An Empirical Study},
+  Author                   = {Mouret, J. -B. and Doncieux, S.},
+  Journal                  = {Evol. Comput.},
+  Year                     = {2012},
+
+  Month                    = mar,
+  Number                   = {1},
+  Pages                    = {91--133},
+  Volume                   = {20},
+
+  Acmid                    = {2155533},
+  Address                  = {Cambridge, MA, USA},
+  Doi                      = {10.1162/EVCO_a_00048},
+  ISSN                     = {1063-6560},
+  Issue_date               = {Spring 2012},
+  Keywords                 = {Evolutionary robotics, diversity, multi-objective evolutionary algorithm, neural networks},
+  Numpages                 = {43},
+  Owner                    = {bastian},
+  Publisher                = {MIT Press},
+  Timestamp                = {2015.05.13},
+  Url                      = {http://dx.doi.org/10.1162/EVCO_a_00048}
+}
+
+@Article{nelson2009fitness,
+  Title                    = {Fitness functions in evolutionary robotics: A survey and analysis},
+  Author                   = {Nelson, Andrew L and Barlow, Gregory J and Doitsidis, Lefteris},
+  Journal                  = {Robotics and Autonomous Systems},
+  Year                     = {2009},
+  Number                   = {4},
+  Pages                    = {345--370},
+  Volume                   = {57},
+
+  Owner                    = {bastian},
+  Publisher                = {Elsevier},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{nolfi1998evolutionary,
+  Title                    = {Evolutionary robotics: Exploiting the full power of self-organization},
+  Author                   = {Nolfi, Stefano},
+  Journal                  = {Connection Science},
+  Year                     = {1998},
+  Number                   = {3-4},
+  Pages                    = {167--184},
+  Volume                   = {10},
+
+  Owner                    = {bastian},
+  Publisher                = {Taylor \& Francis},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{sareni1998fitness,
+  Title                    = {Fitness sharing and niching methods revisited},
+  Author                   = {Sareni, Bruno and Krahenbuhl, Laurent},
+  Journal                  = {Evolutionary Computation, IEEE Transactions on},
+  Year                     = {1998},
+  Number                   = {3},
+  Pages                    = {97--106},
+  Volume                   = {2},
+
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{sellers2007estimating,
+  Title                    = {Estimating dinosaur maximum running speeds using evolutionary robotics},
+  Author                   = {Sellers, William Irvin and Manning, Phillip Lars},
+  Journal                  = {Proceedings of the Royal Society of London B: Biological Sciences},
+  Year                     = {2007},
+  Number                   = {1626},
+  Pages                    = {2711--2716},
+  Volume                   = {274},
+
+  Owner                    = {bastian},
+  Publisher                = {The Royal Society},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{stanley2007compositional,
+  Title                    = {Compositional pattern producing networks: A novel abstraction of development},
+  Author                   = {Stanley, Kenneth O},
+  Journal                  = {Genetic programming and evolvable machines},
+  Year                     = {2007},
+  Number                   = {2},
+  Pages                    = {131--162},
+  Volume                   = {8},
+
+  Owner                    = {bastian},
+  Publisher                = {Springer},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{stanley2009hypercube,
+  Title                    = {A hypercube-based encoding for evolving large-scale neural networks},
+  Author                   = {Stanley, Kenneth O and D'Ambrosio, David B and Gauci, Jason},
+  Journal                  = {Artificial life},
+  Year                     = {2009},
+  Number                   = {2},
+  Pages                    = {185--212},
+  Volume                   = {15},
+
+  Owner                    = {bastian},
+  Publisher                = {MIT Press},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{stanley2003taxonomy,
+  Title                    = {A taxonomy for artificial embryogeny},
+  Author                   = {Stanley, Kenneth O and Miikkulainen, Risto},
+  Journal                  = {Artificial Life},
+  Year                     = {2003},
+  Number                   = {2},
+  Pages                    = {93--130},
+  Volume                   = {9},
+
+  Owner                    = {bastian},
+  Publisher                = {MIT Press},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{walker2003evolving,
+  Title                    = {Evolving controllers for real robots: A survey of the literature},
+  Author                   = {Walker, Joanne and Garrett, Simon and Wilson, Myra},
+  Journal                  = {Adaptive Behavior},
+  Year                     = {2003},
+  Number                   = {3},
+  Pages                    = {179--203},
+  Volume                   = {11},
+
+  Owner                    = {bastian},
+  Publisher                = {SAGE Publications},
+  Timestamp                = {2015.05.13}
+}
+
+@InProceedings{zagal2004back,
+  Title                    = {Back to reality: Crossing the reality gap in evolutionary robotics},
+  Author                   = {Zagal, Juan Crist{\'o}bal and Ruiz-del-Solar, Javier and Vallejos, Paul},
+  Booktitle                = {IAV 2004 the 5th IFAC Symposium on Intelligent Autonomous Vehicles, Lisbon, Portugal},
+  Year                     = {2004},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{zykov2005robotics,
+  Title                    = {Robotics: Self-reproducing machines},
+  Author                   = {Zykov, Victor and Mytilinaios, Efstathios and Adams, Bryant and Lipson, Hod},
+  Journal                  = {Nature},
+  Year                     = {2005},
+  Number                   = {7039},
+  Pages                    = {163--164},
+  Volume                   = {435},
+
+  Owner                    = {bastian},
+  Publisher                = {Nature Publishing Group},
+  Timestamp                = {2015.05.13}
+}
+
+@Article{zykov2007evolved,
+  Title                    = {Evolved and designed self-reproducing modular robotics},
+  Author                   = {Zykov, Viktor and Mytilinaios, Efstathios and Desnoyer, Mark and Lipson, Hod},
+  Journal                  = {Robotics, IEEE Transactions on},
+  Year                     = {2007},
+  Number                   = {2},
+  Pages                    = {308--319},
+  Volume                   = {23},
+
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.05.13}
+}
+
