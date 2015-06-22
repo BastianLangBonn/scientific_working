@@ -1,0 +1,292 @@
+% This file was created with JabRef 2.10b2.
+% Encoding: UTF-8
+
+
+@Article{angeline1994evolutionary,
+  Title                    = {An evolutionary algorithm that constructs recurrent neural networks},
+  Author                   = {Angeline, Peter J and Saunders, Gregory M and Pollack, Jordan B},
+  Journal                  = {Neural Networks, IEEE Transactions on},
+  Year                     = {1994},
+  Number                   = {1},
+  Pages                    = {54--65},
+  Volume                   = {5},
+
+  Abstract                 = {Standard methods for simultaneously inducing the structure and weights of recurrent neural networks limit every task to an assumed class of architectures. Such a simplification is necessary since the interactions between network structure and function are not well understood. Evolutionary computations, which include genetic algorithms and evolutionary programming, are population-based search methods that have shown promise in many similarly complex tasks. This paper argues that genetic algorithms are inappropriate for network acquisition and describes an evolutionary program, called GNARL, that simultaneously acquires both the structure and weights for recurrent networks. GNARL's empirical acquisition method allows for the emergence of complex behaviors and topologies that are potentially excluded by the artificial architectural constraints imposed in standard network induction methods},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/angeline1994evolutionary.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {IEEE},
+  Timestamp                = {2015.06.22}
+}
+
+@Article{bongard2005active,
+  Title                    = {Active coevolutionary learning of deterministic finite automata},
+  Author                   = {Bongard, Josh and Lipson, Hod},
+  Journal                  = {The Journal of Machine Learning Research},
+  Year                     = {2005},
+  Pages                    = {1651--1678},
+  Volume                   = {6},
+
+  Owner                    = {bastian},
+  Publisher                = {JMLR. org},
+  Timestamp                = {2015.06.22}
+}
+
+@InProceedings{cussat2012cell,
+  Title                    = {A cell-based developmental model to generate robot morphologies},
+  Author                   = {Cussat-Blanc, Sylvain and Pollack, Jordan},
+  Booktitle                = {Proceedings of the 14th annual conference on Genetic and evolutionary computation},
+  Year                     = {2012},
+  Organization             = {ACM},
+  Pages                    = {537--544},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@Article{dellaert1996developmental,
+  Title                    = {A developmental model for the evolution of complete autonomous agents},
+  Author                   = {Dellaert, Frank and Beer, Randall D},
+  Journal                  = {From animals to animats},
+  Year                     = {1996},
+  Pages                    = {393--401},
+  Volume                   = {4},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@InProceedings{dias2010profile,
+  Title                    = {A profile-based method for hardware/software co-design applied in evolutionary robotics using reconfigurable computing},
+  Author                   = {Dias, Mauricio A and Sales, Daniel O and Osorio, Fernando S},
+  Booktitle                = {Electronics, Robotics and Automotive Mechanics Conference (CERMA), 2010},
+  Year                     = {2010},
+  Organization             = {IEEE},
+  Pages                    = {463--468},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@Article{doncieux2015evolutionary,
+  Title                    = {Evolutionary robotics: what, why, and where to},
+  Author                   = {Doncieux, Stephane and Bredeche, Nicolas and Mouret, Jean-Baptiste and Eiben, Agoston E Gusz},
+  Journal                  = {Frontiers in Robotics and AI},
+  Year                     = {2015},
+  Pages                    = {4},
+  Volume                   = {2},
+
+  __markedentry            = {[bastian:1]},
+  Owner                    = {bastian},
+  Publisher                = {Frontiers},
+  Timestamp                = {2015.06.22}
+}
+
+@InCollection{doncieux2011evolutionary,
+  Title                    = {Evolutionary robotics: Exploring new horizons},
+  Author                   = {Doncieux, St{\'e}phane and Mouret, Jean-Baptiste and Bredeche, Nicolas and Padois, Vincent},
+  Booktitle                = {New Horizons in Evolutionary Robotics},
+  Publisher                = {Springer},
+  Year                     = {2011},
+  Pages                    = {3--25},
+
+  __markedentry            = {[bastian:1]},
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@InProceedings{gruau1996comparison,
+  Title                    = {A comparison between cellular encoding and direct encoding for genetic neural networks},
+  Author                   = {Gruau, Frederic and Whitley, Darrell and Pyeatt, Larry},
+  Booktitle                = {Proceedings of the 1st annual conference on genetic programming},
+  Year                     = {1996},
+  Organization             = {MIT Press},
+  Pages                    = {81--89},
+
+  Abstract                 = {This paper compares the efficiency of two encoding schemes for Artificial Neural Networks optimized by evolutionary algorithms. Direct Encoding encodes the weights for an a priori fixed neural network architecture. Cellular Encoding encodes both weights and the architecture of the neural network. In previous studies, Direct Encoding and Cellular Encoding have been used to create neural networks for balancing 1 and 2 poles attached to a cart on a fixed track. The poles are balanced by a controller that pushes the cart to the left or the right. In some cases velocity information about the pole and cart is provided as an input; in other cases the network must learn to balance a single pole without velocity information. A careful study of the behavior of these systems suggests that it is possible to balance a single pole with velocity information as an input and without learning to compute the velocity. A new fitness function is introduced that forces the neural network to compute the velocity. By using this new fitness function and tuning the syntactic constraints used with cellular encoding, we achieve a tenfold speedup over our previous study and solve a more difficult problem: balancing two poles when no information about the velocity is provided as input.},
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/gruau1996comparison.pdf:PDF},
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@Article{hamann2010hormone,
+  Title                    = {A hormone-based controller for evolutionary multi-modular robotics: From single modules to gait learning},
+  Author                   = {Hamann, Heiko and Stradner, J{\"u}rgen and Schmickl, Thomas and Crailsheim, Karl},
+  Journal                  = {simulation},
+  Year                     = {2010},
+  Pages                    = {6},
+  Volume                   = {5},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@InProceedings{izquierdo2008analysis,
+  Title                    = {Analysis of a Dynamical Recurrent Neural Network Evolved for Two Qualitatively Different Tasks: Walking and Chemotaxis.},
+  Author                   = {Izquierdo, Eduardo and B{\"u}hrmann, Thomas},
+  Booktitle                = {ALIFE},
+  Year                     = {2008},
+  Pages                    = {257--264},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@Article{juan2002survey,
+  Title                    = {A survey on evolutionary robotics},
+  Author                   = {Juan, LIU and Zixing, Cai and Chunming, Tu},
+  Journal                  = {Control Theory and Applications},
+  Year                     = {2002},
+  Number                   = {4},
+  Volume                   = {19},
+
+  __markedentry            = {[bastian:1]},
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@InProceedings{karafotias2011algorithm,
+  Title                    = {An algorithm for distributed on-line, on-board evolutionary robotics},
+  Author                   = {Karafotias, Giorgos and Haasdijk, Evert and Eiben, Agoston Endre},
+  Booktitle                = {Proceedings of the 13th annual conference on Genetic and evolutionary computation},
+  Year                     = {2011},
+  Organization             = {ACM},
+  Pages                    = {171--178},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@InProceedings{konig2009completely,
+  Title                    = {A completely evolvable genotype-phenotype mapping for evolutionary robotics},
+  Author                   = {Konig, Lukas and Schmeck, Hartmut},
+  Booktitle                = {Self-Adaptive and Self-Organizing Systems, 2009. SASO'09. Third IEEE International Conference on},
+  Year                     = {2009},
+  Organization             = {IEEE},
+  Pages                    = {175--185},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@Article{lehman2011abandoning,
+  Title                    = {Abandoning objectives: Evolution through the search for novelty alone},
+  Author                   = {Lehman, Joel and Stanley, Kenneth O},
+  Journal                  = {Evolutionary computation},
+  Year                     = {2011},
+  Number                   = {2},
+  Pages                    = {189--223},
+  Volume                   = {19},
+
+  File                     = {:/home/bastian/Documents/assignments/ISW/evolutionary_robotics/literature/top30/lehman2011abandoning.pdf:PDF},
+  Owner                    = {bastian},
+  Publisher                = {MIT Press},
+  Timestamp                = {2015.06.22}
+}
+
+@Article{lund2001adaptive,
+  Title                    = {Adaptive robotics in entertainment},
+  Author                   = {Lund, Henrik Hautop},
+  Journal                  = {Applied Soft Computing},
+  Year                     = {2001},
+  Number                   = {1},
+  Pages                    = {3--20},
+  Volume                   = {1},
+
+  Owner                    = {bastian},
+  Publisher                = {Elsevier},
+  Timestamp                = {2015.06.22}
+}
+
+@InProceedings{merkel2010age,
+  Title                    = {Age based controller stabilization in Evolutionary Robotics},
+  Author                   = {Merkel, Sabrina and König, Lukas and Schmeck, Hartmut},
+  Booktitle                = {Nature and Biologically Inspired Computing (NaBIC), 2010 Second World Congress on},
+  Year                     = {2010},
+  Organization             = {IEEE},
+  Pages                    = {84--91},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@InProceedings{mouret2012algorithm,
+  Title                    = {An algorithm to create phenotype-fitness maps},
+  Author                   = {Mouret, Jean-Baptiste and Clune, Jeff},
+  Booktitle                = {Proc. of the Artificial Life Conf},
+  Year                     = {2012},
+  Organization             = {Citeseer},
+  Pages                    = {593--594},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@InCollection{mouret2014artificial,
+  Title                    = {Artificial evolution of plastic neural networks: a few key concepts},
+  Author                   = {Mouret, Jean-Baptiste and Tonelli, Paul},
+  Booktitle                = {Growing Adaptive Machines},
+  Publisher                = {Springer},
+  Year                     = {2014},
+  Pages                    = {251--261},
+
+  __markedentry            = {[bastian:3]},
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@Article{stanley2009hypercube,
+  Title                    = {A hypercube-based encoding for evolving large-scale neural networks},
+  Author                   = {Stanley, Kenneth O and D'Ambrosio, David B and Gauci, Jason},
+  Journal                  = {Artificial life},
+  Year                     = {2009},
+  Number                   = {2},
+  Pages                    = {185--212},
+  Volume                   = {15},
+
+  __markedentry            = {[bastian:3]},
+  Owner                    = {bastian},
+  Publisher                = {MIT Press},
+  Timestamp                = {2015.06.22}
+}
+
+@Article{stanley2003taxonomy,
+  Title                    = {A taxonomy for artificial embryogeny},
+  Author                   = {Stanley, Kenneth O and Miikkulainen, Risto},
+  Journal                  = {Artificial Life},
+  Year                     = {2003},
+  Number                   = {2},
+  Pages                    = {93--130},
+  Volume                   = {9},
+
+  Owner                    = {bastian},
+  Publisher                = {MIT Press},
+  Timestamp                = {2015.06.22}
+}
+
+@Article{waibel2011quantitative,
+  Title                    = {A quantitative test of Hamilton's rule for the evolution of altruism},
+  Author                   = {Waibel, Markus and Floreano, Dario and Keller, Laurent},
+  Journal                  = {PLoS-Biology},
+  Year                     = {2011},
+  Number                   = {5},
+  Pages                    = {970},
+  Volume                   = {9},
+
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
+@InProceedings{watanabe1999survey,
+  Title                    = {A survey of robotic control systems constructed by using evolutionary computations},
+  Author                   = {Watanabe, Keigo and Izumi, Kiyotaka},
+  Booktitle                = {Systems, Man, and Cybernetics, 1999. IEEE SMC'99 Conference Proceedings. 1999 IEEE International Conference on},
+  Year                     = {1999},
+  Organization             = {IEEE},
+  Pages                    = {758--763},
+  Volume                   = {2},
+
+  __markedentry            = {[bastian:1]},
+  Owner                    = {bastian},
+  Timestamp                = {2015.06.22}
+}
+
