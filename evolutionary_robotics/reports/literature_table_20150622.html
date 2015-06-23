@@ -1,0 +1,2392 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>JabRef references</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+<!--
+// QuickSearch script for JabRef HTML export (no Abstract/BibTeX)
+// Version: 3.0
+//
+// Copyright (c) 2006-2011, Mark Schenk
+//
+// This software is distributed under a Creative Commons Attribution 3.0 License
+// http://creativecommons.org/licenses/by/3.0/
+//
+// Features:
+// - intuitive find-as-you-type searching
+//    ~ case insensitive
+//    ~ ignore diacritics (optional)
+//
+// - search with/without Regular Expressions
+// - match BibTeX key
+//
+
+// Search settings
+var noSquiggles = true; 	// ignore diacritics when searching
+var searchRegExp = false; 	// enable RegExp searches
+
+
+if (window.addEventListener) {
+	window.addEventListener("load",initSearch,false); }
+else if (window.attachEvent) {
+	window.attachEvent("onload", initSearch); }
+
+function initSearch() {
+	// check for quick search table and searchfield
+	if (!document.getElementById('qs_table')||!document.getElementById('quicksearch')) { return; }
+
+	// load all the rows and sort into arrays
+	loadTableData();
+	
+	//find the query field
+	qsfield = document.getElementById('qs_field');
+
+	// previous search term; used for speed optimisation
+	prevSearch = '';
+
+	//find statistics location
+	stats = document.getElementById('stat');
+	setStatistics(-1);
+	
+	// set up preferences
+	initPreferences();
+
+	// shows the searchfield
+	document.getElementById('quicksearch').style.display = 'block';
+	document.getElementById('qs_field').onkeyup = quickSearch;
+}
+
+function loadTableData() {
+	// find table and appropriate rows
+	searchTable = document.getElementById('qs_table');
+	var allRows = searchTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+	// split all rows into entryRows and infoRows (e.g. abstract, review, bibtex)
+	entryRows = new Array();
+
+	// get data from each row
+	entryRowsData = new Array();
+	
+	BibTeXKeys = new Array();
+	
+	for (var i=0, k=0, j=0; i<allRows.length;i++) {
+		if (allRows[i].className.match(/entry/)) {
+			entryRows[j] = allRows[i];
+			entryRowsData[j] = stripDiacritics(getTextContent(allRows[i]));
+			allRows[i].id ? BibTeXKeys[j] = allRows[i].id : allRows[i].id = 'autokey_'+j;
+			j ++;
+		}
+	}
+	//number of entries and rows
+	numEntries = entryRows.length;
+}
+
+function quickSearch(){
+	
+	tInput = qsfield;
+
+	if (tInput.value.length == 0) {
+		showAll();
+		setStatistics(-1);
+		qsfield.className = '';
+		return;
+	} else {
+		t = stripDiacritics(tInput.value);
+
+		if(!searchRegExp) { t = escapeRegExp(t); }
+			
+		// only search for valid RegExp
+		try {
+			textRegExp = new RegExp(t,"i");
+			qsfield.className = '';
+		}
+			catch(err) {
+			prevSearch = tInput.value;
+			qsfield.className = 'invalidsearch';
+			return;
+		}
+	}
+	
+	// count number of hits
+	var hits = 0;
+
+	// start looping through all entry rows
+	for (var i = 0; cRow = entryRows[i]; i++){
+
+		// only show search the cells if it isn't already hidden OR if the search term is getting shorter, then search all
+		if(cRow.className.indexOf('noshow')==-1 || tInput.value.length <= prevSearch.length){
+			var found = false; 
+
+			if (entryRowsData[i].search(textRegExp) != -1 || BibTeXKeys[i].search(textRegExp) != -1){ 
+				found = true;
+			}
+			
+			if (found){
+				cRow.className = 'entry show';
+				hits++;
+			} else {
+				cRow.className = 'entry noshow';
+			}
+		}
+	}
+
+	// update statistics
+	setStatistics(hits)
+	
+	// set previous search value
+	prevSearch = tInput.value;
+}
+
+
+// Strip Diacritics from text
+// http://stackoverflow.com/questions/990904/javascript-remove-accents-in-strings
+
+// String containing replacement characters for stripping accents 
+var stripstring = 
+    'AAAAAAACEEEEIIII'+
+    'DNOOOOO.OUUUUY..'+
+    'aaaaaaaceeeeiiii'+
+    'dnooooo.ouuuuy.y'+
+    'AaAaAaCcCcCcCcDd'+
+    'DdEeEeEeEeEeGgGg'+
+    'GgGgHhHhIiIiIiIi'+
+    'IiIiJjKkkLlLlLlL'+
+    'lJlNnNnNnnNnOoOo'+
+    'OoOoRrRrRrSsSsSs'+
+    'SsTtTtTtUuUuUuUu'+
+    'UuUuWwYyYZzZzZz.';
+
+function stripDiacritics(str){
+
+    if(noSquiggles==false){
+        return str;
+    }
+
+    var answer='';
+    for(var i=0;i<str.length;i++){
+        var ch=str[i];
+        var chindex=ch.charCodeAt(0)-192;   // Index of character code in the strip string
+        if(chindex>=0 && chindex<stripstring.length){
+            // Character is within our table, so we can strip the accent...
+            var outch=stripstring.charAt(chindex);
+            // ...unless it was shown as a '.'
+            if(outch!='.')ch=outch;
+        }
+        answer+=ch;
+    }
+    return answer;
+}
+
+// http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+// NOTE: must escape every \ in the export code because of the JabRef Export...
+function escapeRegExp(str) {
+  return str.replace(/[-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
+
+function setStatistics (hits) {
+	if(hits < 0) { hits=numEntries; }
+	if(stats) { stats.firstChild.data = hits + '/' + numEntries}
+}
+
+function getTextContent(node) {
+	// Function written by Arve Bersvendsen
+	// http://www.virtuelvis.com
+	
+	if (node.nodeType == 3) {
+	return node.nodeValue;
+	} // text node
+	if (node.nodeType == 1 && node.className != "infolinks") { // element node
+	var text = [];
+	for (var chld = node.firstChild;chld;chld=chld.nextSibling) {
+		text.push(getTextContent(chld));
+	}
+	return text.join("");
+	} return ""; // some other node, won't contain text nodes.
+}
+
+function showAll(){
+	for (var i = 0; i < numEntries; i++){ entryRows[i].className = 'entry show'; }
+}
+
+function clearQS() {
+	qsfield.value = '';
+	showAll();
+}
+
+function redoQS(){
+	showAll();
+	quickSearch(qsfield);
+}
+
+function updateSetting(obj){
+	var option = obj.id;
+	var checked = obj.value;
+
+	switch(option)
+	 {
+	 case "opt_useRegExp":
+	   searchRegExp=!searchRegExp;
+	   redoQS();
+	   break;
+	 case "opt_noAccents":
+	   noSquiggles=!noSquiggles;
+	   loadTableData();
+	   redoQS();
+	   break;
+	 }
+}
+
+function initPreferences(){
+	if(noSquiggles){document.getElementById("opt_noAccents").checked = true;}
+	if(searchRegExp){document.getElementById("opt_useRegExp").checked = true;}
+}
+
+function toggleSettings(){
+	var togglebutton = document.getElementById('showsettings');
+	var settings = document.getElementById('settings');
+	
+	if(settings.className == "hidden"){
+		settings.className = "show";
+		togglebutton.innerText = "close settings";
+		togglebutton.textContent = "close settings";
+	}else{
+		settings.className = "hidden";
+		togglebutton.innerText = "settings...";		
+		togglebutton.textContent = "settings...";
+	}
+}
+
+-->
+</script>
+<style type="text/css">
+body { background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.2; padding: 1em; color: #2E2E2E; margin: auto 2em; }
+
+form#quicksearch { width: auto; border-style: solid; border-color: gray; border-width: 1px 0px; padding: 0.7em 0.5em; display:none; position:relative; }
+span#searchstat {padding-left: 1em;}
+
+div#settings { margin-top:0.7em; /* border-bottom: 1px transparent solid; background-color: #efefef; border: 1px grey solid; */ }
+div#settings ul {margin: 0; padding: 0; }
+div#settings li {margin: 0; padding: 0 1em 0 0; display: inline; list-style: none; }
+div#settings li + li { border-left: 2px #efefef solid; padding-left: 0.5em;}
+div#settings input { margin-bottom: 0px;}
+
+div#settings.hidden {display:none;}
+
+#showsettings { border: 1px grey solid; padding: 0 0.5em; float:right; line-height: 1.6em; text-align: right; }
+#showsettings:hover { cursor: pointer; }
+
+.invalidsearch { background-color: red; }
+input[type="button"] { background-color: #efefef; border: 1px #2E2E2E solid;}
+
+table { width: 100%; empty-cells: show; border-spacing: 0em 0.2em; margin: 1em 0em; border-style: none; }
+th, td { border: 1px gray solid; border-width: 1px 1px; padding: 0.5em; vertical-align: top; text-align: left; }
+th { background-color: #efefef; }
+td + td, th + th { border-left: none; }
+
+td a { color: navy; text-decoration: none; }
+td a:hover  { text-decoration: underline; }
+
+tr.noshow { display: none;}
+tr.highlight td { background-color: #EFEFEF; border-top: 2px #2E2E2E solid; font-weight: bold; }
+tr.abstract td, tr.review td, tr.bibtex td { background-color: #EFEFEF; text-align: justify; border-bottom: 2px #2E2E2E solid; }
+tr.nextshow td { border-bottom: 1px gray solid; }
+
+tr.bibtex pre { width: 100%; overflow: auto; white-space: pre-wrap;}
+p.infolinks { margin: 0.3em 0em 0em 0em; padding: 0px; }
+
+@media print {
+	p.infolinks, #qs_settings, #quicksearch, t.bibtex { display: none !important; }
+	tr { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<form action="" id="quicksearch">
+<input type="text" id="qs_field" autocomplete="off" placeholder="Type to search..." /> <input type="button" onclick="clearQS()" value="clear" />
+<span id="searchstat">Matching entries: <span id="stat">0</span></span>
+<div id="showsettings" onclick="toggleSettings()">settings...</div>
+<div id="settings" class="hidden">
+<ul>
+<li><input type="checkbox" class="search_setting" id="opt_useRegExp" onchange="updateSetting(this)"><label for="opt_useRegExp"> use RegExp</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_noAccents" onchange="updateSetting(this)"><label for="opt_noAccents"> ignore accents</label></li>
+</ul>
+</div>
+</form>
+<table id="qs_table" border="1">
+<thead><tr><th width="20%">Author</th><th width="30%">Title</th><th width="5%">Year</th><th width="30%">Journal/Proceedings</th><th width="10%">Reftype</th><th width="5%">DOI/URL</th></tr></thead>
+<tbody><tr id="adami2006robots" class="entry">
+	<td>Adami, C.</td>
+	<td>What do robots dream of?</td>
+	<td>2006</td>
+	<td>Science<br/>Vol. 314(5802), pp. 1093-1094&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="altenberg1994evolving" class="entry">
+	<td>Altenberg, L.</td>
+	<td>Evolving better representations through selective genome growth</td>
+	<td>1994</td>
+	<td>Evolutionary Computation, 1994. IEEE World Congress on Computational Intelligence., Proceedings of the First IEEE Conference on, pp. 182-187&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="anderson1989learning" class="entry">
+	<td>Anderson, C.W.</td>
+	<td>Learning to control an inverted pendulum using neural networks</td>
+	<td>1989</td>
+	<td>Control Systems Magazine, IEEE<br/>Vol. 9(3), pp. 31-37&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="angeline1995morphogenic" class="entry">
+	<td>Angeline, P.J.</td>
+	<td>Morphogenic Evolutionary Computations: Introduction, Issues and Example.</td>
+	<td>1995</td>
+	<td>Evolutionary Programming, pp. 387-401&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="angeline1994evolutionary" class="entry">
+	<td>Angeline, P.J., Saunders, G.M. and Pollack, J.B.</td>
+	<td>An evolutionary algorithm that constructs recurrent neural networks</td>
+	<td>1994</td>
+	<td>Neural Networks, IEEE Transactions on<br/>Vol. 5(1), pp. 54-65&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="auerbach2014environmental" class="entry">
+	<td>Auerbach, J.E. and Bongard, J.C.</td>
+	<td>Environmental influence on the evolution of morphological complexity in machines</td>
+	<td>2014</td>
+	<td>&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="auerbach2012relationship" class="entry">
+	<td>Auerbach, J.E. and Bongard, J.C.</td>
+	<td>On the relationship between environmental and mechanical complexity in evolved robots</td>
+	<td>2012</td>
+	<td>(EPFL-CONF-191280)Artificial Life 13, pp. 309-316&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="auerbach2011evolving" class="entry">
+	<td>Auerbach, J.E. and Bongard, J.C.</td>
+	<td>Evolving complete robots with CPPN-NEAT: the utility of recurrent connections</td>
+	<td>2011</td>
+	<td>Proceedings of the 13th annual conference on Genetic and evolutionary computation, pp. 1475-1482&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="augustsson2002creation" class="entry">
+	<td>Augustsson, P., Wolff, K. and Nordin, P.</td>
+	<td>Creation Of A Learning, Flying Robot By Means Of Evolution.</td>
+	<td>2002</td>
+	<td>GECCO, pp. 1279-1285&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="baele2009open" class="entry">
+	<td>Baele, G., Bredeche, N., Haasdijk, E., Maere, S., Michiels, N., Van de Peer, Y., Schmickl, T., Schwarzer, C. and Thenius, R.</td>
+	<td>Open-ended on-board evolutionary robotics for robot swarms</td>
+	<td>2009</td>
+	<td>Evolutionary Computation, 2009. CEC'09. IEEE Congress on, pp. 1123-1130&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="baldassarre2007self" class="entry">
+	<td>Baldassarre, G., Trianni, V., Bonani, M., Mondada, F., Dorigo, M. and Nolfi, S.</td>
+	<td>Self-organized coordinated motion in groups of physically connected robots</td>
+	<td>2007</td>
+	<td>Systems, Man, and Cybernetics, Part B: Cybernetics, IEEE Transactions on<br/>Vol. 37(1), pp. 224-239&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="banzhaf1997generating" class="entry">
+	<td>Banzhaf, W., Nordin, P. and Olmer, M.</td>
+	<td>Generating adaptive behavior using function regression within genetic programming and a real robot</td>
+	<td>1997</td>
+	<td>2nd International Conference on Genetic Programming, Stanford&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="barlow2005transference" class="entry">
+	<td>Barlow, G.J., Mattos, L.S., Grant, E. and Oh, C.K.</td>
+	<td>Transference of evolved unmanned aerial vehicle controllers to a wheeled mobile robot</td>
+	<td>2005</td>
+	<td>Robotics and Automation, 2005. ICRA 2005. Proceedings of the 2005 IEEE International Conference on, pp. 2087-2092&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="barto1983neuronlike" class="entry">
+	<td>Barto, A.G., Sutton, R.S. and Anderson, C.W.</td>
+	<td>Neuronlike adaptive elements that can solve difficult learning control problems</td>
+	<td>1983</td>
+	<td>Systems, Man and Cybernetics, IEEE Transactions on(5), pp. 834-846&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="batut2013silico" class="entry">
+	<td>Batut, B&eacute;., Parsons, D.P., Fischer, S., Beslon, G. and Knibbe, C.</td>
+	<td>In silico experimental evolution: a tool to test evolutionary scenarios</td>
+	<td>2013</td>
+	<td>BMC bioinformatics<br/>Vol. 14(Suppl 15), pp. S11&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="belew1993evolving" class="entry">
+	<td>Belew, R.K. and Kammeyer, T.E.</td>
+	<td>Evolving Aesthetic Sorting Networks Using Developmental Grammars.</td>
+	<td>1993</td>
+	<td>ICGA, pp. 629&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bell2009evolutions" class="entry">
+	<td>Bell, A., Pace, A. and Santos, R.</td>
+	<td>Evolutions of communication</td>
+	<td>2009</td>
+	<td>Swarthmore College CS Department. Retrieved March<br/>Vol. 23, pp. 2012&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bentley1999three" class="entry">
+	<td>Bentley, P.J. and Kumar, S.</td>
+	<td>Three Ways to Grow Designs: A Comparison of Embryogenies for an Evolutionary Design Problem.</td>
+	<td>1999</td>
+	<td><br/>Vol. 99GECCO, pp. 35-43&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="Bianco04towardopen-ended" class="entry">
+	<td>Bianco, R. and Nolfi, S.</td>
+	<td>Toward open-ended evolutionary robotics: evolving elementary robotic units able to self-assemble and self-reproduce</td>
+	<td>2004</td>
+	<td>Connection Science<br/>Vol. 4, pp. 227-248&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bianco2004evolving" class="entry">
+	<td>Bianco, R. and Nolfi, S.</td>
+	<td>Evolving the neural controller for a robotic arm able to grasp objects on the basis of tactile sensors</td>
+	<td>2004</td>
+	<td>Adaptive Behavior<br/>Vol. 12(1), pp. 37-45&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="boddhu2009evolving" class="entry">
+	<td>Boddhu, S.K. and Gallagher, J.C.</td>
+	<td>Evolving non-autonomous neuromorphic flight control for a flapping-wing mechanical insect</td>
+	<td>2009</td>
+	<td>Evolvable and Adaptive Hardware, 2009. WEAH'09. IEEE Workshop on, pp. 9-16&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="boeing2004evolving" class="entry">
+	<td>Boeing, A., Hanham, S. and Braunl, T.</td>
+	<td>Evolving autonomous biped control from simulation to reality</td>
+	<td>2004</td>
+	<td>Proceedings of the 2nd International Conference on Autonomous Robots and Agents, Palmerston North, New Zealand, pp. 13-15&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bongard2011morphological" class="entry">
+	<td>Bongard, J.</td>
+	<td>Morphological change in machines accelerates the evolution of robust behavior</td>
+	<td>2011</td>
+	<td>Proceedings of the National Academy of Sciences<br/>Vol. 108(4), pp. 1234-1239&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bongard2010utility" class="entry">
+	<td>Bongard, J.</td>
+	<td>The utility of evolving simulated robot morphology increases with task complexity for object manipulation</td>
+	<td>2010</td>
+	<td>Artificial life<br/>Vol. 16(3), pp. 201-223&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bongard2002evolving" class="entry">
+	<td>Bongard, J.</td>
+	<td>Evolving modular genetic regulatory networks</td>
+	<td>2002</td>
+	<td><br/>Vol. 2Computational Intelligence, Proceedings of the World on Congress on, pp. 1872-1877&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bongard2005active" class="entry">
+	<td>Bongard, J. and Lipson, H.</td>
+	<td>Active coevolutionary learning of deterministic finite automata</td>
+	<td>2005</td>
+	<td>The Journal of Machine Learning Research<br/>Vol. 6, pp. 1651-1678&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bongard2006automated" class="entry">
+	<td>Bongard, J., Zykov, V. and Lipson, H.</td>
+	<td>Automated synthesis of body schema using multiple sensor modalities</td>
+	<td>2006</td>
+	<td>Proc. of the Int. Conf. on the Simulation and Synthesis of Living Systems (ALIFEX)&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bongard2006resilient" class="entry">
+	<td>Bongard, J., Zykov, V. and Lipson, H.</td>
+	<td>Resilient machines through continuous self-modeling</td>
+	<td>2006</td>
+	<td>Science<br/>Vol. 314(5802), pp. 1118-1121&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bongard2013combining" class="entry">
+	<td>Bongard, J.C. and Hornby, G.S.</td>
+	<td>Combining fitness-based search and user modeling in evolutionary robotics</td>
+	<td>2013</td>
+	<td>Proceedings of the 15th annual conference on Genetic and evolutionary computation, pp. 159-166&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bongard2004automated" class="entry">
+	<td>Bongard, J.C. and Lipson, H.</td>
+	<td>Automated damage diagnosis and recovery for remote robotics</td>
+	<td>2004</td>
+	<td><br/>Vol. 4Robotics and Automation, 2004. Proceedings. ICRA'04. 2004 IEEE International Conference on, pp. 3545-3550&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bongard2000investigating" class="entry">
+	<td>Bongard, J.C. and Paul, C.</td>
+	<td>Investigating Morphological Symmetry and Locomotive Efficiency using Virtual Embodied Evolution</td>
+	<td>2000</td>
+	<td>J.—A. Meyer, A. Berthoz, D. Floreano, H. Roit—blat, and SW Wilson, editors, From Animals to Animats: The Sixth International Confer—ence on the Simulation of Adaptive Behaviour, pp. 420-429&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bredeche2014embodied" class="entry">
+	<td>Bredeche, N.</td>
+	<td>Embodied evolutionary robotics with large number of robots</td>
+	<td>2014</td>
+	<td><br/>Vol. 14ALIFE 14: The Fourteenth Conference on the Synthesis and Simulation of Living Systems, pp. 272-273&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bredeche2005evolutionary" class="entry">
+	<td>Bredeche, N. and Hugues, L.</td>
+	<td>Evolutionary Robotics: incremental learning of sequential behavior</td>
+	<td>2005</td>
+	<td>Development and Learning, 2005. Proceedings., The 4th International Conference on, pp. 128-128&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bredeche2012environment" class="entry">
+	<td>Bredeche, N., Montanier, J.-M., Liu, W. and Winfield, A.F.</td>
+	<td>Environment-driven distributed evolutionary adaptation in a population of autonomous robotic agents</td>
+	<td>2012</td>
+	<td>Mathematical and Computer Modelling of Dynamical Systems<br/>Vol. 18(1), pp. 101-129&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bryson2013understanding" class="entry">
+	<td>Bryson, D.M. and Ofria, C.</td>
+	<td>Understanding evolutionary potential in virtual CPU instruction set architectures</td>
+	<td>2013</td>
+	<td>&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="cheney2014evolved" class="entry">
+	<td>Cheney, N., Clune, J. and Lipson, H.</td>
+	<td>Evolved electrophysiological soft robots</td>
+	<td>2014</td>
+	<td><br/>Vol. 14ALIFE 14: The Fourteenth Conference on the Synthesis and Simulation of Living Systems, pp. 222-229&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="cheney2013unshackling" class="entry">
+	<td>Cheney, N., MacCurdy, R., Clune, J. and Lipson, H.</td>
+	<td>Unshackling evolution: evolving soft robots with multiple materials and a powerful generative encoding</td>
+	<td>2013</td>
+	<td>Proceedings of the 15th annual conference on Genetic and evolutionary computation, pp. 167-174&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="chklovskii2004maps" class="entry">
+	<td>Chklovskii, D.B. and Koulakov, A.A.</td>
+	<td>Maps in the brain: what can we learn from them?</td>
+	<td>2004</td>
+	<td>Annu. Rev. Neurosci.<br/>Vol. 27, pp. 369-392&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="churchland1989some" class="entry">
+	<td>Churchland, P.M.</td>
+	<td>Some reductive strategies in cognitive neurobiology</td>
+	<td>1989</td>
+	<td>Rerepresentation, pp. 223-253&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="cliff1993explorations" class="entry">
+	<td>Cliff, D., Husbands, P. and Harvey, I.</td>
+	<td>Explorations in evolutionary robotics</td>
+	<td>1993</td>
+	<td>Adaptive behavior<br/>Vol. 2(1), pp. 73-110&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="clune2010investigating" class="entry">
+	<td>Clune, J., Beckmann, B.E., McKinley, P.K. and Ofria, C.</td>
+	<td>Investigating whether hyperneat produces modular neural networks</td>
+	<td>2010</td>
+	<td>Proceedings of the 12th annual conference on Genetic and evolutionary computation, pp. 635-642&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="clune2009evolving" class="entry">
+	<td>Clune, J., Beckmann, B.E., Ofria, C. and Pennock, R.T.</td>
+	<td>Evolving coordinated quadruped gaits with the HyperNEAT generative encoding</td>
+	<td>2009</td>
+	<td>Evolutionary Computation, 2009. CEC'09. IEEE Congress on, pp. 2764-2771&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="clune2013evolutionary" class="entry">
+	<td>Clune, J., Mouret, J.-B. and Lipson, H.</td>
+	<td>The evolutionary origins of modularity</td>
+	<td>2013</td>
+	<td>Proceedings of the Royal Society of London B: Biological Sciences<br/>Vol. 280(1755), pp. 20122863&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="clune2011performance" class="entry">
+	<td>Clune, J., Stanley, K.O., Pennock, R.T. and Ofria, C.</td>
+	<td>On the performance of indirect encoding across the continuum of regularity</td>
+	<td>2011</td>
+	<td>Evolutionary Computation, IEEE Transactions on<br/>Vol. 15(3), pp. 346-367&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="coello2006evolutionary" class="entry">
+	<td>Coello Coello, C.A.</td>
+	<td>Evolutionary multi-objective optimization: a historical view of the field</td>
+	<td>2006</td>
+	<td>Computational Intelligence Magazine, IEEE<br/>Vol. 1(1), pp. 28-36&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="coleman2014automated" class="entry">
+	<td>Coleman, O.J., Blair, A.D. and Clune, J.</td>
+	<td>Automated generation of environments to test the general learning capabilities of AI agents</td>
+	<td>2014</td>
+	<td>Proceedings of the 2014 conference on Genetic and evolutionary computation, pp. 161-168&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="conley2005evolving" class="entry">
+	<td>Conley, J.F.</td>
+	<td>Evolving boids: Using a genetic algorithm to develop boid behaviors</td>
+	<td>2005</td>
+	<td>Proceedings of the 8th International Conference on GeoComputation (Geo-Computation 2005)&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="cuccu2011novelty" class="entry">
+	<td>Cuccu, G. and Gomez, F.</td>
+	<td>When novelty is not enough</td>
+	<td>2011</td>
+	<td>Applications of evolutionary computation, pp. 234-243&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="cussat2012cell" class="entry">
+	<td>Cussat-Blanc, S. and Pollack, J.</td>
+	<td>A cell-based developmental model to generate robot morphologies</td>
+	<td>2012</td>
+	<td>Proceedings of the 14th annual conference on Genetic and evolutionary computation, pp. 537-544&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="dawkins1996blind" class="entry">
+	<td>Dawkins, R.</td>
+	<td>The blind watchmaker: Why the evidence of evolution reveals a universe without design</td>
+	<td>1996</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="de2013evolutionary" class="entry">
+	<td>De Croon, G., O'connor, L., Nicol, C. and Izzo, D.</td>
+	<td>Evolutionary robotics approach to odor source localization</td>
+	<td>2013</td>
+	<td>Neurocomputing<br/>Vol. 121, pp. 481-497&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="delarboulas2010open" class="entry">
+	<td>Delarboulas, P., Schoenauer, M. and Sebag, M.</td>
+	<td>Open-ended evolutionary robotics: an information theoretic approach</td>
+	<td>2010</td>
+	<td>Parallel Problem Solving from Nature, PPSN XI, pp. 334-343&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="dellaert1995toward" class="entry">
+	<td>Dellaert, F.</td>
+	<td>Toward a biologically defensible model of development</td>
+	<td>1995</td>
+	<td><i>School</i>: Case Western Reserve University&nbsp;</td>
+	<td>phdthesis</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="dellaert1996developmental" class="entry">
+	<td>Dellaert, F. and Beer, R.D.</td>
+	<td>A developmental model for the evolution of complete autonomous agents</td>
+	<td>1996</td>
+	<td>From animals to animats<br/>Vol. 4, pp. 393-401&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="deloukas1998physical" class="entry">
+	<td>Deloukas, P., Schuler, G., Gyapay, G., Beasley, E., Soderlund, C., Rodriguez-Tome, P., Hui, L., Matise, T., McKusick, K., Beckmann, J. and others</td>
+	<td>A physical map of 30,000 human genes</td>
+	<td>1998</td>
+	<td>Science<br/>Vol. 282(5389), pp. 744-746&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="dias2010hw" class="entry">
+	<td>Dias, M.A., Sales, D.O. and Osorio, F.S.</td>
+	<td>Hw/sw co-design architecture for evolutionary robotics</td>
+	<td>2010</td>
+	<td>Robotics Symposium and Intelligent Robotic Meeting (LARS), 2010 Latin American, pp. 43-48&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="dias2010profile" class="entry">
+	<td>Dias, M.A., Sales, D.O. and Osorio, F.S.</td>
+	<td>A profile-based method for hardware/software co-design applied in evolutionary robotics using reconfigurable computing</td>
+	<td>2010</td>
+	<td>Electronics, Robotics and Automotive Mechanics Conference (CERMA), 2010, pp. 463-468&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="doncieux2015evolutionary" class="entry">
+	<td>Doncieux, S., Bredeche, N., Mouret, J.-B. and Eiben, A.E.G.</td>
+	<td>Evolutionary robotics: what, why, and where to</td>
+	<td>2015</td>
+	<td>Frontiers in Robotics and AI<br/>Vol. 2, pp. 4&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="doncieux2004evolving" class="entry">
+	<td>Doncieux, S. and Meyer, J.-A.</td>
+	<td>Evolving modular neural networks to solve challenging control problems</td>
+	<td>2004</td>
+	<td>Proceedings of the Fourth International ICSC Symposium on engineering of intelligent systems (EIS 2004)&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="doncieux2014beyond" class="entry">
+	<td>Doncieux, S. and Mouret, J.-B.</td>
+	<td>Beyond black-box optimization: a review of selective pressures for evolutionary robotics</td>
+	<td>2014</td>
+	<td>Evolutionary Intelligence<br/>Vol. 7(2), pp. 71-93&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="doncieux2010behavioral" class="entry">
+	<td>Doncieux, S. and Mouret, J.-B.</td>
+	<td>Behavioral diversity measures for evolutionary robotics</td>
+	<td>2010</td>
+	<td>Evolutionary Computation (CEC), 2010 IEEE Congress on, pp. 1-8&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="doncieux2011evolutionary" class="entry">
+	<td>Doncieux, S., Mouret, J.-B., Bredeche, N. and Padois, V.</td>
+	<td>Evolutionary robotics: Exploring new horizons</td>
+	<td>2011</td>
+	<td>New Horizons in Evolutionary Robotics, pp. 3-25&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="eaton2008further" class="entry">
+	<td>Eaton, M.</td>
+	<td>Further explorations in evolutionary humanoid robotics</td>
+	<td>2008</td>
+	<td>Artificial Life and Robotics<br/>Vol. 12(1-2), pp. 133-137&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="eaton2007evolutionary" class="entry">
+	<td>Eaton, M.</td>
+	<td>Evolutionary humanoid robotics: past, present and future</td>
+	<td>2007</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="edlund2011integrated" class="entry">
+	<td>Edlund, J.A., Chaumont, N., Hintze, A., Koch, C., Tononi, G. and Adami, C.</td>
+	<td>Integrated information increases with fitness in the evolution of animats</td>
+	<td>2011</td>
+	<td>PLoS computational biology<br/>Vol. 7(10), pp. e1002236&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="eggenberger1997evolving" class="entry">
+	<td>Eggenberger, P.</td>
+	<td>Evolving morphologies of simulated 3D organisms based on differential gene expression</td>
+	<td>1997</td>
+	<td>Proceedings of the fourth european conference on Artificial Life, pp. 205-213&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="eiben2010self" class="entry">
+	<td>Eiben, A., Karafotias, G. and Haasdijk, E.</td>
+	<td>Self-adaptive mutation in on-line, on-board evolutionary robotics</td>
+	<td>2010</td>
+	<td>Self-Adaptive and Self-Organizing Systems Workshop (SASOW), 2010 Fourth IEEE International Conference on, pp. 147-152&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="eiben2003introduction" class="entry">
+	<td>Eiben, A.E. and Smith, J.E.</td>
+	<td>Introduction to evolutionary computing</td>
+	<td>2003</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="espinosa2010specialization" class="entry">
+	<td>Espinosa-Soto, C. and Wagner, A.</td>
+	<td>Specialization can drive the evolution of modularity</td>
+	<td>2010</td>
+	<td>PLoS Comput Biol<br/>Vol. 6(3), pp. e1000719&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="federici2004evolving" class="entry">
+	<td>Federici, D.</td>
+	<td>Evolving a neurocontroller through a process of embryogeny</td>
+	<td>2004</td>
+	<td>Proceedings of the Eighth International Conference on Simulation and Adaptive Behavior (SAB-2004), pp. 373-384&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="federici2004using" class="entry">
+	<td>Federici, D.</td>
+	<td>Using embryonic stages to increase the evolvability of development</td>
+	<td>2004</td>
+	<td>proceedings of WORLDS Workshop on Regeneration and Learning in Developmental Systems, hosted by GECCO&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="ficici1999embodied" class="entry">
+	<td>Ficici, S.G., Watson, R.A. and Pollack, J.B.</td>
+	<td>Embodied evolution: A response to challenges in evolutionary robotics</td>
+	<td>1999</td>
+	<td>Proceedings of the eighth European workshop on learning robots, pp. 14-22&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="floreano1998evolutionary" class="entry">
+	<td>Floreano, D.</td>
+	<td>Evolutionary robotics in behavior engineering and artificial life</td>
+	<td>1998</td>
+	<td>Evolutionary robotics: From intelligent robots to artificial life: Applied AI systems. Evolutionary Robotics Symposium Ontario (Canada): AAI Books&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="Floreano2007" class="entry">
+	<td>Floreano, D., Husbands, P. and Nolfi, S.</td>
+	<td>Evolutionary Robotics</td>
+	<td>2007</td>
+	<td>HANDBOOK OF ROBOTICS, CHAPTER 61:&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="floreano2010evolution" class="entry">
+	<td>Floreano, D. and Keller, L.</td>
+	<td>Evolution of adaptive behaviour in robots by means of Darwinian selection</td>
+	<td>2010</td>
+	<td>PLoS Biol<br/>Vol. 8(1), pp. e1000292&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="floreano2008bio" class="entry">
+	<td>Floreano, D. and Mattiussi, C.</td>
+	<td>Bio-inspired artificial intelligence: theories, methods, and technologies</td>
+	<td>2008</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="floreano2007evolutionary" class="entry">
+	<td>Floreano, D., Mitri, S., Magnenat, S. and Keller, L.</td>
+	<td>Evolutionary conditions for the emergence of communication in robots</td>
+	<td>2007</td>
+	<td>Current biology<br/>Vol. 17(6), pp. 514-519&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="floreano1998hardware" class="entry">
+	<td>Floreano, D. and Mondada, F.</td>
+	<td>Hardware solutions for evolutionary robotics</td>
+	<td>1998</td>
+	<td>Evolutionary Robotics, pp. 137-151&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="floreano1996evolution" class="entry">
+	<td>Floreano, D. and Mondada, F.</td>
+	<td>Evolution of homing navigation in a real mobile robot</td>
+	<td>1996</td>
+	<td>Systems, Man, and Cybernetics, Part B: Cybernetics, IEEE Transactions on<br/>Vol. 26(3), pp. 396-407&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="floreano1997god" class="entry">
+	<td>Floreano, D. and Nolfi, S.</td>
+	<td>God save the red queen! Competition in co-evolutionary robotics</td>
+	<td>1997</td>
+	<td>(LIS-CONF-1997-002)2nd Conference on Genetic Programming&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="floreano1998competitive" class="entry">
+	<td>Floreano, D., Nolfi, S. and Mondada, F.</td>
+	<td>Competitive co-evolutionary robotics: From theory to practice</td>
+	<td>1998</td>
+	<td><br/>Vol. 4(LIS-CONF-1998-002)Proceedings of the fifth international conference on simulation of adaptive behavior, From Animals to Animats 5, pp. 515-524&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="Floreano2000" class="entry">
+	<td>Floreano, D. and Urzelai, J.</td>
+	<td>Evolutionary robots with on-line self-organization and behavioral fitness</td>
+	<td>2000</td>
+	<td>Neural Networks<br/>Vol. 13(4), pp. 431-443&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="floreano2000evolutionary" class="entry">
+	<td>Floreano, D. and Urzelai, J.</td>
+	<td>Evolutionary robotics: The next generation</td>
+	<td>2000</td>
+	<td>&nbsp;</td>
+	<td>techreport</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="fogel2001blondie24" class="entry">
+	<td>Fogel, D.B.</td>
+	<td>Blondie24: Playing at the Edge of AI</td>
+	<td>2001</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="fogel1998evolutionary" class="entry">
+	<td>Fogel, D.B.</td>
+	<td>Evolutionary computation: the fossil record</td>
+	<td>1998</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="frutiger2002iterative" class="entry">
+	<td>Frutiger, D.R., Bongard, J.C. and Iida, F.</td>
+	<td>Iterative product engineering: Evolutionary robot design</td>
+	<td>2002</td>
+	<td>Proceedings of the fifth international conference on climbing and walking robots, pp. 619-629&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="gilbert1992receptive" class="entry">
+	<td>Gilbert, C.D. and Wiesel, T.N.</td>
+	<td>Receptive field dynamics in adult primary visual cortex</td>
+	<td>1992</td>
+	<td>&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="givigi2005evolutionary" class="entry">
+	<td>Givigi, S. and Schwartz, H.M.</td>
+	<td>Evolutionary swarm intelligence applied to robotics</td>
+	<td>2005</td>
+	<td><br/>Vol. 2Mechatronics and Automation, 2005 IEEE International Conference, pp. 1005-1010&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="glette2012evolution" class="entry">
+	<td>Glette, K., Klaus, G., Zagal, J.C. and Torresen, J.</td>
+	<td>Evolution of locomotion in a simulated quadruped robot and transferral to reality</td>
+	<td>2012</td>
+	<td>Proceedings of the Seventeenth International Symposium on Artificial Life and Robotics, pp. 1-4&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="goldberg1987genetic" class="entry">
+	<td>Goldberg, D.E. and Richardson, J.</td>
+	<td>Genetic algorithms with sharing for multimodal function optimization</td>
+	<td>1987</td>
+	<td>Genetic algorithms and their applications: Proceedings of the Second International Conference on Genetic Algorithms, pp. 41-49&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="gomes2013generic" class="entry">
+	<td>Gomes, J. and Christensen, A.L.</td>
+	<td>Generic behaviour similarity measures for evolutionary swarm robotics</td>
+	<td>2013</td>
+	<td>Proceedings of the 15th annual conference on Genetic and evolutionary computation, pp. 199-206&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="gomes2013evolution" class="entry">
+	<td>Gomes, J., Urbano, P. and Christensen, A.L.</td>
+	<td>Evolution of swarm robotics systems with novelty search</td>
+	<td>2013</td>
+	<td>Swarm Intelligence<br/>Vol. 7(2-3), pp. 115-144&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="gomes2012introducing" class="entry">
+	<td>Gomes, J., Urbano, P. and Christensen, A.L.</td>
+	<td>Introducing novelty search in evolutionary swarm robotics</td>
+	<td>2012</td>
+	<td>Swarm Intelligence, pp. 85-96&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="gomez1999solving" class="entry">
+	<td>Gomez, F.J. and Miikkulainen, R.</td>
+	<td>Solving non-Markovian control tasks with neuroevolution</td>
+	<td>1999</td>
+	<td><br/>Vol. 99IJCAI, pp. 1356-1361&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="gomi1996evolutionary" class="entry">
+	<td>Gomi, T. and Griffith, A.</td>
+	<td>Evolutionary robotics-an overview</td>
+	<td>1996</td>
+	<td>Evolutionary Computation, 1996., Proceedings of IEEE International Conference on, pp. 40-49&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="grefenstette1994evolutionary" class="entry">
+	<td>Grefenstette, J.</td>
+	<td>Evolutionary algorithms in robotics,"</td>
+	<td>1994</td>
+	<td>International Symposium on Robotics and Manufacturing (ISRAM)&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="gruau1994neural" class="entry">
+	<td>Gruau, F. and others</td>
+	<td>Neural Network Synthesis using Cellular Encoding and the Genetic Algorithm.</td>
+	<td>1994</td>
+	<td>&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="gruau1997cellular" class="entry">
+	<td>Gruau, F. and Quatramaran, K.</td>
+	<td>Cellular encoding for interactive evolutionary robotics</td>
+	<td>1997</td>
+	<td>Fourth European Conference on Artificial Life, pp. 368-377&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="gruau1996comparison" class="entry">
+	<td>Gruau, F., Whitley, D. and Pyeatt, L.</td>
+	<td>A comparison between cellular encoding and direct encoding for genetic neural networks</td>
+	<td>1996</td>
+	<td>Proceedings of the 1st annual conference on genetic programming, pp. 81-89&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="haasdijk2011racing" class="entry">
+	<td>Haasdijk, E., Atta-ul-Qayyum, A. and Eiben, A.E.</td>
+	<td>Racing to improve on-line, on-board evolutionary robotics</td>
+	<td>2011</td>
+	<td>Proceedings of the 13th annual conference on Genetic and evolutionary computation, pp. 187-194&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="haasdijk2014combining" class="entry">
+	<td>Haasdijk, E., Bredeche, N. and Eiben, A.</td>
+	<td>Combining environment-driven adaptation and task-driven optimisation in evolutionary robotics</td>
+	<td>2014</td>
+	<td>PloS one<br/>Vol. 9(6), pp. e98466&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hamann2010hormone" class="entry">
+	<td>Hamann, H., Stradner, J&uuml;., Schmickl, T. and Crailsheim, K.</td>
+	<td>A hormone-based controller for evolutionary multi-modular robotics: From single modules to gait learning</td>
+	<td>2010</td>
+	<td>simulation<br/>Vol. 5, pp. 6&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hansen2001completely" class="entry">
+	<td>Hansen, N. and Ostermeier, A.</td>
+	<td>Completely derandomized self-adaptation in evolution strategies</td>
+	<td>2001</td>
+	<td>Evolutionary computation<br/>Vol. 9(2), pp. 159-195&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hart1994role" class="entry">
+	<td>Hart, W.E., Kammeyer, T.E., Belew, R.K. and others</td>
+	<td>The role of development in genetic algorithms</td>
+	<td>1994</td>
+	<td>Foundations of genetic algorithms<br/>Vol. 3, pp. 315-332&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hartland2009memory" class="entry">
+	<td>Hartland, C., Bredeche, N. and Sebag, M.</td>
+	<td>Memory-enhanced evolutionary robotics: the echo state network approach</td>
+	<td>2009</td>
+	<td>Evolutionary Computation, 2009. CEC'09. IEEE Congress on, pp. 2788-2795&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hartland2006evolutionary" class="entry">
+	<td>Hartland, C&eacute;. and Bredeche, N.</td>
+	<td>Evolutionary robotics, anticipation and the reality gap</td>
+	<td>2006</td>
+	<td>Robotics and Biomimetics, 2006. ROBIO'06. IEEE International Conference on, pp. 1640-1645&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="harvey1995artificial" class="entry">
+	<td>Harvey, I.</td>
+	<td>The artificial evolution of adaptive behaviour</td>
+	<td>1995</td>
+	<td><i>School</i>: Citeseer&nbsp;</td>
+	<td>phdthesis</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="harvey1992issues" class="entry">
+	<td>Harvey, I., Husbands, P., Cliff, D. and others</td>
+	<td>Issues in evolutionary robotics</td>
+	<td>1992</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="harvey1997evolutionary" class="entry">
+	<td>Harvey, I., Husbands, P., Cliff, D., Thompson, A. and Jakobi, N.</td>
+	<td>Evolutionary robotics: the Sussex approach</td>
+	<td>1997</td>
+	<td>Robotics and autonomous systems<br/>Vol. 20(2), pp. 205-224&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="harvey1996evolutionary" class="entry">
+	<td>Harvey, I., Husbands, P., Cliff, D., Thompson, A. and Jakobi, N.</td>
+	<td>Evolutionary robotics at Sussex</td>
+	<td>1996</td>
+	<td>Proc. Intl. Symposium on Robotics and Manufacturing&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hauert2009evolved" class="entry">
+	<td>Hauert, S., Zufferey, J.-C. and Floreano, D.</td>
+	<td>Evolved swarming without positioning information: an application in aerial communication relay</td>
+	<td>2009</td>
+	<td>Autonomous Robots<br/>Vol. 26(1), pp. 21-32&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hiller2010morphological" class="entry">
+	<td>Hiller, J.D. and Lipson, H.</td>
+	<td>Morphological evolution of freeform robots</td>
+	<td>2010</td>
+	<td>Proceedings of the 12th annual conference on Genetic and evolutionary computation, pp. 151-152&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hornby2002creating" class="entry">
+	<td>Hornby, G.S. and Pollack, J.B.</td>
+	<td>Creating high-level components with a generative representation for body-brain evolution</td>
+	<td>2002</td>
+	<td>Artificial life<br/>Vol. 8(3), pp. 223-246&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hornby2001advantages" class="entry">
+	<td>Hornby, G.S. and Pollack, J.B.</td>
+	<td>The advantages of generative grammatical encodings for physical design</td>
+	<td>2001</td>
+	<td><br/>Vol. 1Evolutionary Computation, 2001. Proceedings of the 2001 Congress on, pp. 600-607&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hornby2005autonomous" class="entry">
+	<td>Hornby, G.S., Takamura, S., Yamamoto, T. and Fujita, M.</td>
+	<td>Autonomous evolution of dynamic gaits with two quadruped robots</td>
+	<td>2005</td>
+	<td>Robotics, IEEE Transactions on<br/>Vol. 21(3), pp. 402-410&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hornby2000evolving" class="entry">
+	<td>Hornby, G.S., Takamura, S., Yokono, J., Hanagata, O., Yamamoto, T. and Fujita, M.</td>
+	<td>Evolving robust gaits with AIBO</td>
+	<td>2000</td>
+	<td><br/>Vol. 3Robotics and Automation, 2000. Proceedings. ICRA'00. IEEE International Conference on, pp. 3040-3045&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hu2010evolvability" class="entry">
+	<td>Hu, T. and Banzhaf, W.</td>
+	<td>Evolvability and speed of evolutionary algorithms in light of recent developments in biology</td>
+	<td>2010</td>
+	<td>Journal of Artificial Evolution and Applications<br/>Vol. 2010, pp. 1&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hubel1965receptive" class="entry">
+	<td>Hubel, D.H. and Wiesel, T.N.</td>
+	<td>Receptive fields and functional architecture in two nonstriate visual areas (18 and 19) of the cat</td>
+	<td>1965</td>
+	<td>Journal of neurophysiology<br/>Vol. 28(2), pp. 229-289&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="iida2011soft" class="entry">
+	<td>Iida, F. and Laschi, C.</td>
+	<td>Soft robotics: Challenges and perspectives</td>
+	<td>2011</td>
+	<td>Procedia Computer Science<br/>Vol. 7, pp. 99-102&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="izquierdo2008analysis" class="entry">
+	<td>Izquierdo, E. and B&uuml;hrmann, T.</td>
+	<td>Analysis of a Dynamical Recurrent Neural Network Evolved for Two Qualitatively Different Tasks: Walking and Chemotaxis.</td>
+	<td>2008</td>
+	<td>ALIFE, pp. 257-264&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="jakobi2003harnessing" class="entry">
+	<td>Jakobi, N.</td>
+	<td>Harnessing morphogenesis</td>
+	<td>2003</td>
+	<td>On growth, form and computers, pp. 392-404&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="jakobi1998minimal" class="entry">
+	<td>Jakobi, N.</td>
+	<td>Minimal simulations for evolutionary robotics</td>
+	<td>1998</td>
+	<td><i>School</i>: University of Sussex&nbsp;</td>
+	<td>phdthesis</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="jakobi1998running" class="entry">
+	<td>Jakobi, N.</td>
+	<td>Running across the reality gap: Octopod locomotion evolved in a minimal simulation</td>
+	<td>1998</td>
+	<td>Evolutionary Robotics, pp. 39-58&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="jakobi1997evolutionary" class="entry">
+	<td>Jakobi, N.</td>
+	<td>Evolutionary robotics and the radical envelope-of-noise hypothesis</td>
+	<td>1997</td>
+	<td>Adaptive behavior<br/>Vol. 6(2), pp. 325-368&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="jakobi1995noise" class="entry">
+	<td>Jakobi, N., Husbands, P. and Harvey, I.</td>
+	<td>Noise and the reality gap: The use of simulation in evolutionary robotics</td>
+	<td>1995</td>
+	<td>Advances in artificial life, pp. 704-720&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="jakobi1998some" class="entry">
+	<td>Jakobi, N. and Quinn, M.</td>
+	<td>Some problems (and a few solutions) for open-ended evolutionary robotics</td>
+	<td>1998</td>
+	<td>Evolutionary Robotics, pp. 108-122&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="jin2011morphogenetic" class="entry">
+	<td>Jin, Y. and Meng, Y.</td>
+	<td>Morphogenetic robotics: An emerging new field in developmental robotics</td>
+	<td>2011</td>
+	<td>Systems, Man, and Cybernetics, Part C: Applications and Reviews, IEEE Transactions on<br/>Vol. 41(2), pp. 145-160&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="juan2002survey" class="entry">
+	<td>Juan, L., Zixing, C. and Chunming, T.</td>
+	<td>A survey on evolutionary robotics</td>
+	<td>2002</td>
+	<td>Control Theory and Applications<br/>Vol. 19(4)&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="konig2010evolvability" class="entry">
+	<td>K&ouml;nig, L. and Schmeck, H.</td>
+	<td>Evolvability in Evolutionary Robotics: Evolving the Genotype-Phenotype Mapping</td>
+	<td>2010</td>
+	<td>Self-Adaptive and Self-Organizing Systems (SASO), 2010 4th IEEE International Conference on, pp. 259-260&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="kandel2000principles" class="entry">
+	<td>Kandel, E.R., Schwartz, J.H., Jessell, T.M. and others</td>
+	<td>Principles of neural science</td>
+	<td>2000</td>
+	<td><br/>Vol. 4&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="karafotias2011algorithm" class="entry">
+	<td>Karafotias, G., Haasdijk, E. and Eiben, A.E.</td>
+	<td>An algorithm for distributed on-line, on-board evolutionary robotics</td>
+	<td>2011</td>
+	<td>Proceedings of the 13th annual conference on Genetic and evolutionary computation, pp. 171-178&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="kashtan2005spontaneous" class="entry">
+	<td>Kashtan, N. and Alon, U.</td>
+	<td>Spontaneous evolution of modularity and network motifs</td>
+	<td>2005</td>
+	<td>Proceedings of the National Academy of Sciences of the United States of America<br/>Vol. 102(39), pp. 13773-13778&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="katadameasurements" class="entry">
+	<td>Katada, Y. and Handa, Y.</td>
+	<td>Measurements of Features of Fitness Landscapes on Competitive Co-Evolutionary Robotics</td>
+	<td></td>
+	<td>&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="katagami2002interactive" class="entry">
+	<td>Katagami, D. and Yamada, S.</td>
+	<td>Interactive evolutionary robotics from different viewpoints of observation</td>
+	<td>2002</td>
+	<td><br/>Vol. 2Intelligent Robots and Systems, 2002. IEEE/RSJ International Conference on, pp. 1108-1113&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="kernbach2009evolutionary" class="entry">
+	<td>Kernbach, S., Meister, E., Scholz, O., Humza, R., Liedke, J., Ricotti, L., Jemai, J., Havlik, J. and Liu, W.</td>
+	<td>Evolutionary robotics: The next-generation-platform for on-line and on-board artificial evolution</td>
+	<td>2009</td>
+	<td>Evolutionary Computation, 2009. CEC'09. IEEE Congress on, pp. 1079-1086&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="kirschner2006plausibility" class="entry">
+	<td>Kirschner, M.W., Gerhart, J.C. and Norton, J.</td>
+	<td>The plausibility of life: Resolving Darwin's dilemma</td>
+	<td>2006</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="kitano1990designing" class="entry">
+	<td>Kitano, H.</td>
+	<td>Designing neural networks using genetic algorithms with graph generation system</td>
+	<td>1990</td>
+	<td>Complex Systems Journal<br/>Vol. 4, pp. 461-476&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="kodjabachian20064" class="entry">
+	<td>Kodjabachian, J. and Meyer, J.</td>
+	<td>Evolution and Development of Neural Net-works Controlling Locomotion, Gradient-Following and Obstacle-Avoidance in Artificial Insects</td>
+	<td>2006</td>
+	<td>8 d&eacute;cembre 2006, pp. 7&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="komosinski2001comparison" class="entry">
+	<td>Komosi&#324;ski, M. and Rotaru-Varga, A.</td>
+	<td>Comparison of different genotype encodings for simulated three-dimensional agents</td>
+	<td>2001</td>
+	<td>Artificial Life<br/>Vol. 7(4), pp. 395-418&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="konig2009completely" class="entry">
+	<td>Konig, L. and Schmeck, H.</td>
+	<td>A completely evolvable genotype-phenotype mapping for evolutionary robotics</td>
+	<td>2009</td>
+	<td>Self-Adaptive and Self-Organizing Systems, 2009. SASO'09. Third IEEE International Conference on, pp. 175-185&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="koos2013fast" class="entry">
+	<td>Koos, S., Cully, A. and Mouret, J.-B.</td>
+	<td>Fast damage recovery in robotics with the t-resilience algorithm</td>
+	<td>2013</td>
+	<td>The International Journal of Robotics Research<br/>Vol. 32(14), pp. 1700-1723&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="koos2013transferability" class="entry">
+	<td>Koos, S., Mouret, J.-B. and Doncieux, S.</td>
+	<td>The transferability approach: Crossing the reality gap in evolutionary robotics</td>
+	<td>2013</td>
+	<td>Evolutionary Computation, IEEE Transactions on<br/>Vol. 17(1), pp. 122-145&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="koos2010crossing" class="entry">
+	<td>Koos, S., Mouret, J.-B. and Doncieux, S.</td>
+	<td>Crossing the reality gap in evolutionary robotics by promoting transferable controllers</td>
+	<td>2010</td>
+	<td>Proceedings of the 12th annual conference on Genetic and evolutionary computation, pp. 119-126&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="kouchmeshky2007co" class="entry">
+	<td>Kouchmeshky, B., Aquino, W., Bongard, J. and Lipson, H.</td>
+	<td>Co-evolutionary algorithm for structural damage identification using minimal physical testing</td>
+	<td>2007</td>
+	<td>International Journal for Numerical Methods in Engineering<br/>Vol. 69(5), pp. 1085-1107&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="koza1992genetic" class="entry">
+	<td>Koza, J.R.</td>
+	<td>Genetic programming: on the programming of computers by means of natural selection</td>
+	<td>1992</td>
+	<td><br/>Vol. 1&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="krvcah2012solving" class="entry">
+	<td>Kr&#269;ah, P.</td>
+	<td>Solving deceptive tasks in robot body-brain co-evolution by searching for behavioral novelty</td>
+	<td>2012</td>
+	<td>Advances in Robotics and Virtual Reality, pp. 167-186&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lehman2011abandoning" class="entry">
+	<td>Lehman, J. and Stanley, K.O.</td>
+	<td>Abandoning objectives: Evolution through the search for novelty alone</td>
+	<td>2011</td>
+	<td>Evolutionary computation<br/>Vol. 19(2), pp. 189-223&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lehman2008exploiting" class="entry">
+	<td>Lehman, J. and Stanley, K.O.</td>
+	<td>Exploiting Open-Endedness to Solve Problems Through the Search for Novelty.</td>
+	<td>2008</td>
+	<td>ALIFE, pp. 329-336&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lehman2013effective" class="entry">
+	<td>Lehman, J., Stanley, K.O. and Miikkulainen, R.</td>
+	<td>Effective diversity maintenance in deceptive domains</td>
+	<td>2013</td>
+	<td>Proceedings of the 15th annual conference on Genetic and evolutionary computation, pp. 215-222&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lenski1999genome" class="entry">
+	<td>Lenski, R.E., Ofria, C., Collier, T.C. and Adami, C.</td>
+	<td>Genome complexity, robustness and genetic interactions in digital organisms</td>
+	<td>1999</td>
+	<td>Nature<br/>Vol. 400(6745), pp. 661-664&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lewis1992genetic" class="entry">
+	<td>Lewis, M.A., Fagg, A.H. and Solidum, A.</td>
+	<td>Genetic programming approach to the construction of a neural network for control of a walking robot</td>
+	<td>1992</td>
+	<td>Robotics and Automation, 1992. Proceedings., 1992 IEEE International Conference on, pp. 2618-2623&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="liapis2013enhancements" class="entry">
+	<td>Liapis, A., Yannakakis, G.N. and Togelius, J.</td>
+	<td>Enhancements to constrained novelty search: Two-population novelty search for generating game content</td>
+	<td>2013</td>
+	<td>Proceedings of the 15th annual conference on Genetic and evolutionary computation, pp. 343-350&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lindenmayer1968mathematical" class="entry">
+	<td>Lindenmayer, A.</td>
+	<td>Mathematical models for cellular interactions in development I. Filaments with one-sided inputs</td>
+	<td>1968</td>
+	<td>Journal of theoretical biology<br/>Vol. 18(3), pp. 280-299&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lipson2007evolutionary" class="entry">
+	<td>Lipson, H.</td>
+	<td>Evolutionary robotics: Emergence of communication</td>
+	<td>2007</td>
+	<td>Current Biology<br/>Vol. 17(9), pp. R330-R332&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lipson2007principles" class="entry">
+	<td>Lipson, H.</td>
+	<td>Principles of modularity, regularity, and hierarchy for scalable systems</td>
+	<td>2007</td>
+	<td>Journal of Biological Physics and Chemistry<br/>Vol. 7(4), pp. 125&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lipson2006evolutionary" class="entry">
+	<td>Lipson, H., Bongard, J.C., Zykov, V. and Malone, E.</td>
+	<td>Evolutionary Robotics for Legged Machines: From Simulation to Physical Reality.</td>
+	<td>2006</td>
+	<td>IAS, pp. 11-18&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lipson2000automatic" class="entry">
+	<td>Lipson, H. and Pollack, J.B.</td>
+	<td>Automatic design and manufacture of robotic lifeforms</td>
+	<td>2000</td>
+	<td>Nature<br/>Vol. 406(6799), pp. 974-978&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="long2012darwin" class="entry">
+	<td>Long, J.</td>
+	<td>Darwin's Devices: What Evolving Robots Can Teach Us about the History of Life and the Future of Technology</td>
+	<td>2012</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="luke1996evolving" class="entry">
+	<td>Luke, S. and Spector, L.</td>
+	<td>Evolving teamwork and coordination with genetic programming</td>
+	<td>1996</td>
+	<td>Proceedings of the 1st annual conference on genetic programming, pp. 150-156&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lund2001adaptive" class="entry">
+	<td>Lund, H.H.</td>
+	<td>Adaptive robotics in entertainment</td>
+	<td>2001</td>
+	<td>Applied Soft Computing<br/>Vol. 1(1), pp. 3-20&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lund1998evolutionary" class="entry">
+	<td>Lund, H.H., Miglino, O., Pagliarini, L., Billard, A. and Ijspeert, A.</td>
+	<td>Evolutionary Robotics-A children's game</td>
+	<td>1998</td>
+	<td>Evolutionary Computation Proceedings, 1998. IEEE World Congress on Computational Intelligence., The 1998 IEEE International Conference on, pp. 154-158&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="macalpine2015ut" class="entry">
+	<td>MacAlpine, P., Depinet, M. and Stone, P.</td>
+	<td>UT Austin Villa 2014: RoboCup 3D simulation league champion via overlapping layered learning</td>
+	<td>2015</td>
+	<td>Proceedings of the Twenty-Ninth AAAI Conference on Artificial Intelligence (AAAI-15), pp. 1-7&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="marocco2002role" class="entry">
+	<td>Marocco, D., Cangelosi, A. and Nolfi, S.</td>
+	<td>The role of social and cognitive abilities in the emergence of communication: Experiments in evolutionary robotics</td>
+	<td>2002</td>
+	<td>EPSRC/BBSRC international workshop biologically-inspired robotics, pp. 174-181&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="martin1999increasing" class="entry">
+	<td>Martin, A.P.</td>
+	<td>Increasing genomic complexity by gene duplication and the origin of vertebrates</td>
+	<td>1999</td>
+	<td>The American Naturalist<br/>Vol. 154(2), pp. 111-128&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="mataric1996challenges" class="entry">
+	<td>Matari&#263;, M. and Cliff, D.</td>
+	<td>Challenges in evolving controllers for physical robots</td>
+	<td>1996</td>
+	<td>Robotics and autonomous systems<br/>Vol. 19(1), pp. 67-83&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="meng2011autonomous" class="entry">
+	<td>Meng, Y., Zhang, Y. and Jin, Y.</td>
+	<td>Autonomous self-reconfiguration of modular robots by evolving a hierarchical mechanochemical model</td>
+	<td>2011</td>
+	<td>Computational Intelligence Magazine, IEEE<br/>Vol. 6(1), pp. 43-54&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="merkel2010age" class="entry">
+	<td>Merkel, S., König, L. and Schmeck, H.</td>
+	<td>Age based controller stabilization in Evolutionary Robotics</td>
+	<td>2010</td>
+	<td>Nature and Biologically Inspired Computing (NaBIC), 2010 Second World Congress on, pp. 84-91&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="meyer1998evolutionary" class="entry">
+	<td>Meyer, J.-A., Husbands, P. and Harvey, I.</td>
+	<td>Evolutionary robotics: A survey of applications and problems</td>
+	<td>1998</td>
+	<td>Evolutionary Robotics, pp. 1-21&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="miglino2008breedbot" class="entry">
+	<td>Miglino, O., Gigliotta, O., Ponticorvo, M. and Nolfi, S.</td>
+	<td>Breedbot: an evolutionary robotics application in digital content</td>
+	<td>2008</td>
+	<td>The Electronic Library<br/>Vol. 26(3), pp. 363-373&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="miglino1995evolving" class="entry">
+	<td>Miglino, O., Lund, H.H. and Nolfi, S.</td>
+	<td>Evolving mobile robots in simulated and real environments</td>
+	<td>1995</td>
+	<td>Artificial life<br/>Vol. 2(4), pp. 417-434&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="miller2004evolving" class="entry">
+	<td>Miller, J.F.</td>
+	<td>Evolving a self-repairing, self-regulating, French flag organism</td>
+	<td>2004</td>
+	<td>Genetic and Evolutionary Computation--GECCO 2004, pp. 129-139&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="mitri2009evolution" class="entry">
+	<td>Mitri, S., Floreano, D. and Keller, L.</td>
+	<td>The evolution of information suppression in communicating robots with conflicting interests</td>
+	<td>2009</td>
+	<td>Proceedings of the National Academy of Sciences<br/>Vol. 106(37), pp. 15786-15790&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="mitri2013using" class="entry">
+	<td>Mitri, S., Wischmann, S., Floreano, D. and Keller, L.</td>
+	<td>Using robots to understand social behaviour</td>
+	<td>2013</td>
+	<td>Biological Reviews<br/>Vol. 88(1), pp. 31-39&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="moeckel2013gait" class="entry">
+	<td>Moeckel, R., Perov, Y.N., Nguyen, A.T., Vespignani, M., Bonardi, S., Pouya, S., Sproewitz, A., van den Kieboom, J., Wilhelm, F. and Ijspeert, A.J.</td>
+	<td>Gait optimization for roombots modular robots—Matching simulation and reality</td>
+	<td>2013</td>
+	<td>Intelligent Robots and Systems (IROS), 2013 IEEE/RSJ International Conference on, pp. 3265-3272&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="moioli2010exploring" class="entry">
+	<td>Moioli, R.C., Vargas, P.A. and Husbands, P.</td>
+	<td>Exploring the Kuramoto model of coupled oscillators in minimally cognitive evolutionary robotics tasks</td>
+	<td>2010</td>
+	<td>Evolutionary computation (CEC), 2010 IEEE congress on, pp. 1-8&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="montanier2013evolution" class="entry">
+	<td>Montanier, J.-M. and Bredeche, N.</td>
+	<td>Evolution of altruism and spatial dispersion: an artificial evolutionary ecology approach</td>
+	<td>2013</td>
+	<td><br/>Vol. 12Advances in Artificial Life, ECAL, pp. 260-267&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="montanier2011surviving" class="entry">
+	<td>Montanier, J.-M. and Bredeche, N.</td>
+	<td>Surviving the tragedy of commons: emergence of altruism in a population of evolving autonomous agents</td>
+	<td>2011</td>
+	<td>European Conference on Artificial Life&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="moriarty1996efficient" class="entry">
+	<td>Moriarty, D.E. and Mikkulainen, R.</td>
+	<td>Efficient reinforcement learning through symbiotic evolution</td>
+	<td>1996</td>
+	<td>Machine learning<br/>Vol. 22(1-3), pp. 11-32&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="Mouret:2012:EBD:2155529.2155533" class="entry">
+	<td>Mouret, J.B. and Doncieux, S.</td>
+	<td>Encouraging Behavioral Diversity in Evolutionary Robotics: An Empirical Study</td>
+	<td>2012</td>
+	<td>Evol. Comput.<br/>Vol. 20(1), pp. 91-133&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1162/EVCO_a_00048">DOI</a> <a href="http://dx.doi.org/10.1162/EVCO_a_00048">URL</a>&nbsp;</td>
+</tr>
+<tr id="mouret2011novelty" class="entry">
+	<td>Mouret, J.-B.</td>
+	<td>Novelty-based multiobjectivization</td>
+	<td>2011</td>
+	<td>New horizons in evolutionary robotics, pp. 139-154&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="mouret2012algorithm" class="entry">
+	<td>Mouret, J.-B. and Clune, J.</td>
+	<td>An algorithm to create phenotype-fitness maps</td>
+	<td>2012</td>
+	<td>Proc. of the Artificial Life Conf, pp. 593-594&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="mouret2008mennag" class="entry">
+	<td>Mouret, J.-B. and Doncieux, S.</td>
+	<td>MENNAG: a modular, regular and hierarchical encoding for neural-networks based on attribute grammars</td>
+	<td>2008</td>
+	<td>Evolutionary Intelligence<br/>Vol. 1(3), pp. 187-207&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="mouret2013crossing" class="entry">
+	<td>Mouret, J.-B., Koos, S. and Doncieux, S.</td>
+	<td>Crossing the reality gap: a short introduction to the transferability approach</td>
+	<td>2013</td>
+	<td>arXiv preprint arXiv:1307.1870&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="mouret2014artificial" class="entry">
+	<td>Mouret, J.-B. and Tonelli, P.</td>
+	<td>Artificial evolution of plastic neural networks: a few key concepts</td>
+	<td>2014</td>
+	<td>Growing Adaptive Machines, pp. 251-261&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="nelson2006developmental" class="entry">
+	<td>Nelson, A. and Grant, E.</td>
+	<td>Developmental analysis in evolutionary robotics</td>
+	<td>2006</td>
+	<td>Adaptive and Learning Systems, 2006 IEEE Mountain Workshop on, pp. 201-206&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="nelson2009fitness" class="entry">
+	<td>Nelson, A.L., Barlow, G.J. and Doitsidis, L.</td>
+	<td>Fitness functions in evolutionary robotics: A survey and analysis</td>
+	<td>2009</td>
+	<td>Robotics and Autonomous Systems<br/>Vol. 57(4), pp. 345-370&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="nelson2006using" class="entry">
+	<td>Nelson, A.L. and Grant, E.</td>
+	<td>Using direct competition to select for competent controllers in evolutionary robotics</td>
+	<td>2006</td>
+	<td>Robotics and Autonomous Systems<br/>Vol. 54(10), pp. 840-857&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="nelson2004maze" class="entry">
+	<td>Nelson, A.L., Grant, E., Galeotti, J.M. and Rhody, S.</td>
+	<td>Maze exploration behaviors using an integrated evolutionary robotics environment</td>
+	<td>2004</td>
+	<td>Robotics and Autonomous Systems<br/>Vol. 46(3), pp. 159-173&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="nijhout1998competition" class="entry">
+	<td>Nijhout, H. and Emlen, D.</td>
+	<td>Competition among body parts in the development and evolution of insect morphology</td>
+	<td>1998</td>
+	<td>Proceedings of the National Academy of Sciences<br/>Vol. 95(7), pp. 3685-3689&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="nolfi1998evolutionary" class="entry">
+	<td>Nolfi, S.</td>
+	<td>Evolutionary robotics: Exploiting the full power of self-organization</td>
+	<td>1998</td>
+	<td>Connection Science<br/>Vol. 10(3-4), pp. 167-184&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="nolfi2000evolutionary" class="entry">
+	<td>Nolfi, S. and Floreano, D.</td>
+	<td>Evolutionary robotics: The biology, intelligence, and technology of self-organizing machines</td>
+	<td>2000</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="nolfi1998co" class="entry">
+	<td>Nolfi, S. and Floreano, D.</td>
+	<td>How co-evolution can enhance the adaptive power of artificial evolution: Implications for evolutionary robotics</td>
+	<td>1998</td>
+	<td>Evolutionary robotics, pp. 22-38&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="nolfi1994evolve" class="entry">
+	<td>Nolfi, S., Floreano, D., Miglino, O. and Mondada, F.</td>
+	<td>How to evolve autonomous robots: Different approaches in evolutionary robotics</td>
+	<td>1994</td>
+	<td>(LIS-CONF-1994-002)Artificial life IV: Proceedings of the 4th International Workshop on Artificial Life, pp. 190-197&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="oliveira2013optimization" class="entry">
+	<td>Oliveira, M., Doncieux, S., Mouret, J.-B. and Peixoto Santos, C.</td>
+	<td>Optimization of humanoid walking controller: Crossing the reality gap</td>
+	<td>2013</td>
+	<td>Humanoid Robots (Humanoids), 2013 13th IEEE-RAS International Conference on, pp. 106-111&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="olson2013predator" class="entry">
+	<td>Olson, R.S., Hintze, A., Dyer, F.C., Knoester, D.B. and Adami, C.</td>
+	<td>Predator confusion is sufficient to evolve swarming behaviour</td>
+	<td>2013</td>
+	<td>Journal of The Royal Society Interface<br/>Vol. 10(85), pp. 20130305&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="parker2000co" class="entry">
+	<td>Parker, G.B.</td>
+	<td>Co-evolving model parameters for anytime learning in evolutionary robotics</td>
+	<td>2000</td>
+	<td>Robotics and Autonomous Systems<br/>Vol. 33(1), pp. 13-30&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="paul2006morphological" class="entry">
+	<td>Paul, C.</td>
+	<td>Morphological computation: A basis for the analysis of morphology and control requirements</td>
+	<td>2006</td>
+	<td>Robotics and Autonomous Systems<br/>Vol. 54(8), pp. 619-630&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="paul2006design" class="entry">
+	<td>Paul, C., Valero-Cuevas, F.J. and Lipson, H.</td>
+	<td>Design and control of tensegrity robots for locomotion</td>
+	<td>2006</td>
+	<td>Robotics, IEEE Transactions on<br/>Vol. 22(5), pp. 944-957&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="pfeifer2006body" class="entry">
+	<td>Pfeifer, R. and Bongard, J.</td>
+	<td>How the body shapes the way we think: a new view of intelligence</td>
+	<td>2006</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="pigliucci2008evolvability" class="entry">
+	<td>Pigliucci, M.</td>
+	<td>Is evolvability evolvable?</td>
+	<td>2008</td>
+	<td>Nature Reviews Genetics<br/>Vol. 9(1), pp. 75-82&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="pollack2000evolutionary" class="entry">
+	<td>Pollack, J.B., Lipson, H., Ficici, S., Funes, P., Hornby, G. and Watson, R.A.</td>
+	<td>Evolutionary techniques in physical robotics</td>
+	<td>2000</td>
+	<td>Evolvable Systems: from biology to hardware, pp. 175-186&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="pratihar2003evolutionary" class="entry">
+	<td>Pratihar, D.K.</td>
+	<td>Evolutionary robotics—A review</td>
+	<td>2003</td>
+	<td>Sadhana<br/>Vol. 28(6), pp. 999-1009&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="quinn2003evolving" class="entry">
+	<td>Quinn, M., Smith, L., Mayley, G. and Husbands, P.</td>
+	<td>Evolving controllers for a homogeneous system of physical robots: Structured cooperation with minimal sensors</td>
+	<td>2003</td>
+	<td>Philosophical Transactions of the Royal Society of London. Series A: Mathematical, Physical and Engineering Sciences<br/>Vol. 361(1811), pp. 2321-2343&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="reil2002evolution" class="entry">
+	<td>Reil, T. and Husbands, P.</td>
+	<td>Evolution of central pattern generators for bipedal walking in a real-time physics environment</td>
+	<td>2002</td>
+	<td>Evolutionary Computation, IEEE Transactions on<br/>Vol. 6(2), pp. 159-168&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="rieffel2009evolving" class="entry">
+	<td>Rieffel, J., Saunders, F., Nadimpalli, S., Zhou, H., Hassoun, S., Rife, J. and Trimmer, B.</td>
+	<td>Evolving soft robotic locomotion in PhysX</td>
+	<td>2009</td>
+	<td>Proceedings of the 11th Annual Conference Companion on Genetic and Evolutionary Computation Conference: Late Breaking Papers, pp. 2499-2504&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="risi2009novelty" class="entry">
+	<td>Risi, S., Vanderbleek, S.D., Hughes, C.E. and Stanley, K.O.</td>
+	<td>How novelty search escapes the deceptive trap of learning to learn</td>
+	<td>2009</td>
+	<td>Proceedings of the 11th Annual conference on Genetic and evolutionary computation, pp. 153-160&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="2278668" class="entry">
+	<td>Rohde, M.</td>
+	<td>Enaction, Embodiment, Evolutionary Robotics: Simulation Models for a Post-Cognitivist Science of Mind</td>
+	<td>2010</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td><a href="http://dx.doi.org/10.2991/978-94-91216-34-3">DOI</a> <a href="http://www.mariekerohde.com/contents/Book\_Rohde.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="ruini2009extending" class="entry">
+	<td>Ruini, F. and Cangelosi, A.</td>
+	<td>Extending the Evolutionary Robotics approach to flying machines: An application to MAV teams</td>
+	<td>2009</td>
+	<td>Neural Networks<br/>Vol. 22(5), pp. 812-821&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="sareni1998fitness" class="entry">
+	<td>Sareni, B. and Krahenbuhl, L.</td>
+	<td>Fitness sharing and niching methods revisited</td>
+	<td>1998</td>
+	<td>Evolutionary Computation, IEEE Transactions on<br/>Vol. 2(3), pp. 97-106&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="sellers2003predicting" class="entry">
+	<td>Sellers, W.I., Dennis, L.A. and Crompton, R.H.</td>
+	<td>Predicting the metabolic energy costs of bipedalism using evolutionary robotics</td>
+	<td>2003</td>
+	<td>Journal of Experimental Biology<br/>Vol. 206(7), pp. 1127-1136&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="sellers2004evaluating" class="entry">
+	<td>Sellers, W.I., Dennis, L.A., W-J, W. and Crompton, R.H.</td>
+	<td>Evaluating alternative gait strategies using evolutionary robotics</td>
+	<td>2004</td>
+	<td>Journal of Anatomy<br/>Vol. 204(5), pp. 343-351&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="sellers2007estimating" class="entry">
+	<td>Sellers, W.I. and Manning, P.L.</td>
+	<td>Estimating dinosaur maximum running speeds using evolutionary robotics</td>
+	<td>2007</td>
+	<td>Proceedings of the Royal Society of London B: Biological Sciences<br/>Vol. 274(1626), pp. 2711-2716&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="sims1994evolving" class="entry">
+	<td>Sims, K.</td>
+	<td>Evolving 3D morphology and behavior by competition</td>
+	<td>1994</td>
+	<td>Artificial life<br/>Vol. 1(4), pp. 353-372&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="smith2001neutral" class="entry">
+	<td>Smith, T., Husbands, P. and O'Shea, M.</td>
+	<td>Neutral networks in an evolutionary robotics search space</td>
+	<td>2001</td>
+	<td><br/>Vol. 1Evolutionary Computation, 2001. Proceedings of the 2001 Congress on, pp. 136-143&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="smith2001not" class="entry">
+	<td>Smith, T., Husbands, P. and O'Shea, M.</td>
+	<td>Not measuring evolvability: Initial investigation of an evolutionary robotics search space</td>
+	<td>2001</td>
+	<td><br/>Vol. 1Evolutionary Computation, 2001. Proceedings of the 2001 Congress on, pp. 9-16&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="sofge2007challenges" class="entry">
+	<td>Sofge, D., Potter, M.A., Bugajska, M.D. and Schultz, A.C.</td>
+	<td>Challenges and opportunities of evolutionary robotics</td>
+	<td>2007</td>
+	<td>arXiv preprint arXiv:0706.0457&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="sprong2011common" class="entry">
+	<td>Sprong, C.</td>
+	<td>Common tasks in Evolutionary Robotics, an overview</td>
+	<td>2011</td>
+	<td>&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2011evolutionary" class="entry">
+	<td>Stanley, K.O.</td>
+	<td>Why evolutionary robotics will matter</td>
+	<td>2011</td>
+	<td>New Horizons in Evolutionary Robotics, pp. 37-41&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2007compositional" class="entry">
+	<td>Stanley, K.O.</td>
+	<td>Compositional pattern producing networks: A novel abstraction of development</td>
+	<td>2007</td>
+	<td>Genetic programming and evolvable machines<br/>Vol. 8(2), pp. 131-162&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2005real" class="entry">
+	<td>Stanley, K.O., Bryant, B.D. and Miikkulainen, R.</td>
+	<td>Real-time neuroevolution in the NERO video game</td>
+	<td>2005</td>
+	<td>Evolutionary Computation, IEEE Transactions on<br/>Vol. 9(6), pp. 653-668&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2009hypercube" class="entry">
+	<td>Stanley, K.O., D'Ambrosio, D.B. and Gauci, J.</td>
+	<td>A hypercube-based encoding for evolving large-scale neural networks</td>
+	<td>2009</td>
+	<td>Artificial life<br/>Vol. 15(2), pp. 185-212&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2004competitive" class="entry">
+	<td>Stanley, K.O. and Miikkulainen, R.</td>
+	<td>Competitive coevolution through evolutionary complexification</td>
+	<td>2004</td>
+	<td>J. Artif. Intell. Res.(JAIR)<br/>Vol. 21, pp. 63-100&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2003taxonomy" class="entry">
+	<td>Stanley, K.O. and Miikkulainen, R.</td>
+	<td>A taxonomy for artificial embryogeny</td>
+	<td>2003</td>
+	<td>Artificial Life<br/>Vol. 9(2), pp. 93-130&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2002evolving" class="entry">
+	<td>Stanley, K.O. and Miikkulainen, R.</td>
+	<td>Evolving neural networks through augmenting topologies</td>
+	<td>2002</td>
+	<td>Evolutionary computation<br/>Vol. 10(2), pp. 99-127&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="tan2004evolvable" class="entry">
+	<td>Tan, K.C., Wang, L., Lee, T.H. and Vadakkepat, P.</td>
+	<td>Evolvable hardware in evolutionary robotics</td>
+	<td>2004</td>
+	<td>Autonomous Robots<br/>Vol. 16(1), pp. 5-21&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="tarapore2015evolvability" class="entry">
+	<td>Tarapore, D. and Mouret, J.-B.</td>
+	<td>Evolvability signatures of generative encodings: beyond standard performance benchmarks</td>
+	<td>2015</td>
+	<td>Information Sciences<br/>Vol. 313, pp. 43-61&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="tarapore2014comparing" class="entry">
+	<td>Tarapore, D. and Mouret, J.-B.</td>
+	<td>Comparing the evolvability of generative encoding schemes</td>
+	<td>2014</td>
+	<td><br/>Vol. 14ALIFE 14: The Fourteenth Conference on the Synthesis and Simulation of Living Systems, pp. 55-62&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="terzopoulos1994artificial" class="entry">
+	<td>Terzopoulos, D., Tu, X. and Grzeszczuk, R.</td>
+	<td>Artificial fishes: Autonomous locomotion, perception, behavior, and learning in a simulated physical world</td>
+	<td>1994</td>
+	<td>Artificial Life<br/>Vol. 1(4), pp. 327-351&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="tonelli2013relationships" class="entry">
+	<td>Tonelli, P. and Mouret, J.-B.</td>
+	<td>On the relationships between generative encodings, regularity, and learning abilities when evolving plastic artificial neural networks</td>
+	<td>2013</td>
+	<td>&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="tonelli2011relationships" class="entry">
+	<td>Tonelli, P. and Mouret, J.-B.</td>
+	<td>On the relationships between synaptic plasticity and generative systems</td>
+	<td>2011</td>
+	<td>Proceedings of the 13th annual conference on Genetic and evolutionary computation, pp. 1531-1538&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="trianni2014evolutionary" class="entry">
+	<td>Trianni, V.</td>
+	<td>Evolutionary Robotics: Model or Design?</td>
+	<td>2014</td>
+	<td>Frontiers in Robotics and AI<br/>Vol. 1, pp. 13&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="trianni2008evolutionary" class="entry">
+	<td>Trianni, V.</td>
+	<td>Evolutionary swarm robotics: evolving self-organising behaviours in groups of autonomous robots</td>
+	<td>2008</td>
+	<td><br/>Vol. 108&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="trivedi2008soft" class="entry">
+	<td>Trivedi, D., Rahn, C.D., Kier, W.M. and Walker, I.D.</td>
+	<td>Soft robotics: Biological inspiration, state of the art, and future research</td>
+	<td>2008</td>
+	<td>Applied Bionics and Biomechanics<br/>Vol. 5(3), pp. 99-117&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="trujillo2011speciation" class="entry">
+	<td>Trujillo, L., Olague, G., Lutton, E., De Vega, F.F., Dozal, L. and Clemente, E.</td>
+	<td>Speciation in behavioral space for evolutionary robotics</td>
+	<td>2011</td>
+	<td>Journal of Intelligent &amp; Robotic Systems<br/>Vol. 64(3-4), pp. 323-351&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="urzelai2001evolution" class="entry">
+	<td>Urzelai, J. and Floreano, D.</td>
+	<td>Evolution of adaptive synapses: Robots with fast adaptive behavior in new environments</td>
+	<td>2001</td>
+	<td>Evolutionary computation<br/>Vol. 9(4), pp. 495-524&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="urzelai2000evolutionary" class="entry">
+	<td>Urzelai, J. and Floreano, D.</td>
+	<td>Evolutionary robotics: coping with environmental change</td>
+	<td>2000</td>
+	<td>(LIS-CONF-2000-001)Genetic and Evolutionary Computation Conference (GECCO" 2000)&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="verbancsics2011constraining" class="entry">
+	<td>Verbancsics, P. and Stanley, K.O.</td>
+	<td>Constraining connectivity to encourage modularity in HyperNEAT</td>
+	<td>2011</td>
+	<td>Proceedings of the 13th annual conference on Genetic and evolutionary computation, pp. 1483-1490&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="wagner1996perspective" class="entry">
+	<td>Wagner, G.P. and Altenberg, L.</td>
+	<td>Perspective: complex adaptations and the evolution of evolvability</td>
+	<td>1996</td>
+	<td>Evolution, pp. 967-976&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="wahde2004evolutionary" class="entry">
+	<td>Wahde, M.</td>
+	<td>Evolutionary robotics: the use of artificial evolution in robotics</td>
+	<td>2004</td>
+	<td>Relat&oacute;rio T&eacute;cnico TR-BBR-2004-001, Chalmers University of Technology&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="waibel2011quantitative" class="entry">
+	<td>Waibel, M., Floreano, D. and Keller, L.</td>
+	<td>A quantitative test of Hamilton's rule for the evolution of altruism</td>
+	<td>2011</td>
+	<td>PLoS-Biology<br/>Vol. 9(5), pp. 970&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="walker2003evolving" class="entry">
+	<td>Walker, J., Garrett, S. and Wilson, M.</td>
+	<td>Evolving controllers for real robots: A survey of the literature</td>
+	<td>2003</td>
+	<td>Adaptive Behavior<br/>Vol. 11(3), pp. 179-203&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="watanabe1999survey" class="entry">
+	<td>Watanabe, K. and Izumi, K.</td>
+	<td>A survey of robotic control systems constructed by using evolutionary computations</td>
+	<td>1999</td>
+	<td><br/>Vol. 2Systems, Man, and Cybernetics, 1999. IEEE SMC'99 Conference Proceedings. 1999 IEEE International Conference on, pp. 758-763&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="watson2002embodied" class="entry">
+	<td>Watson, R.A., Ficici, S.G. and Pollack, J.B.</td>
+	<td>Embodied evolution: Distributing an evolutionary algorithm in a population of robots</td>
+	<td>2002</td>
+	<td>Robotics and Autonomous Systems<br/>Vol. 39(1), pp. 1-18&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="werner1991evolution" class="entry">
+	<td>Werner, G.M.</td>
+	<td>Evolution of Communication in Artificial Organisms, Artifial Life II</td>
+	<td>1991</td>
+	<td>Proceedings of the Second International Conference of Artificial Life, pp. 659-687&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="williams2010information" class="entry">
+	<td>Williams, P.L. and Beer, R.D.</td>
+	<td>Information dynamics of evolved agents</td>
+	<td>2010</td>
+	<td>From Animals to Animats 11, pp. 38-49&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="wischmann2012historical" class="entry">
+	<td>Wischmann, S., Floreano, D. and Keller, L.</td>
+	<td>Historical contingency affects signaling strategies and competitive abilities in evolving populations of simulated robots</td>
+	<td>2012</td>
+	<td>Proceedings of the National Academy of Sciences<br/>Vol. 109(3), pp. 864-868&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="wood2007new" class="entry">
+	<td>Wood, R. and Di Paolo, E.</td>
+	<td>New models for old questions: Evolutionary robotics and the ‘A not B’error</td>
+	<td>2007</td>
+	<td>Advances in Artificial Life, pp. 1141-1150&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="yao1999evolving" class="entry">
+	<td>Yao, X.</td>
+	<td>Evolving artificial neural networks</td>
+	<td>1999</td>
+	<td>Proceedings of the IEEE<br/>Vol. 87(9), pp. 1423-1447&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="yoshikawa2008hardware" class="entry">
+	<td>Yoshikawa, M. and Terai, H.</td>
+	<td>Hardware accelerator for evolutionary robotics</td>
+	<td>2008</td>
+	<td>WSEAS Transactions on Circuits and Systems<br/>Vol. 7(6), pp. 482-491&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="yosinski2011evolving" class="entry">
+	<td>Yosinski, J., Clune, J., Hidalgo, D., Nguyen, S., Zagal, J. and Lipson, H.</td>
+	<td>Evolving robot gaits in hardware: the HyperNEAT generative encoding vs. parameter optimization</td>
+	<td>2011</td>
+	<td>Proceedings of the 20th European Conference on Artificial Life, pp. 890-897&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="zagal2009self" class="entry">
+	<td>Zagal, J.C. and Lipson, H.</td>
+	<td>Self-reflection in evolutionary robotics: resilient adaptation with a minimum of physical exploration</td>
+	<td>2009</td>
+	<td>Proceedings of the 11th Annual Conference Companion on Genetic and Evolutionary Computation Conference: Late Breaking Papers, pp. 2179-2188&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="zagal2007combining" class="entry">
+	<td>Zagal, J.C. and Ruiz-Del-Solar, J.</td>
+	<td>Combining simulation and reality in evolutionary robotics</td>
+	<td>2007</td>
+	<td>Journal of Intelligent and Robotic Systems<br/>Vol. 50(1), pp. 19-39&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="zagal2004back" class="entry">
+	<td>Zagal, J.C., Ruiz-del-Solar, J. and Vallejos, P.</td>
+	<td>Back to reality: Crossing the reality gap in evolutionary robotics</td>
+	<td>2004</td>
+	<td>IAV 2004 the 5th IFAC Symposium on Intelligent Autonomous Vehicles, Lisbon, Portugal&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="zahadat2010fractal" class="entry">
+	<td>Zahadat, P., Christensen, D.J., Schultz, U.P., Katebi, S. and Stoy, K.</td>
+	<td>Fractal gene regulatory networks for robust locomotion control of modular robots</td>
+	<td>2010</td>
+	<td>From Animals to Animats 11, pp. 544-554&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="ziemke2004evolving" class="entry">
+	<td>Ziemke, T., Bergfeldt, N., Buason, G., Susi, T. and Svensson, H.</td>
+	<td>Evolving cognitive scaffolding and environment adaptation: a new research direction for evolutionary robotics</td>
+	<td>2004</td>
+	<td>Connection Science<br/>Vol. 16(4), pp. 339-350&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="zykov2007molecubes" class="entry">
+	<td>Zykov, V., Chan, A. and Lipson, H.</td>
+	<td>Molecubes: An open-source modular robotics kit</td>
+	<td>2007</td>
+	<td>IROS-2007 Self-Reconfigurable Robotics Workshop, pp. 3-6&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="zykov2005robotics" class="entry">
+	<td>Zykov, V., Mytilinaios, E., Adams, B. and Lipson, H.</td>
+	<td>Robotics: Self-reproducing machines</td>
+	<td>2005</td>
+	<td>Nature<br/>Vol. 435(7039), pp. 163-164&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="zykov2007evolved" class="entry">
+	<td>Zykov, V., Mytilinaios, E., Desnoyer, M. and Lipson, H.</td>
+	<td>Evolved and designed self-reproducing modular robotics</td>
+	<td>2007</td>
+	<td>Robotics, IEEE Transactions on<br/>Vol. 23(2), pp. 308-319&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<footer>
+ <small>Created by <a href="http://jabref.sourceforge.net">JabRef</a> on 23/06/2015.</small>
+</footer>
+
+<!-- file generated by JabRef -->
+
+</body>
+</html>

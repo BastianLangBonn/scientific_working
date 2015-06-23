@@ -1,0 +1,568 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>JabRef references</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+<!--
+// QuickSearch script for JabRef HTML export (no Abstract/BibTeX)
+// Version: 3.0
+//
+// Copyright (c) 2006-2011, Mark Schenk
+//
+// This software is distributed under a Creative Commons Attribution 3.0 License
+// http://creativecommons.org/licenses/by/3.0/
+//
+// Features:
+// - intuitive find-as-you-type searching
+//    ~ case insensitive
+//    ~ ignore diacritics (optional)
+//
+// - search with/without Regular Expressions
+// - match BibTeX key
+//
+
+// Search settings
+var noSquiggles = true; 	// ignore diacritics when searching
+var searchRegExp = false; 	// enable RegExp searches
+
+
+if (window.addEventListener) {
+	window.addEventListener("load",initSearch,false); }
+else if (window.attachEvent) {
+	window.attachEvent("onload", initSearch); }
+
+function initSearch() {
+	// check for quick search table and searchfield
+	if (!document.getElementById('qs_table')||!document.getElementById('quicksearch')) { return; }
+
+	// load all the rows and sort into arrays
+	loadTableData();
+	
+	//find the query field
+	qsfield = document.getElementById('qs_field');
+
+	// previous search term; used for speed optimisation
+	prevSearch = '';
+
+	//find statistics location
+	stats = document.getElementById('stat');
+	setStatistics(-1);
+	
+	// set up preferences
+	initPreferences();
+
+	// shows the searchfield
+	document.getElementById('quicksearch').style.display = 'block';
+	document.getElementById('qs_field').onkeyup = quickSearch;
+}
+
+function loadTableData() {
+	// find table and appropriate rows
+	searchTable = document.getElementById('qs_table');
+	var allRows = searchTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+	// split all rows into entryRows and infoRows (e.g. abstract, review, bibtex)
+	entryRows = new Array();
+
+	// get data from each row
+	entryRowsData = new Array();
+	
+	BibTeXKeys = new Array();
+	
+	for (var i=0, k=0, j=0; i<allRows.length;i++) {
+		if (allRows[i].className.match(/entry/)) {
+			entryRows[j] = allRows[i];
+			entryRowsData[j] = stripDiacritics(getTextContent(allRows[i]));
+			allRows[i].id ? BibTeXKeys[j] = allRows[i].id : allRows[i].id = 'autokey_'+j;
+			j ++;
+		}
+	}
+	//number of entries and rows
+	numEntries = entryRows.length;
+}
+
+function quickSearch(){
+	
+	tInput = qsfield;
+
+	if (tInput.value.length == 0) {
+		showAll();
+		setStatistics(-1);
+		qsfield.className = '';
+		return;
+	} else {
+		t = stripDiacritics(tInput.value);
+
+		if(!searchRegExp) { t = escapeRegExp(t); }
+			
+		// only search for valid RegExp
+		try {
+			textRegExp = new RegExp(t,"i");
+			qsfield.className = '';
+		}
+			catch(err) {
+			prevSearch = tInput.value;
+			qsfield.className = 'invalidsearch';
+			return;
+		}
+	}
+	
+	// count number of hits
+	var hits = 0;
+
+	// start looping through all entry rows
+	for (var i = 0; cRow = entryRows[i]; i++){
+
+		// only show search the cells if it isn't already hidden OR if the search term is getting shorter, then search all
+		if(cRow.className.indexOf('noshow')==-1 || tInput.value.length <= prevSearch.length){
+			var found = false; 
+
+			if (entryRowsData[i].search(textRegExp) != -1 || BibTeXKeys[i].search(textRegExp) != -1){ 
+				found = true;
+			}
+			
+			if (found){
+				cRow.className = 'entry show';
+				hits++;
+			} else {
+				cRow.className = 'entry noshow';
+			}
+		}
+	}
+
+	// update statistics
+	setStatistics(hits)
+	
+	// set previous search value
+	prevSearch = tInput.value;
+}
+
+
+// Strip Diacritics from text
+// http://stackoverflow.com/questions/990904/javascript-remove-accents-in-strings
+
+// String containing replacement characters for stripping accents 
+var stripstring = 
+    'AAAAAAACEEEEIIII'+
+    'DNOOOOO.OUUUUY..'+
+    'aaaaaaaceeeeiiii'+
+    'dnooooo.ouuuuy.y'+
+    'AaAaAaCcCcCcCcDd'+
+    'DdEeEeEeEeEeGgGg'+
+    'GgGgHhHhIiIiIiIi'+
+    'IiIiJjKkkLlLlLlL'+
+    'lJlNnNnNnnNnOoOo'+
+    'OoOoRrRrRrSsSsSs'+
+    'SsTtTtTtUuUuUuUu'+
+    'UuUuWwYyYZzZzZz.';
+
+function stripDiacritics(str){
+
+    if(noSquiggles==false){
+        return str;
+    }
+
+    var answer='';
+    for(var i=0;i<str.length;i++){
+        var ch=str[i];
+        var chindex=ch.charCodeAt(0)-192;   // Index of character code in the strip string
+        if(chindex>=0 && chindex<stripstring.length){
+            // Character is within our table, so we can strip the accent...
+            var outch=stripstring.charAt(chindex);
+            // ...unless it was shown as a '.'
+            if(outch!='.')ch=outch;
+        }
+        answer+=ch;
+    }
+    return answer;
+}
+
+// http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+// NOTE: must escape every \ in the export code because of the JabRef Export...
+function escapeRegExp(str) {
+  return str.replace(/[-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
+
+function setStatistics (hits) {
+	if(hits < 0) { hits=numEntries; }
+	if(stats) { stats.firstChild.data = hits + '/' + numEntries}
+}
+
+function getTextContent(node) {
+	// Function written by Arve Bersvendsen
+	// http://www.virtuelvis.com
+	
+	if (node.nodeType == 3) {
+	return node.nodeValue;
+	} // text node
+	if (node.nodeType == 1 && node.className != "infolinks") { // element node
+	var text = [];
+	for (var chld = node.firstChild;chld;chld=chld.nextSibling) {
+		text.push(getTextContent(chld));
+	}
+	return text.join("");
+	} return ""; // some other node, won't contain text nodes.
+}
+
+function showAll(){
+	for (var i = 0; i < numEntries; i++){ entryRows[i].className = 'entry show'; }
+}
+
+function clearQS() {
+	qsfield.value = '';
+	showAll();
+}
+
+function redoQS(){
+	showAll();
+	quickSearch(qsfield);
+}
+
+function updateSetting(obj){
+	var option = obj.id;
+	var checked = obj.value;
+
+	switch(option)
+	 {
+	 case "opt_useRegExp":
+	   searchRegExp=!searchRegExp;
+	   redoQS();
+	   break;
+	 case "opt_noAccents":
+	   noSquiggles=!noSquiggles;
+	   loadTableData();
+	   redoQS();
+	   break;
+	 }
+}
+
+function initPreferences(){
+	if(noSquiggles){document.getElementById("opt_noAccents").checked = true;}
+	if(searchRegExp){document.getElementById("opt_useRegExp").checked = true;}
+}
+
+function toggleSettings(){
+	var togglebutton = document.getElementById('showsettings');
+	var settings = document.getElementById('settings');
+	
+	if(settings.className == "hidden"){
+		settings.className = "show";
+		togglebutton.innerText = "close settings";
+		togglebutton.textContent = "close settings";
+	}else{
+		settings.className = "hidden";
+		togglebutton.innerText = "settings...";		
+		togglebutton.textContent = "settings...";
+	}
+}
+
+-->
+</script>
+<style type="text/css">
+body { background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.2; padding: 1em; color: #2E2E2E; margin: auto 2em; }
+
+form#quicksearch { width: auto; border-style: solid; border-color: gray; border-width: 1px 0px; padding: 0.7em 0.5em; display:none; position:relative; }
+span#searchstat {padding-left: 1em;}
+
+div#settings { margin-top:0.7em; /* border-bottom: 1px transparent solid; background-color: #efefef; border: 1px grey solid; */ }
+div#settings ul {margin: 0; padding: 0; }
+div#settings li {margin: 0; padding: 0 1em 0 0; display: inline; list-style: none; }
+div#settings li + li { border-left: 2px #efefef solid; padding-left: 0.5em;}
+div#settings input { margin-bottom: 0px;}
+
+div#settings.hidden {display:none;}
+
+#showsettings { border: 1px grey solid; padding: 0 0.5em; float:right; line-height: 1.6em; text-align: right; }
+#showsettings:hover { cursor: pointer; }
+
+.invalidsearch { background-color: red; }
+input[type="button"] { background-color: #efefef; border: 1px #2E2E2E solid;}
+
+table { width: 100%; empty-cells: show; border-spacing: 0em 0.2em; margin: 1em 0em; border-style: none; }
+th, td { border: 1px gray solid; border-width: 1px 1px; padding: 0.5em; vertical-align: top; text-align: left; }
+th { background-color: #efefef; }
+td + td, th + th { border-left: none; }
+
+td a { color: navy; text-decoration: none; }
+td a:hover  { text-decoration: underline; }
+
+tr.noshow { display: none;}
+tr.highlight td { background-color: #EFEFEF; border-top: 2px #2E2E2E solid; font-weight: bold; }
+tr.abstract td, tr.review td, tr.bibtex td { background-color: #EFEFEF; text-align: justify; border-bottom: 2px #2E2E2E solid; }
+tr.nextshow td { border-bottom: 1px gray solid; }
+
+tr.bibtex pre { width: 100%; overflow: auto; white-space: pre-wrap;}
+p.infolinks { margin: 0.3em 0em 0em 0em; padding: 0px; }
+
+@media print {
+	p.infolinks, #qs_settings, #quicksearch, t.bibtex { display: none !important; }
+	tr { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<form action="" id="quicksearch">
+<input type="text" id="qs_field" autocomplete="off" placeholder="Type to search..." /> <input type="button" onclick="clearQS()" value="clear" />
+<span id="searchstat">Matching entries: <span id="stat">0</span></span>
+<div id="showsettings" onclick="toggleSettings()">settings...</div>
+<div id="settings" class="hidden">
+<ul>
+<li><input type="checkbox" class="search_setting" id="opt_useRegExp" onchange="updateSetting(this)"><label for="opt_useRegExp"> use RegExp</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_noAccents" onchange="updateSetting(this)"><label for="opt_noAccents"> ignore accents</label></li>
+</ul>
+</div>
+</form>
+<table id="qs_table" border="1">
+<thead><tr><th width="20%">Author</th><th width="30%">Title</th><th width="5%">Year</th><th width="30%">Journal/Proceedings</th><th width="10%">Reftype</th><th width="5%">DOI/URL</th></tr></thead>
+<tbody><tr id="angeline1994evolutionary" class="entry">
+	<td>Angeline, P.J., Saunders, G.M. and Pollack, J.B.</td>
+	<td>An evolutionary algorithm that constructs recurrent neural networks</td>
+	<td>1994</td>
+	<td>Neural Networks, IEEE Transactions on<br/>Vol. 5(1), pp. 54-65&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bentley1999three" class="entry">
+	<td>Bentley, P.J. and Kumar, S.</td>
+	<td>Three Ways to Grow Designs: A Comparison of Embryogenies for an Evolutionary Design Problem.</td>
+	<td>1999</td>
+	<td><br/>Vol. 99GECCO, pp. 35-43&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bongard2006resilient" class="entry">
+	<td>Bongard, J., Zykov, V. and Lipson, H.</td>
+	<td>Resilient machines through continuous self-modeling</td>
+	<td>2006</td>
+	<td>Science<br/>Vol. 314(5802), pp. 1118-1121&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="cliff1993explorations" class="entry">
+	<td>Cliff, D., Husbands, P. and Harvey, I.</td>
+	<td>Explorations in evolutionary robotics</td>
+	<td>1993</td>
+	<td>Adaptive behavior<br/>Vol. 2(1), pp. 73-110&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="clune2009evolving" class="entry">
+	<td>Clune, J., Beckmann, B.E., Ofria, C. and Pennock, R.T.</td>
+	<td>Evolving coordinated quadruped gaits with the HyperNEAT generative encoding</td>
+	<td>2009</td>
+	<td>Evolutionary Computation, 2009. CEC'09. IEEE Congress on, pp. 2764-2771&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="coello2006evolutionary" class="entry">
+	<td>Coello Coello, C.A.</td>
+	<td>Evolutionary multi-objective optimization: a historical view of the field</td>
+	<td>2006</td>
+	<td>Computational Intelligence Magazine, IEEE<br/>Vol. 1(1), pp. 28-36&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="eggenberger1997evolving" class="entry">
+	<td>Eggenberger, P.</td>
+	<td>Evolving morphologies of simulated 3D organisms based on differential gene expression</td>
+	<td>1997</td>
+	<td>Proceedings of the fourth european conference on Artificial Life, pp. 205-213&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="gruau1994neural" class="entry">
+	<td>Gruau, F. and others</td>
+	<td>Neural Network Synthesis using Cellular Encoding and the Genetic Algorithm.</td>
+	<td>1994</td>
+	<td>&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="harvey1997evolutionary" class="entry">
+	<td>Harvey, I., Husbands, P., Cliff, D., Thompson, A. and Jakobi, N.</td>
+	<td>Evolutionary robotics: the Sussex approach</td>
+	<td>1997</td>
+	<td>Robotics and autonomous systems<br/>Vol. 20(2), pp. 205-224&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="hornby2002creating" class="entry">
+	<td>Hornby, G.S. and Pollack, J.B.</td>
+	<td>Creating high-level components with a generative representation for body-brain evolution</td>
+	<td>2002</td>
+	<td>Artificial life<br/>Vol. 8(3), pp. 223-246&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="jakobi1995noise" class="entry">
+	<td>Jakobi, N., Husbands, P. and Harvey, I.</td>
+	<td>Noise and the reality gap: The use of simulation in evolutionary robotics</td>
+	<td>1995</td>
+	<td>Advances in artificial life, pp. 704-720&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="kashtan2005spontaneous" class="entry">
+	<td>Kashtan, N. and Alon, U.</td>
+	<td>Spontaneous evolution of modularity and network motifs</td>
+	<td>2005</td>
+	<td>Proceedings of the National Academy of Sciences of the United States of America<br/>Vol. 102(39), pp. 13773-13778&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="kitano1990designing" class="entry">
+	<td>Kitano, H.</td>
+	<td>Designing neural networks using genetic algorithms with graph generation system</td>
+	<td>1990</td>
+	<td>Complex Systems Journal<br/>Vol. 4, pp. 461-476&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="koos2013transferability" class="entry">
+	<td>Koos, S., Mouret, J.-B. and Doncieux, S.</td>
+	<td>The transferability approach: Crossing the reality gap in evolutionary robotics</td>
+	<td>2013</td>
+	<td>Evolutionary Computation, IEEE Transactions on<br/>Vol. 17(1), pp. 122-145&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lehman2011abandoning" class="entry">
+	<td>Lehman, J. and Stanley, K.O.</td>
+	<td>Abandoning objectives: Evolution through the search for novelty alone</td>
+	<td>2011</td>
+	<td>Evolutionary computation<br/>Vol. 19(2), pp. 189-223&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="lipson2000automatic" class="entry">
+	<td>Lipson, H. and Pollack, J.B.</td>
+	<td>Automatic design and manufacture of robotic lifeforms</td>
+	<td>2000</td>
+	<td>Nature<br/>Vol. 406(6799), pp. 974-978&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="miglino1995evolving" class="entry">
+	<td>Miglino, O., Lund, H.H. and Nolfi, S.</td>
+	<td>Evolving mobile robots in simulated and real environments</td>
+	<td>1995</td>
+	<td>Artificial life<br/>Vol. 2(4), pp. 417-434&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="moriarty1996efficient" class="entry">
+	<td>Moriarty, D.E. and Mikkulainen, R.</td>
+	<td>Efficient reinforcement learning through symbiotic evolution</td>
+	<td>1996</td>
+	<td>Machine learning<br/>Vol. 22(1-3), pp. 11-32&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="Mouret:2012:EBD:2155529.2155533" class="entry">
+	<td>Mouret, J.B. and Doncieux, S.</td>
+	<td>Encouraging Behavioral Diversity in Evolutionary Robotics: An Empirical Study</td>
+	<td>2012</td>
+	<td>Evol. Comput.<br/>Vol. 20(1), pp. 91-133&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1162/EVCO_a_00048">DOI</a> <a href="http://dx.doi.org/10.1162/EVCO_a_00048">URL</a>&nbsp;</td>
+</tr>
+<tr id="nelson2009fitness" class="entry">
+	<td>Nelson, A.L., Barlow, G.J. and Doitsidis, L.</td>
+	<td>Fitness functions in evolutionary robotics: A survey and analysis</td>
+	<td>2009</td>
+	<td>Robotics and Autonomous Systems<br/>Vol. 57(4), pp. 345-370&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="sareni1998fitness" class="entry">
+	<td>Sareni, B. and Krahenbuhl, L.</td>
+	<td>Fitness sharing and niching methods revisited</td>
+	<td>1998</td>
+	<td>Evolutionary Computation, IEEE Transactions on<br/>Vol. 2(3), pp. 97-106&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="sims1994evolving" class="entry">
+	<td>Sims, K.</td>
+	<td>Evolving 3D morphology and behavior by competition</td>
+	<td>1994</td>
+	<td>Artificial life<br/>Vol. 1(4), pp. 353-372&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2007compositional" class="entry">
+	<td>Stanley, K.O.</td>
+	<td>Compositional pattern producing networks: A novel abstraction of development</td>
+	<td>2007</td>
+	<td>Genetic programming and evolvable machines<br/>Vol. 8(2), pp. 131-162&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2005real" class="entry">
+	<td>Stanley, K.O., Bryant, B.D. and Miikkulainen, R.</td>
+	<td>Real-time neuroevolution in the NERO video game</td>
+	<td>2005</td>
+	<td>Evolutionary Computation, IEEE Transactions on<br/>Vol. 9(6), pp. 653-668&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2009hypercube" class="entry">
+	<td>Stanley, K.O., D'Ambrosio, D.B. and Gauci, J.</td>
+	<td>A hypercube-based encoding for evolving large-scale neural networks</td>
+	<td>2009</td>
+	<td>Artificial life<br/>Vol. 15(2), pp. 185-212&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2004competitive" class="entry">
+	<td>Stanley, K.O. and Miikkulainen, R.</td>
+	<td>Competitive coevolution through evolutionary complexification</td>
+	<td>2004</td>
+	<td>J. Artif. Intell. Res.(JAIR)<br/>Vol. 21, pp. 63-100&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2003taxonomy" class="entry">
+	<td>Stanley, K.O. and Miikkulainen, R.</td>
+	<td>A taxonomy for artificial embryogeny</td>
+	<td>2003</td>
+	<td>Artificial Life<br/>Vol. 9(2), pp. 93-130&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="stanley2002evolving" class="entry">
+	<td>Stanley, K.O. and Miikkulainen, R.</td>
+	<td>Evolving neural networks through augmenting topologies</td>
+	<td>2002</td>
+	<td>Evolutionary computation<br/>Vol. 10(2), pp. 99-127&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="terzopoulos1994artificial" class="entry">
+	<td>Terzopoulos, D., Tu, X. and Grzeszczuk, R.</td>
+	<td>Artificial fishes: Autonomous locomotion, perception, behavior, and learning in a simulated physical world</td>
+	<td>1994</td>
+	<td>Artificial Life<br/>Vol. 1(4), pp. 327-351&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="yao1999evolving" class="entry">
+	<td>Yao, X.</td>
+	<td>Evolving artificial neural networks</td>
+	<td>1999</td>
+	<td>Proceedings of the IEEE<br/>Vol. 87(9), pp. 1423-1447&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<footer>
+ <small>Created by <a href="http://jabref.sourceforge.net">JabRef</a> on 23/06/2015.</small>
+</footer>
+
+<!-- file generated by JabRef -->
+
+</body>
+</html>
